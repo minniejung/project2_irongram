@@ -13,7 +13,7 @@ const hbs = require("hbs");
 
 const mongoose = require("mongoose");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
 
 const app = express();
 
@@ -22,19 +22,20 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "views/partials"));
 
-// SESSION SETUP
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     cookie: { maxAge: 600000000000 }, // in millisec
-//     store: new MongoStore({
-//       mongooseConnection: mongoose.connection,
-//       ttl: 24 * 60 * 60, // 1 day
-//     }),
-//     saveUninitialized: true,
-//     resave: true,
-//   })
-// );
+//SESSION SETUP
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 600000000000 }, // in millisec
+    store:  MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60, // 1 day
+    }),
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 
 app.use(express.static("public"));
 app.use(logger("dev"));
