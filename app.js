@@ -39,6 +39,7 @@ app.use(
 
 app.use(express.static("public"));
 app.use(logger("dev"));
+//appp
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
