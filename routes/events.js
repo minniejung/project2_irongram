@@ -36,7 +36,6 @@ router.post(
         req.body;
       console.log("** CONSOLE req.body >>>", req.body);
       let image = req.file.path;
-      console.log("** CONSOLE newImage >>>", newImage);
 
       const createdEvent = await Event.create({
         title,
