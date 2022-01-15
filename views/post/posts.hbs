@@ -1,0 +1,7 @@
+<form action="/posts/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="image" />
+  <button>Add</button>
+</form>
+{{#each posts}}
+  {{this.urlMedia}}
+{{/each}}
