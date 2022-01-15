@@ -1,0 +1,22 @@
+<h1>Event List</h1>
+
+<div>
+  <a href="/events/create">Create a NEW event!</a>
+</div> 
+
+{{#each events}}
+ <div class="eventDiv">
+    <img src="{{this.image}}" class="eventImg">
+    <div class="eventDetail">
+      <h2>Event Title : {{this.title}}</h2>
+      <h3>Host : {{this.host_id}}</h3>
+      <p>Date: {{this.date}}</p>
+      <p>Time: {{this.time}}</p>
+      <p>Address: {{this.address}}</p>
+      <p>Price: {{this.price}}</p>
+      <p>Detail: {{this.description}}</p>
+      <a href="/events/update/{{this._id}}">Modify this event</a>
+      <a href="/events/delete/{{this._id}}">Delete this event</a>
+    </div>
+  </div>
+{{/each}}

@@ -4,5 +4,19 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
+
+/* Event CSS : Starts from here (Minyoung edited) */
+
+.eventDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 20px;
+}
+.eventImg {
+  width: 150px;
+}
+
+/* Event CSS : Finishs here (Minyoung edited) */

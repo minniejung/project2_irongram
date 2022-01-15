@@ -53,6 +53,7 @@ app.use(require("./middlewares/exposeLoginStatus"));
 // use routers
 app.use("/", require("./routes/index"));
 app.use("/", require("./routes/users"));
+app.use("/", require("./routes/events"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
