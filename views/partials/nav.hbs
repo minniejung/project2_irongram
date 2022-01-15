@@ -1,3 +1,10 @@
 <nav>
-  <a href="/auth/signup">SignUp</a>
+  {{#unless isLoggedIn}}
+    <a href="/auth/signup">Sign Up</a>
+    <a href="/auth/signin">Sign In</a>
+
+  {{/unless}}
+  {{#if isLoggedIn}}
+    <a href="/auth/logout">Log Out</a>
+  {{/if}}
 </nav>
