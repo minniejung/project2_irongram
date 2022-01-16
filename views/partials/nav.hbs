@@ -1,0 +1,14 @@
+<nav>
+  <a href="/posts">Posts</a>
+  {{#unless isLoggedIn}}
+    <a href="/auth/signup">Sign Up</a>
+    <a href="/auth/signin">Sign In</a>
+
+  {{/unless}}
+  {{#if isLoggedIn}}
+    <a href="/auth/logout">Log Out</a>
+    <a href="/">Home</a>
+    <a href="/profile/{{currentUser._id}}">Profile</a>
+  {{/if}}
+
+</nav>

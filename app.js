@@ -27,7 +27,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 600000000000 }, // in millisec
-    store:  MongoStore.create({
+    store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
       mongooseConnection: mongoose.connection,
       ttl: 24 * 60 * 60, // 1 day
@@ -39,6 +39,7 @@ app.use(
 
 app.use(express.static("public"));
 app.use(logger("dev"));
+//appp
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -53,7 +54,12 @@ app.use(require("./middlewares/exposeLoginStatus"));
 // use routers
 app.use("/", require("./routes/index"));
 app.use("/", require("./routes/users"));
+<<<<<<< HEAD
 app.use("/", require("./routes/events"));
+=======
+app.use("/", require("./routes/posts"));
+app.use("/", require("./routes/auth"));
+>>>>>>> 7a8d678d837ceb961f984285510463cc39b37581
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

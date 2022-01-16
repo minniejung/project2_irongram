@@ -1,0 +1,32 @@
+.container-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 960px;
+  margin: 0 auto;
+}
+.images-profiles {
+  width: 275px;
+  object-fit: cover;
+  height: 280px;
+}
+#filters {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.filter {
+  width: 100px;
+  height: 100px;
+}
+.filter:hover {
+  cursor: pointer;
+}
+.image-single {
+  width: 500px;
+}

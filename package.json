@@ -10,6 +10,7 @@
     "seed:all": "npm run seed:user && npm run seed:post"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.4.2",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.28.1",
     "connect-flash": "^0.1.1",
