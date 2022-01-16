@@ -6,6 +6,7 @@ router.get("/posts", async (req, res) => {
   try {
     res.render("post/posts", {
       posts: await PostModel.find(),
+      css: ["images.css"],
     });
   } catch (err) {
     console.error(err);
@@ -33,6 +34,7 @@ router.get("/posts/create/:id", async (req, res) => {
   try {
     res.render("post/post-create", {
       post: await PostModel.findById(req.params.id),
+      css: ["images.css"],
     });
   } catch (err) {
     console.error(err);
@@ -40,14 +42,18 @@ router.get("/posts/create/:id", async (req, res) => {
 });
 router.put("/posts/create/:id", async (req, res) => {
   try {
-    /* cloudinary.url(`irongram/${req.body.imageUrl}`, {
-      effect: req.body.filter,
-    });*/
+    let post = await PostModel.findById(req.params.id);
 
-    const post = await PostModel.findById(req.params.id);
-    cloudinary.url(post.filename, {
-      effect: "incognito",
+    const newUrl = cloudinary.url(`${post.filename}.jpg`, {
+      transformation: [{ effect: `art:${req.body.filter}` }],
     });
+    console.log(newUrl);
+    post = await PostModel.findByIdAndUpdate(
+      req.params.id,
+      { urlMedia: newUrl },
+      { new: true }
+    );
+    console.log(post);
     res.status(201).json(post);
   } catch (err) {
     console.error(err);

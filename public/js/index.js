@@ -3,9 +3,8 @@ const image = document.querySelector("#image-uploaded");
 const containerImage = document.getElementById("container-image");
 
 //DOM MANIPULATION
-function updateImageOnPage(image) {
-  console.log(image);
-  //  containerImage.innerHTML =
+function updateImageUrl(imageObj) {
+  image.src = imageObj.urlMedia;
 }
 
 function listenOnUpdateFilters() {
@@ -17,15 +16,14 @@ const updateImage = (id, payload) => axios.put(`/posts/create/${id}`, payload);
 
 //Handlers
 function handleFilter(e) {
-  const filter = e.target.dataset.filter;
   const payload = {
-    filter,
+    filter: e.target.dataset.filter,
     imageUrl: image.src,
     fileName: image.dataset.fileName,
   };
   updateImage(image.dataset.id, payload)
-    .then((success) => updateImageOnPage(success.data))
-    .catch((err) => console.log(err));
+    .then((success) => updateImageUrl(success.data))
+    .catch((err) => console.error(err));
 }
 //EVENTS LISTENERS
 

@@ -31,6 +31,7 @@ const postModel = new Schema({
     ],
   },
   tags: { type: Schema.Types.ObjectId, ref: "tags" },
+  created_at: { type: Date, default: Date.now() },
 });
 
 const Post = model("post", postModel);

@@ -5,19 +5,22 @@ const PostModel = require("../../models/post");
 
 const posts = [
   {
-    urlMedia: "test.jpg",
+    urlMedia:
+      "https://res.cloudinary.com/dtjpoyvv5/image/upload/e_art:daguerre/v1/irongram/tzeifpdkvehgwjywnrff.jpg",
     likes: null,
     filters: "zorro",
     tags: null,
   },
   {
-    urlMedia: "test2.jpg",
+    urlMedia:
+      "https://res.cloudinary.com/dtjpoyvv5/image/upload/e_art:zorro/v1/irongram/yrdfv5ulxnzczerycdvj.jpg",
     likes: null,
     filters: "eucalyptus",
     tags: null,
   },
   {
-    urlMedia: "test3.jpg",
+    urlMedia:
+      "https://res.cloudinary.com/dtjpoyvv5/image/upload/e_art:sizzle/v1/irongram/m2ytzt2qyo6s0d5dryzh.jpg",
     likes: null,
     filters: "linen",
     tags: null,
