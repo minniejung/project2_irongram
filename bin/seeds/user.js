@@ -9,6 +9,7 @@ const users = [
     lastname: "JUNG",
     email: "mignon@scoby.com",
     password: "scobyscoby",
+    // bio
   },
   {
     name: "Henri",

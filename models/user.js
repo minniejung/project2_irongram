@@ -1,6 +1,10 @@
 const { model, Schema } = require("mongoose");
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     default:
@@ -16,6 +20,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  bio: String,
   role: {
     type: String,
     enum: ["unser", "admin"],
