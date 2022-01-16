@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const PostModel = require("../models/post");
+const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
 router.get("/posts", async (req, res) => {
@@ -16,12 +17,18 @@ router.get("/posts", async (req, res) => {
 router.post("/posts/upload", uploader.single("image"), async (req, res) => {
   try {
     if (req.file) {
-      console.log(req.file);
       const post = await PostModel.create({
         urlMedia: req.file.path,
         filename: req.file.filename,
       });
-      //console.log(post);
+      const user = await UserModel.findByIdAndUpdate(
+        req.session.currentUser._id,
+        {
+          posts: post._id,
+        },
+        { new: true }
+      );
+      console.log(user);
       res.redirect(`/posts/create/${post._id}`);
     } else {
       res.redirect("/posts");
@@ -44,12 +51,16 @@ router.get("/posts/create/:id", async (req, res) => {
 router.put("/posts/create/:id", async (req, res) => {
   try {
     let post = await PostModel.findById(req.params.id);
-
-    const newUrl = cloudinary.url(`${post.filename}.jpg`, {
+    console.log(req.body);
+    const newUrl = await cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
         { effect: `art:${req.body.filter}` },
         { quality: 100 },
-        { effect: "vignette:100" },
+        {
+          effect: req.body.vignette
+            ? `vignette:${req.body.vignette}`
+            : "vignette:0",
+        },
       ],
     });
     console.log(newUrl);
