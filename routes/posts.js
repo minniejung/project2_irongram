@@ -5,7 +5,7 @@ const cloudinary = require("cloudinary");
 router.get("/posts", async (req, res) => {
   try {
     res.render("post/posts", {
-      posts: await PostModel.find(),
+      posts: await PostModel.find().sort({ created_at: "descending" }),
       css: ["images.css"],
     });
   } catch (err) {
@@ -40,12 +40,17 @@ router.get("/posts/create/:id", async (req, res) => {
     console.error(err);
   }
 });
+
 router.put("/posts/create/:id", async (req, res) => {
   try {
     let post = await PostModel.findById(req.params.id);
 
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
-      transformation: [{ effect: `art:${req.body.filter}` }],
+      transformation: [
+        { effect: `art:${req.body.filter}` },
+        { quality: 100 },
+        { effect: "vignette:100" },
+      ],
     });
     console.log(newUrl);
     post = await PostModel.findByIdAndUpdate(
@@ -59,7 +64,16 @@ router.put("/posts/create/:id", async (req, res) => {
     console.error(err);
   }
 });
-
+router.get("/posts/:id", async (req, res) => {
+  try {
+    res.render("post/single", {
+      post: await PostModel.findById(req.params.id),
+      css: ["images.css"],
+    });
+  } catch (err) {
+    console.error(err);
+  }
+});
 /* TODO
 uploader.destroy("image"), 
 delete image from the cloudinary

@@ -1,7 +1,7 @@
 const filters = document.querySelectorAll(".filter");
 const image = document.querySelector("#image-uploaded");
 const containerImage = document.getElementById("container-image");
-
+const vignette = document.getElementById("vignette");
 //DOM MANIPULATION
 function updateImageUrl(imageObj) {
   image.src = imageObj.urlMedia;
@@ -10,7 +10,9 @@ function updateImageUrl(imageObj) {
 function listenOnUpdateFilters() {
   filters.forEach((btn) => (btn.onclick = handleFilter));
 }
-
+function listenOnUpdateVignette() {
+  vignette.onclick = handleFilter;
+}
 //AJAX
 const updateImage = (id, payload) => axios.put(`/posts/create/${id}`, payload);
 
@@ -28,3 +30,4 @@ function handleFilter(e) {
 //EVENTS LISTENERS
 
 listenOnUpdateFilters();
+listenOnUpdateVignette();

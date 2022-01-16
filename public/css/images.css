@@ -27,3 +27,6 @@
 .filter:hover {
   cursor: pointer;
 }
+.image-single {
+  width: 500px;
+}
