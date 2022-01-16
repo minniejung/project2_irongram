@@ -10,7 +10,6 @@ const userSchema = new Schema({
     default:
       "https://minecraft.fr/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png",
   },
-  name: String,
   email: {
     type: String,
     unique: true,
