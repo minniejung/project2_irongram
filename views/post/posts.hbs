@@ -1,0 +1,11 @@
+<form action="/posts/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="image" />
+  <button>Add</button>
+</form>
+<div class="container-images">
+  {{#each posts}}
+    <a href="/posts/{{this._id}}">
+      <img src="{{this.urlMedia}}" class="images-profiles" />
+    </a>
+  {{/each}}
+</div>
