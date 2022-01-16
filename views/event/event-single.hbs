@@ -1,0 +1,21 @@
+<h1>Event single</h1>
+
+  <img src="{{eventDetail.image}}" class="eventImg">
+  <div class="eventDetail">
+    <h2>{{eventDetail.title}}</h2>
+    <h3>Host : {{eventDetail.host_id.name}}</h3>
+    <p>Date: {{eventDetail.date}}</p>
+    <p>Time: {{eventDetail.time}}</p>
+    <p>Address: {{eventDetail.address}}</p>
+    <p>Price: {{eventDetail.price}}</p>
+    <p>Detail: {{eventDetail.description}}</p>
+
+    {{#if isLoggedIn}}
+      <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
+      <a href="/events/delete/{{eventDetail._id}}">Delete this event</a>
+
+      <button>JOIN!</button>
+      <button>MAYBE</button>
+
+
+    {{/if}}
