@@ -5,6 +5,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  lastname: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     default:

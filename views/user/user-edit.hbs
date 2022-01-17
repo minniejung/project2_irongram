@@ -1,46 +1,71 @@
-<form
-  action="/settings/edit/{{user._id}}"
-  method="post"
-  enctype="multipart/form-data"
->
-  <h2>Edit your profile</h2>
+<div>
+  <h1>Edit your profile</h1>
 
-  <label for="name">Name : </label>
-  <input type="text" id="name" name="name" required value="{{user.name}}" />
+  <form
+    action="/settings/edit/{{user._id}}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <div>
+      <label for="name">Name : </label>
+      <input type="text" id="name" name="name" required value="{{user.name}}" />
+    </div>
 
-  <label for="lastname">Lastname : </label>
-  <input
-    type="text"
-    id="lastname"
-    name="lastname"
-    required
-    value="{{user.lastname}}"
-  />
+    <div>
+      <label for="lastname">Lastname : </label>
+      <input
+        type="text"
+        id="lastname"
+        name="lastname"
+        required
+        value="{{user.lastname}}"
+      />
+    </div>
 
-  <label for="email">Email : </label>
-  <input type="text" id="email" name="email" required value="{{user.email}}" />
+    <div>
+      <label for="email">Email : </label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        required
+        value="{{user.email}}"
+      />
+    </div>
 
-  <label for="password">Password : </label>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    required
-    value="{{user.password}}"
-  />
+    <label for="password">Password : </label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      value="{{user.password}}"
+    />
 
-  <label for="bio">Bio : </label>
-  <input type="text" id="bio" name="bio" />
+    <div>
+      <label for="bio">Bio : </label>
+      <input type="text" id="bio" name="bio" value="{{user.bio}}" />
+    </div>
 
-  <label for="image">Image : </label>
-  <input type="file" id="image" name="image" />
-  <input
-    type="file"
-    id="image"
-    name="existingImage"
-    hidden
-    value="{{user.image}}"
-  />
+    <div>
+      <label for="image">Image : </label>
+      <input type="file" id="image" name="image" />
+      <input
+        type="file"
+        id="image"
+        name="existingImage"
+        hidden
+        value="{{user.image}}"
+      />
+    </div>
 
-  <button>Send</button>
-</form>
+    <button>Update</button>
+  </form>
+</div>
+
+<div>
+  <h2>Delete Profile</h2>
+  <button>
+    <a href="/settings/delete/{{user._id}}">Delete Profile</a>
+  </button>
+</div>
