@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     allowed_formats: ["jpg", "png"],
-    folder: "irongram",
+    folder: "imitationgram",
   },
 });
 module.exports = multer({ storage });

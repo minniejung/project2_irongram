@@ -1,6 +1,7 @@
 <form action="/posts/upload" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" />
-  <button>Add</button>
+  <label for="upload-btn">Choose File</label>
+  <input type="file" name="image" id="upload-btn" />
+  <button id="btn-add-image">Add</button>
 </form>
 <div class="container-images">
   {{#each posts}}
