@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userModel = require("../models/user");
 const uploader = require("../config/cloudinary");
+const postModel = require("../models/post");
 
 /* GET users listing. */
 router.get("/settings/:id", async (req, res, next) => {
@@ -67,6 +68,13 @@ router.get("/settings/delete/:id", async (req, res, next) => {
   }
 });
 
-// update
+router.get("/profile/:id", async (req, res, next) => {
+  try {
+    const user = await userModel.findById(req.params.id).populate("posts");
+    res.render("user/profile", { user });
+  } catch (e) {
+    next(e);
+  }
+});
 
 module.exports = router;

@@ -40,13 +40,18 @@ const userSchema = new Schema({
       ref: "post",
     },
   ],
-  //   ? Populate ? Modeles à prévoir ?
-  //   followers: [
-  //     {
-  //       type: null,
-  //     },
-  //   ],
-  //   following: null,
+  followers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
 });
 
 const User = model("user", userSchema);

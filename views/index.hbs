@@ -1,1 +1,13 @@
 <h1>IronGram</h1>
+
+{{! Afficher tous les users => liens obj }}
+<section>
+  {{#unless users}}
+    <p>Sorry, no users yet !</p>
+  {{/unless}}
+  {{#each users}}
+    <div>
+      <a href="/profile/{{this._id}}">{{this.name}}</a>
+    </div>
+  {{/each}}
+</section>

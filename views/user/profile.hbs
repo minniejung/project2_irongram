@@ -1,0 +1,22 @@
+{{#compare currentUser._id user._id operator="=="}}
+  <a href="/settings/{{user._id}}">Settings</a>
+{{/compare}}
+
+{{#compare currentUser._id user._id operator="!="}}
+  <a href="/follow/{{user._id}}">follow</a>
+{{/compare}}
+
+{{#each user}}
+  <img src="{{this.image}}" alt="" />
+  <h1>{{this.name}}</h1>
+{{/each}}
+
+{{#if user.posts}}
+  {{#each user.posts}}
+    <img src="{{this.urlMedia}}" alt="{{this.name}}media" />
+  {{/each}}
+{{/if}}
+
+{{#unless user.posts}}
+  <h2>No pictures yet !</h2>
+{{/unless}}
