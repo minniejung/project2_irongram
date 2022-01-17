@@ -1,3 +1,5 @@
+import {verifyFile} from "./utils";
+
 const filters = document.querySelectorAll(".filter");
 const image = document.querySelector("#image-uploaded");
 const containerImage = document.getElementById("container-image");
@@ -9,6 +11,7 @@ let payload = {
   filter: "",
   imageUrl: image.src,
 };
+console.log(verifyFile)
 //DOM MANIPULATION
 function updateImageUrl(imageObj) {
   image.src = imageObj.urlMedia;
@@ -47,3 +50,5 @@ btnVignette.addEventListener("click", () => {
 });
 listenOnUpdateFilters();
 listenOnUpdateVignette();
+
+

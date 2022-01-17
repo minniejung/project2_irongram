@@ -55,10 +55,11 @@ router.get("/posts/create/:id", async (req, res) => {
 router.put("/posts/create/:id", async (req, res) => {
   try {
     let post = await PostModel.findById(req.params.id);
-    const newUrl = await cloudinary.url(`${post.filename}.jpg`, {
+    const newUrl =  cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
+  
         { effect: `art:${req.body.filter}` },
-        { quality: 100 },
+        { quality: "auto" },
         req.body.vignette
           ? {
               effect: `vignette:${req.body.vignette}`,
