@@ -1,28 +1,35 @@
-<form action="/events/create" method="post" class="event-create" enctype="multipart/form-data">
-  <h2 class="form-title">Create a new event!</h2>
+<h2 class="form-title">Create a new event!</h2>
 
-  <label for="title">Title : </label>
-  <input type="text" id="title" name="title" placeholder="Event name here" />
+<div class="inputPage">
+  <div class="inputForm">
+    <form action="/events/create" method="post"     class="event-create" enctype="multipart/form-data">
 
-  <input type="hidden" id="host" name="host_id" value="{{user_id}}" />
+      <label for="title">Title : </label>
+      <input type="text" id="title" name="title" placeholder="Event name here" />
 
-  <label for="date">Date : </label>
-  <input type="date" id="date" name="date" required />
+      <input type="hidden" id="host" name="host_id" value="{{user_id}}" />
 
-  <label for="time">Time : </label>
-  <input type="time" id="time" name="time" required />
+      <label for="dateNow">Date : </label>
+      <input type="date" id="dateNow" name="dateNow" required />
 
-  <label for="address">Address : </label>
-  <input type="text" id="address" name="address" placeholder="Deskopolitan Voltaire" />
- 
-  <label for="price">Price : </label>
-  <input type="text" id="price" name="price" placeholder="Free"  />
+      <label for="timeNow">Time : </label>
+      <input type="time" id="timeNow" name="timeNow" required />
 
-  <label for="description">Description : </label>
-  <input type="text" id="description" name="description" />
+      <label for="address">Address : </label>
+      <input type="text" id="address" name="address" placeholder="Deskopolitan Voltaire" size="50" />
 
-  <label for="image">Image : </label>
-  <input type="file" id="image" name="image" />
+      <label for="price">Price : </label>
+      <input type="text" id="price" name="price" placeholder="Free"  />
 
-  <button>Create!</button>
-</form>
+      <label for="description">Description : </label>
+      <input type="text" id="description" class="description" name="description" />
+
+      <label for="image">Image : </label>
+      <input type="file" id="image" name="image" />
+
+      <button>Create!</button>
+    </form>
+  </div>
+
+  <div class="googleMap"><img src="/img/map.jpg"></div>
+</div>

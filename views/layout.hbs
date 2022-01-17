@@ -11,12 +11,17 @@
   <link rel='stylesheet' href='/css/{{this}}' />
   {{/each}}
   <script type="module" src="/js/index.js" ></script>
-  <script type="module" src="/js/event.js" ></script>
+  {{#each js}}
+  <script type="module" src="/js/{{this}}" ></script>
+  {{/each}}
   <title>IRONGRAM</title>
 </head>
 
 <body>
   {{> nav}}
   {{{body}}}
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD51fyb8YoARmOh-sDmuC6f2hbfN1zMhs8&libraries=places&callback=initAutocomplete" async defer></script>
+
 </body>
 </html>

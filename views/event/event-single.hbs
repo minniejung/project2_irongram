@@ -4,18 +4,25 @@
   <div class="eventDetail">
     <h2>{{eventDetail.title}}</h2>
     <h3>Host : {{eventDetail.host_id.name}}</h3>
-    <p>Date: {{eventDetail.date}}</p>
-    <p>Time: {{eventDetail.time}}</p>
-    <p>Address: {{eventDetail.address}}</p>
-    <p>Price: {{eventDetail.price}}</p>
-    <p>Detail: {{eventDetail.description}}</p>
+    <div>Date: {{eventDetail.date}}</div>
+    <div>Time: {{eventDetail.time}}</div>
+    <div>Address: {{eventDetail.address}}</div>
+    <div>Price: {{eventDetail.price}}</div>
+    <div>Detail: {{eventDetail.description}}</div>
 
     {{#if isLoggedIn}}
       <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
-      <a href="/events/delete/{{eventDetail._id}}">Delete this event</a>
+      <button id ="deleteEvent">Delete this event</button>
+
+      <div id="confirmForDelete">
+        <p>Are you sure you want to delete?</p>
+        <a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes delete</a>
+        <button id="deleteNo">No keep it</button>
+      </div>
 
       <button>JOIN!</button>
       <button>MAYBE</button>
-
-
     {{/if}}
+
+
+

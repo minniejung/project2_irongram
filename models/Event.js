@@ -8,7 +8,6 @@ const eventSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now(),
   },
   time: {
     type: String,
@@ -17,12 +16,14 @@ const eventSchema = new Schema({
     type: String,
   },
   description: String,
-  price: { type: String, default: "Free" },
+  price: {
+    type: String,
+    default: "Free",
+  },
   image: {
     type: String,
     default:
       "https://res.cloudinary.com/minniejung/image/upload/v1642248054/irongram/events_medium_vijplm.jpg",
-    require: true,
   },
 });
 

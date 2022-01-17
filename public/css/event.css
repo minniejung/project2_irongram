@@ -1,0 +1,61 @@
+/* Event CSS : Starts from here (Minyoung edited) */
+
+* {
+  text-decoration: none;
+  /* border: 1px solid grey; */
+}
+
+.eventDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  gap: 15px;
+  height: 300px;
+}
+
+.eventImg {
+  width: 300px;
+  object-fit: cover;
+}
+
+input {
+  padding: 10px;
+}
+
+.event-create,
+.event-update {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 10px;
+}
+
+.description {
+  height: 100px;
+}
+
+.inputPage {
+  display: flex;
+  flex-direction: row;
+}
+
+.googleMap img {
+  width: 600px;
+  margin: 25px;
+}
+
+#confirmForDelete {
+  border: 1px solid grey;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  display: none;
+}
+
+button {
+  height: 25px;
+}
+/* Event CSS : Finishs here (Minyoung edited) */
