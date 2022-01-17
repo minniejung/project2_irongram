@@ -9,9 +9,10 @@ router.get("/posts", async (req, res) => {
     const user = await UserModel.findById(req.session.currentUser)
       .populate("posts")
       .sort({ created_at: "descending" });
-    console.log(user);
+
     res.render("post/posts", {
       posts: user.posts,
+      user,
       css: ["images.css"],
     });
   } catch (err) {
@@ -50,23 +51,42 @@ router.get("/posts/create/:id", async (req, res) => {
   } catch (err) {
     console.error(err);
   }
-});
+})
 
 router.put("/posts/create/:id", async (req, res) => {
   try {
+    const {brigthness, contrast, saturation, vignette, filter} = req.body
+    console.log(req.body.brigthness)
     let post = await PostModel.findById(req.params.id);
     const newUrl =  cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
-  
-        { effect: `art:${req.body.filter}` },
+        filter ? 
+        { effect: `art:${filter}` } : "",
         { quality: "auto" },
-        req.body.vignette
+        vignette
           ? {
-              effect: `vignette:${req.body.vignette}`,
+              effect: `vignette:${vignette}`,
             }
           : "",
+          brigthness
+          ? {
+              effect: `brightness:${brigthness}`,
+            }
+          : "",
+          saturation
+          ? {
+              effect: `saturation:${saturation}`,
+            }
+          : "",
+          contrast
+          ? {
+              effect: `contrast:${contrast}`,
+            }
+          : "",
+          
       ],
     });
+  
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },

@@ -8,7 +8,6 @@
     data-id="{{post._id}}"
     data-fileName="{{post.fileName}}"
     alt="image-create"
-    width="550px"
   />
   <div id="filters">
     <div data-filter="al_dente" class="filter">al_dente</div>
@@ -38,6 +37,36 @@
     max="100"
     step="1"
     id="vignette"
+  />  
+   <label for="brightness">Brightness</label>
+  <button id="btn-brigthness-reset">Réinitialiser</button>
+  <input
+    type="range"
+    name="brigthness"
+    min="-100"
+    max="100"
+    step="1"
+    id="brigthness"
+  />
+   <label for="contrast">Contrast</label>
+  <button id="btn-contrast-reset">Réinitialiser</button>
+  <input
+    type="range"
+    name="contrast"
+    min="-100"
+    max="100"
+    step="1"
+    id="contrast"
+  />   
+  <label for="saturation">Saturation</label>
+  <button id="btn-staturation-reset">Réinitialiser</button>
+  <input
+    type="range"
+    name="saturation"
+    min="-100"
+    max="100"
+    step="1"
+    id="saturation"
   />
   <a href="/posts">Valider</a>
   <a href="/posts/delete/{{post._id}}">Annuler</a>
