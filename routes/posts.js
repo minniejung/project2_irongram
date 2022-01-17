@@ -1,11 +1,17 @@
 const router = require("express").Router();
 const PostModel = require("../models/post");
+const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
 router.get("/posts", async (req, res) => {
   try {
+    // const test = await PostModel.find().sort({ created_at: "descending" });
+    const user = await UserModel.findById(req.session.currentUser)
+      .populate("posts")
+      .sort({ created_at: "descending" });
+    console.log(user);
     res.render("post/posts", {
-      posts: await PostModel.find().sort({ created_at: "descending" }),
+      posts: user.posts,
       css: ["images.css"],
     });
   } catch (err) {
@@ -16,12 +22,17 @@ router.get("/posts", async (req, res) => {
 router.post("/posts/upload", uploader.single("image"), async (req, res) => {
   try {
     if (req.file) {
-      console.log(req.file);
       const post = await PostModel.create({
         urlMedia: req.file.path,
         filename: req.file.filename,
       });
-      //console.log(post);
+      const user = await UserModel.findByIdAndUpdate(
+        req.session.currentUser._id,
+        {
+          $push: { posts: post._id },
+        },
+        { new: true }
+      );
       res.redirect(`/posts/create/${post._id}`);
     } else {
       res.redirect("/posts");
@@ -39,26 +50,28 @@ router.get("/posts/create/:id", async (req, res) => {
   } catch (err) {
     console.error(err);
   }
-});
+})
 
 router.put("/posts/create/:id", async (req, res) => {
   try {
     let post = await PostModel.findById(req.params.id);
-
-    const newUrl = cloudinary.url(`${post.filename}.jpg`, {
+    const newUrl =  cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
+        {aspect_ratio: "4:3", crop: "fill"},
         { effect: `art:${req.body.filter}` },
-        { quality: 100 },
-        { effect: "vignette:100" },
+        { quality: "auto" },
+        req.body.vignette
+          ? {
+              effect: `vignette:${req.body.vignette}`,
+            }
+          : "",
       ],
     });
-    console.log(newUrl);
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
       { new: true }
     );
-    console.log(post);
     res.status(201).json(post);
   } catch (err) {
     console.error(err);
