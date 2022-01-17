@@ -8,21 +8,21 @@ router.get("/settings/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id);
     console.log(user);
-    res.render("user/settings", { user });
+    res.render("user/user-edit", { user });
   } catch (e) {
     next(e);
   }
 });
 
 // GET Profile Edit
-router.get("/settings/edit/:id", async (req, res, next) => {
-  try {
-    const profileEdit = await userModel.findById(req.params.id);
-    res.render("settings/edit", { profileEdit });
-  } catch (e) {
-    next(e);
-  }
-});
+// router.get("/settings/edit/:id", async (req, res, next) => {
+//   try {
+//     const profileEdit = await userModel.findById(req.params.id);
+//     res.render("user/user-edit", { user: profileEdit });
+//   } catch (e) {
+//     next(e);
+//   }
+// });
 
 // POST Profile Edit
 router.post(
@@ -31,7 +31,7 @@ router.post(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { name, email, password, bio } = req.body;
+      const { name, email, password, bio, existingImage } = req.body;
       let newImage;
       if (req.file) {
         newImage = req.file.path;
@@ -49,6 +49,7 @@ router.post(
         },
         { new: true }
       );
+      res.redirect(`/posts`);
     } catch (e) {
       next(e);
     }
