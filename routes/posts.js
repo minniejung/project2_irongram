@@ -5,8 +5,13 @@ const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
 router.get("/posts", async (req, res) => {
   try {
+    // const test = await PostModel.find().sort({ created_at: "descending" });
+    const user = await UserModel.findById(req.session.currentUser)
+      .populate("posts")
+      .sort({ created_at: "descending" });
+    console.log(user);
     res.render("post/posts", {
-      posts: await PostModel.find().sort({ created_at: "descending" }),
+      posts: user.posts,
       css: ["images.css"],
     });
   } catch (err) {
@@ -24,11 +29,10 @@ router.post("/posts/upload", uploader.single("image"), async (req, res) => {
       const user = await UserModel.findByIdAndUpdate(
         req.session.currentUser._id,
         {
-          posts: post._id,
+          $push: { posts: post._id },
         },
         { new: true }
       );
-      console.log(user);
       res.redirect(`/posts/create/${post._id}`);
     } else {
       res.redirect("/posts");
@@ -51,25 +55,22 @@ router.get("/posts/create/:id", async (req, res) => {
 router.put("/posts/create/:id", async (req, res) => {
   try {
     let post = await PostModel.findById(req.params.id);
-    console.log(req.body);
     const newUrl = await cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
         { effect: `art:${req.body.filter}` },
         { quality: 100 },
-        {
-          effect: req.body.vignette
-            ? `vignette:${req.body.vignette}`
-            : "vignette:0",
-        },
+        req.body.vignette
+          ? {
+              effect: `vignette:${req.body.vignette}`,
+            }
+          : "",
       ],
     });
-    console.log(newUrl);
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
       { new: true }
     );
-    console.log(post);
     res.status(201).json(post);
   } catch (err) {
     console.error(err);
