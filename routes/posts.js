@@ -9,9 +9,16 @@ router.get("/posts", async (req, res) => {
     const user = await UserModel.findById(req.session.currentUser)
       .populate("posts")
       .sort({ created_at: "descending" });
+<<<<<<< HEAD
     console.log(user);
     res.render("post/posts", {
       posts: user.posts,
+=======
+
+    res.render("post/posts", {
+      posts: user.posts,
+      user,
+>>>>>>> 82e3e10fb795eca6855d7c682dc3ed065f07f1c8
       css: ["images.css"],
     });
   } catch (err) {
@@ -50,42 +57,51 @@ router.get("/posts/create/:id", async (req, res) => {
   } catch (err) {
     console.error(err);
   }
-})
+});
 
 router.put("/posts/create/:id", async (req, res) => {
   try {
-    const {brigthness, contrast, saturation, vignette, filter} = req.body
-    console.log(req.body.brigthness)
+    const { brigthness, contrast, saturation, vignette, filter } = req.body;
     let post = await PostModel.findById(req.params.id);
-    const newUrl =  cloudinary.url(`${post.filename}.jpg`, {
+    const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
+<<<<<<< HEAD
         filter ? 
         { effect: `art:${filter}` } : "",
+=======
+        filter ? { effect: `art:${filter}` } : "",
+>>>>>>> 82e3e10fb795eca6855d7c682dc3ed065f07f1c8
         { quality: "auto" },
         vignette
           ? {
               effect: `vignette:${vignette}`,
             }
           : "",
-          brigthness
+        brigthness
           ? {
               effect: `brightness:${brigthness}`,
             }
           : "",
-          saturation
+        saturation
           ? {
               effect: `saturation:${saturation}`,
             }
           : "",
-          contrast
+        contrast
           ? {
               effect: `contrast:${contrast}`,
             }
           : "",
+<<<<<<< HEAD
           
       ],
     });
   
+=======
+      ],
+    });
+
+>>>>>>> 82e3e10fb795eca6855d7c682dc3ed065f07f1c8
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
@@ -101,6 +117,7 @@ router.get("/posts/:id", async (req, res) => {
     res.render("post/single", {
       post: await PostModel.findById(req.params.id),
       css: ["images.css"],
+      js: ["edit-image.js"],
     });
   } catch (err) {
     console.error(err);
@@ -110,8 +127,9 @@ router.get("/posts/:id", async (req, res) => {
 uploader.destroy("image"), 
 delete image from the cloudinary
 */
-router.get("/posts/delete/:id", async (req, res) => {
+router.post("/posts/delete/:id", async (req, res) => {
   try {
+    console.log(req.body);
     await PostModel.findByIdAndDelete(req.params.id);
     res.redirect("/posts");
   } catch (err) {

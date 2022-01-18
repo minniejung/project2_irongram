@@ -16,7 +16,10 @@ const eventSchema = new Schema({
     type: String,
   },
   description: String,
-  price: { type: String, default: "Free" },
+  price: {
+    type: String,
+    default: "Free",
+  },
   image: {
     type: String,
     default:

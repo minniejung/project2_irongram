@@ -77,4 +77,18 @@ router.get("/profile/:id", async (req, res, next) => {
   }
 });
 
+router.post("/profile/add/:id", async (req, res, next) => {
+  try {
+    await userModel.findByIdAndUpdate(
+      req.body.currentUserId,
+      {
+        $push: { followers: req.body.followerId },
+      },
+      { new: true }
+    );
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;
