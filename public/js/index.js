@@ -11,14 +11,13 @@ const btnSaturation = document.getElementById("btn-brigthness-reset");
 const btnContrast = document.getElementById("btn-brigthness-reset");
 const inputUpload = document.getElementById("upload-btn");
 
-
 let payload = {
   vignette: 0,
   filter: "",
-  imageUrl: image.src,
-  brigthness:0,
-  contrast:0,
-  saturation:0
+  imageUrl: image ? image.src : null,
+  brigthness: 0,
+  contrast: 0,
+  saturation: 0,
 };
 
 //DOM MANIPULATION
@@ -46,15 +45,13 @@ function listenOnUpdateContrast() {
 //AJAX
 const updateImage = (id) => axios.put(`/posts/create/${id}`, payload);
 
-//Handlers
 function handleFilter(e) {
   (payload.filter = e.target.dataset.filter),
     (payload.imageUrl = image.src),
     (payload.fileName = image.dataset.fileName),
- 
-  updateImage(image.dataset.id, payload)
-    .then((success) => updateImageUrl(success.data))
-    .catch((err) => console.error(err));
+    updateImage(image.dataset.id, payload)
+      .then((success) => updateImageUrl(success.data))
+      .catch((err) => console.error(err));
 }
 function handleVignette(e) {
   payload.vignette = vignette.value;
@@ -83,34 +80,32 @@ function handleSaturation() {
 
 //EVENTS LISTENERS
 btnVignette.addEventListener("click", () => {
-  payload.vignette = null;   
+  payload.vignette = null;
   updateImage(image.dataset.id, payload)
-  .then((success) => updateImageUrl(success.data))
-  .catch((err) => console.error(err));
+    .then((success) => updateImageUrl(success.data))
+    .catch((err) => console.error(err));
 });
 btnBrightness.addEventListener("click", () => {
-  payload.brigthness = null;   
+  payload.brigthness = null;
   updateImage(image.dataset.id, payload)
-  .then((success) => updateImageUrl(success.data))
-  .catch((err) => console.error(err));
+    .then((success) => updateImageUrl(success.data))
+    .catch((err) => console.error(err));
 });
 btnSaturation.addEventListener("click", () => {
-  payload.saturation = null;   
+  payload.saturation = null;
   updateImage(image.dataset.id, payload)
-  .then((success) => updateImageUrl(success.data))
-  .catch((err) => console.error(err));
+    .then((success) => updateImageUrl(success.data))
+    .catch((err) => console.error(err));
 });
 btnContrast.addEventListener("click", () => {
-  payload.constrast = null;   
+  payload.constrast = null;
   updateImage(image.dataset.id, payload)
-  .then((success) => updateImageUrl(success.data))
-  .catch((err) => console.error(err));
+    .then((success) => updateImageUrl(success.data))
+    .catch((err) => console.error(err));
 });
+
 listenOnUpdateFilters();
 listenOnUpdateVignette();
 listenOnUpdateBrigthness();
 listenOnUpdateContrast();
 listenOnUpdateSaturation();
-
-
-

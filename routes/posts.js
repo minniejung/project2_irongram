@@ -56,7 +56,6 @@ router.get("/posts/create/:id", async (req, res) => {
 router.put("/posts/create/:id", async (req, res) => {
   try {
     const { brigthness, contrast, saturation, vignette, filter } = req.body;
-    console.log(req.body.brigthness);
     let post = await PostModel.findById(req.params.id);
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
@@ -100,6 +99,7 @@ router.get("/posts/:id", async (req, res) => {
     res.render("post/single", {
       post: await PostModel.findById(req.params.id),
       css: ["images.css"],
+      js: ["edit-image.js"],
     });
   } catch (err) {
     console.error(err);
@@ -109,8 +109,9 @@ router.get("/posts/:id", async (req, res) => {
 uploader.destroy("image"), 
 delete image from the cloudinary
 */
-router.get("/posts/delete/:id", async (req, res) => {
+router.post("/posts/delete/:id", async (req, res) => {
   try {
+    console.log(req.body);
     await PostModel.findByIdAndDelete(req.params.id);
     res.redirect("/posts");
   } catch (err) {
