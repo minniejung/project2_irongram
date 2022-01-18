@@ -6,8 +6,6 @@ const followingCount = document.getElementById("following-count");
 const followersCount = document.getElementById("followers-count");
 
 const displayFollowerNumbers = (followers) => {
-  console.log(followers);
-  console.log(typeof followers, followers);
   followersCount.innerHTML = followers;
 };
 

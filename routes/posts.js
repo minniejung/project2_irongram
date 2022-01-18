@@ -27,10 +27,10 @@ router.post("/posts/upload", uploader.single("image"), async (req, res) => {
         urlMedia: req.file.path,
         filename: req.file.filename,
       });
-      const user = await UserModel.findByIdAndUpdate(
+      await UserModel.findByIdAndUpdate(
         req.session.currentUser._id,
         {
-          $push: { posts: post._id },
+          $push: { posts: { $each: [post._id], $position: 0 } },
         },
         { new: true }
       );
@@ -52,7 +52,6 @@ router.get("/posts/create/:id", async (req, res) => {
     console.error(err);
   }
 });
-
 
 //UPDATE IMAGE ON CREATE AND UPDATE PAGE
 router.put("/posts/update/:id", async (req, res) => {
@@ -85,7 +84,7 @@ router.put("/posts/update/:id", async (req, res) => {
           : "",
       ],
     });
-  
+
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
@@ -107,15 +106,15 @@ router.get("/posts/:id", async (req, res) => {
     console.error(err);
   }
 });
-router.get('/posts/update/:id', async(req, res, next) => {
-  try{
+router.get("/posts/update/:id", async (req, res, next) => {
+  try {
     res.render("post/post-update", {
-      post: await PostModel.findById(req.params.id)
-    })
-  }catch(err){
-    next(err)
+      post: await PostModel.findById(req.params.id),
+    });
+  } catch (err) {
+    next(err);
   }
-})
+});
 /* TODO
 uploader.destroy("image"), 
 delete image from the cloudinary

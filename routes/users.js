@@ -8,7 +8,6 @@ const postModel = require("../models/post");
 router.get("/settings/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id);
-    // console.log(user);
     res.render("user/user-edit", { user });
   } catch (e) {
     next(e);
@@ -91,12 +90,10 @@ router.post("/profile/add/:id", async (req, res, next) => {
   try {
     const foundedFollower = await userModel.findOne({
       _id: req.body.followedId,
-      followers: {$in: req.body.currentUserId},
+      followers: { $in: req.body.currentUserId },
     });
-    console.log(foundedFollower, "test");
     if (foundedFollower) {
       //UNFOLLOW
-      console.log("found the follower");
       await userModel.findByIdAndUpdate(
         req.body.currentUserId,
         {
@@ -112,10 +109,9 @@ router.post("/profile/add/:id", async (req, res, next) => {
         },
         { new: true }
       );
+      res.status(201).send(" unfollower ok");
     } else {
       //FOLLOW
-      console.log("did not find the follower");
-      console.log(req.body.currentUserId)
       await userModel.findByIdAndUpdate(
         req.body.currentUserId,
         {
@@ -133,7 +129,7 @@ router.post("/profile/add/:id", async (req, res, next) => {
       res.status(201).send("new follower ok");
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
     next(e);
   }
 });
