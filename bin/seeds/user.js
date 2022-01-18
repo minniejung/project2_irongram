@@ -9,18 +9,21 @@ const users = [
     lastname: "JUNG",
     email: "mignon@scoby.com",
     password: "scobyscoby",
+    bio: "Hiiiiii",
   },
   {
     name: "Henri",
     lastname: "RIGOU",
     email: "beer@paresseux.com",
     password: "arigato",
+    bio: "Arigato",
   },
   {
     name: "Mélodie",
     lastname: "SH",
     email: "Memelmelemle@mel.mel",
     password: "HelloWorld",
+    bio: "Hello hello",
   },
 ];
 

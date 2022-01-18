@@ -52,19 +52,17 @@ app.use(require("./middlewares/exposeFlashMessage"));
 app.use(require("./middlewares/exposeLoginStatus"));
 
 // use routers
+app.use("/", require("./routes/auth"));
+app.use(require("./middlewares/protectPrivateRoute"));
 app.use("/", require("./routes/index"));
 app.use("/", require("./routes/users"));
-<<<<<<< HEAD
 app.use("/", require("./routes/events"));
-=======
 app.use("/", require("./routes/posts"));
-app.use("/", require("./routes/auth"));
->>>>>>> 7a8d678d837ceb961f984285510463cc39b37581
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function (err, req, res, next) {

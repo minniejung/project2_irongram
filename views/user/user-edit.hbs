@@ -1,0 +1,76 @@
+<div>
+  <h1>Edit your profile</h1>
+
+  <form
+    action="/settings/edit/{{user._id}}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <div>
+      <label for="name">Name : </label>
+      <input type="text" id="name" name="name" required value="{{user.name}}" />
+    </div>
+
+    <div>
+      <label for="lastname">Lastname : </label>
+      <input
+        type="text"
+        id="lastname"
+        name="lastname"
+        required
+        value="{{user.lastname}}"
+      />
+    </div>
+
+    <div>
+      <label for="email">Email : </label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        required
+        value="{{user.email}}"
+      />
+    </div>
+
+    <label for="password">Password : </label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      value="{{user.password}}"
+    />
+
+    <div>
+      <label for="bio">Bio : </label>
+      <input type="text" id="bio" name="bio" value="{{user.bio}}" />
+    </div>
+
+    <div>
+      <label for="image">Image : </label>
+      <input type="file" id="image" name="image" />
+      <input
+        type="file"
+        id="image"
+        name="existingImage"
+        hidden
+        value="{{user.image}}"
+      />
+    </div>
+
+    <button>Update</button>
+  </form>
+</div>
+
+<div>
+  <button>
+    <a href="/auth/logout">Log Out</a>
+  </button>
+</div>
+
+<div>
+  <button>
+    <a href="/settings/delete/{{user._id}}">Delete Profile</a>
+  </button>
+</div>
