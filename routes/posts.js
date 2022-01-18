@@ -61,12 +61,7 @@ router.put("/posts/update/:id", async (req, res) => {
     let post = await PostModel.findById(req.params.id);
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
-<<<<<<< HEAD
         filter ? { effect: `art:${filter}` } : "",
-=======
-        filter ? 
-        { effect: `art:${filter}` } : "",
->>>>>>> origin/user
         { quality: "auto" },
         vignette
           ? {
@@ -88,16 +83,9 @@ router.put("/posts/update/:id", async (req, res) => {
               effect: `contrast:${contrast}`,
             }
           : "",
-<<<<<<< HEAD
-      ],
-    });
-
-=======
-          
       ],
     });
   
->>>>>>> origin/user
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
