@@ -3,22 +3,16 @@ const PostModel = require("../models/post");
 const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
+
 router.get("/posts", async (req, res) => {
   try {
     // const test = await PostModel.find().sort({ created_at: "descending" });
     const user = await UserModel.findById(req.session.currentUser)
       .populate("posts")
       .sort({ created_at: "descending" });
-<<<<<<< HEAD
     console.log(user);
     res.render("post/posts", {
       posts: user.posts,
-=======
-
-    res.render("post/posts", {
-      posts: user.posts,
-      user,
->>>>>>> 82e3e10fb795eca6855d7c682dc3ed065f07f1c8
       css: ["images.css"],
     });
   } catch (err) {
@@ -59,18 +53,15 @@ router.get("/posts/create/:id", async (req, res) => {
   }
 });
 
-router.put("/posts/create/:id", async (req, res) => {
+
+//UPDATE IMAGE ON CREATE AND UPDATE PAGE
+router.put("/posts/update/:id", async (req, res) => {
   try {
     const { brigthness, contrast, saturation, vignette, filter } = req.body;
     let post = await PostModel.findById(req.params.id);
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
-<<<<<<< HEAD
-        filter ? 
-        { effect: `art:${filter}` } : "",
-=======
         filter ? { effect: `art:${filter}` } : "",
->>>>>>> 82e3e10fb795eca6855d7c682dc3ed065f07f1c8
         { quality: "auto" },
         vignette
           ? {
@@ -92,16 +83,9 @@ router.put("/posts/create/:id", async (req, res) => {
               effect: `contrast:${contrast}`,
             }
           : "",
-<<<<<<< HEAD
-          
-      ],
-    });
-  
-=======
       ],
     });
 
->>>>>>> 82e3e10fb795eca6855d7c682dc3ed065f07f1c8
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
@@ -123,6 +107,15 @@ router.get("/posts/:id", async (req, res) => {
     console.error(err);
   }
 });
+router.get('/posts/update/:id', async(req, res, next) => {
+  try{
+    res.render("post/post-update", {
+      post: await PostModel.findById(req.params.id)
+    })
+  }catch(err){
+    next(err)
+  }
+})
 /* TODO
 uploader.destroy("image"), 
 delete image from the cloudinary
