@@ -1,7 +1,9 @@
 {{#compare currentUser._id user._id operator="=="}}
   <a href="/settings/{{user._id}}">Settings</a>
 {{/compare}}
-{{user.followers.length}}
+
+<span id="followers-count">{{user.followers.length}}</span>
+<span id="following-count">{{user.following.length}}</span>
 {{#compare currentUser._id user._id operator="!="}}
   <button
     id="follow"

@@ -8,7 +8,7 @@ const postModel = require("../models/post");
 router.get("/settings/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id);
-    console.log(user);
+    // console.log(user);
     res.render("user/user-edit", { user });
   } catch (e) {
     next(e);
@@ -71,7 +71,18 @@ router.get("/settings/delete/:id", async (req, res, next) => {
 router.get("/profile/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id).populate("posts");
-    res.render("user/profile", { user });
+    res.render("user/profile", { user, js: ["profile.js"] });
+  } catch (e) {
+    next(e);
+  }
+});
+
+// Update Follower
+router.get("/follower/:id", async (req, res, next) => {
+  try {
+    const userId = await userModel.findById(req.params.id);
+    console.log(userId);
+    res.status(200).json(userId.followers.length);
   } catch (e) {
     next(e);
   }
@@ -79,16 +90,48 @@ router.get("/profile/:id", async (req, res, next) => {
 
 router.post("/profile/add/:id", async (req, res, next) => {
   try {
-    await userModel.findByIdAndUpdate(
-      req.body.currentUserId,
-      {
-        $push: { followers: req.body.followerId },
-      },
-      { new: true }
-    );
+    const foundedFollower = await userModel.findOne({
+      followers: { $in: req.body.followerId },
+    });
+    console.log(req.body, "test");
+    // if (!foundedFollower.followers) {
+    //   foundedFollower.followers = [];
+    // }
+    if (foundedFollower) {
+      await userModel.findByIdAndUpdate(
+        req.body.currentUserId,
+        {
+          $pull: { following: req.body.followerId },
+        },
+        { new: true }
+      );
+      await userModel.findByIdAndUpdate(
+        req.body.followerId,
+        {
+          $pull: { followers: req.body.currentUserId },
+        },
+        { new: true }
+      );
+      // console.log(deleteOneFollower);
+    } else {
+      await userModel.findByIdAndUpdate(
+        req.body.currentUserId,
+        {
+          $push: { following: req.body.followerId },
+        },
+        { new: true }
+      );
+      await userModel.findByIdAndUpdate(
+        req.body.followerId,
+        {
+          $push: { followers: req.body.currentUserId },
+        },
+        { new: true }
+      );
+    }
   } catch (e) {
     next(e);
   }
-})
+});
 
 module.exports = router;
