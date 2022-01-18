@@ -7,7 +7,8 @@ const eventSchema = new Schema({
     ref: "user",
   },
   date: {
-    type: Date,
+    type: String,
+    default: Date,
   },
   time: {
     type: String,

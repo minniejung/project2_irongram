@@ -1,10 +1,13 @@
-const currentDate = document.querySelector("#dateNow");
-const currentTime = document.querySelector("#timeNow");
+const currentDate = document.querySelector("#date");
+const currentTime = document.querySelector("#time");
+
 const description = document.querySelectorAll(".descriptionView");
+
 const deleteEvent = document.querySelector("#deleteEvent");
 const deleteYes = document.querySelector("#deleteYes");
 
-console.log(dateToUpdate);
+const joinBtn = document.querySelector("#joinBtn");
+const maybeBtn = document.querySelector("#maybeBtn");
 
 // Limit the description text length
 function limitTextStr(string, length) {
@@ -16,13 +19,6 @@ description.forEach((el) => {
   el.innerHTML = limitTextStr(el.innerHTML, 200);
 });
 
-// To show current day & time
-const today = moment().format("YYYY-MM-DD");
-currentDate.value = today;
-
-const timeNow = moment().format("HH:mm");
-currentTime.value = timeNow;
-
 // Event Form
 // API - Google map - auto complete
 function initialize() {
@@ -31,11 +27,24 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, "load", initialize);
 
-// Conrim msg before delete an event
+// Confrim msg before delete an event
 deleteEvent.addEventListener("click", () => {
   confirmForDelete.style.display = "block";
 });
 
 deleteNo.addEventListener("click", () => {
   confirmForDelete.style.display = "none";
+});
+
+// Button for JOIN or MAYBE
+joinBtn.addEventListener("click", () => {
+  console.log("a");
+  joinList.style.display = "block";
+  maybeList.style.display = "none";
+});
+
+maybeBtn.addEventListener("click", () => {
+  console.log("b");
+  maybeList.style.display = "block";
+  joinList.style.display = "none";
 });

@@ -9,20 +9,41 @@
     <div>Address: {{eventDetail.address}}</div>
     <div>Price: {{eventDetail.price}}</div>
     <div>Detail: {{eventDetail.description}}</div>
+  </div>
 
-    {{#if isLoggedIn}}
-      <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
-      <button id ="deleteEvent">Delete this event</button>
+  <hr>
+  <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
+  <hr>
+  <button id ="deleteEvent">Delete this event</button>
+  <hr>
+  <button id="joinBtn">JOIN!</button>
+  <button id="maybeBtn">MAYBE</button>
 
-      <div id="confirmForDelete">
-        <p>Are you sure you want to delete?</p>
-        <a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes delete</a>
-        <button id="deleteNo">No keep it</button>
-      </div>
+{{!-- POPUP : Confim msg before delete an event --}}
+  <div id="confirmForDelete">
+    <p>Are you sure you want to delete?</p>
+    <a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes delete</a>
+    <button id="deleteNo">No keep it</button>
+  </div>
 
-      <button>JOIN!</button>
-      <button>MAYBE</button>
-    {{/if}}
+{{!-- POPUP : Member list who join or maybe going --}}
+  <div id="joinList">
+    <p>People who's coming!</p>
+    <ul>
+      <li>{{eventDetail.host_id.name}}</li>
+      <li>Melmelmelmelmelodie</li>
+
+    </ul>
+  </div>
+
+  <div id="maybeList">
+    <p>People who's MAYBE coming!</p>
+    <ul>
+      <li>Scoby</li>
+    </ul>
+  </div>
+
+
 
 
 
