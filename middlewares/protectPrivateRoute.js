@@ -1,4 +1,4 @@
 module.exports = function protectPrivateRoute(req, res, next) {
-    if (req.session.currentUser) next();
-    else res.redirect("/signin");
+  if (req.session.currentUser) next();
+  else res.redirect("/auth/signin");
 };

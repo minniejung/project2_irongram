@@ -1,9 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const userModel = require("../models/user");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", async (req, res, next) => {
+  try {
+    const users = await userModel.find();
+    console.log(users);
+    res.render("index", { users, title: "IronGram" });
+  } catch (e) {
+    next(e);
+  }
 });
 
 module.exports = router;

@@ -9,10 +9,9 @@ router.get("/posts", async (req, res) => {
     const user = await UserModel.findById(req.session.currentUser)
       .populate("posts")
       .sort({ created_at: "descending" });
-
+    console.log(user);
     res.render("post/posts", {
       posts: user.posts,
-      user,
       css: ["images.css"],
     });
   } catch (err) {

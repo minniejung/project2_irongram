@@ -1,12 +1,19 @@
 const { model, Schema } = require("mongoose");
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  lastname: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     default:
       "https://minecraft.fr/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png",
   },
-  name: String,
   email: {
     type: String,
     unique: true,
@@ -16,6 +23,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  bio: String,
   role: {
     type: String,
     enum: ["unser", "admin"],
@@ -32,13 +40,18 @@ const userSchema = new Schema({
       ref: "post",
     },
   ],
-  //   ? Populate ? Modeles à prévoir ?
-  //   followers: [
-  //     {
-  //       type: null,
-  //     },
-  //   ],
-  //   following: null,
+  followers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
 });
 
 const User = model("user", userSchema);
