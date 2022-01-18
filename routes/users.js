@@ -81,7 +81,7 @@ router.get("/profile/:id", async (req, res, next) => {
 router.get("/follower/:id", async (req, res, next) => {
   try {
     const userId = await userModel.findById(req.params.id);
-    console.log(userId);
+    console.log(userId.followers);
     res.status(200).json(userId.followers.length);
   } catch (e) {
     next(e);
@@ -91,9 +91,10 @@ router.get("/follower/:id", async (req, res, next) => {
 router.post("/profile/add/:id", async (req, res, next) => {
   try {
     const foundedFollower = await userModel.findOne({
-      followers: { $in: req.body.followerId },
+      id: req.body.followerId,
+      followers: { $in: req.body.currentUserId },
     });
-    console.log(req.body, "test");
+    console.log(foundedFollower, "test");
     // if (!foundedFollower.followers) {
     //   foundedFollower.followers = [];
     // }
@@ -128,6 +129,7 @@ router.post("/profile/add/:id", async (req, res, next) => {
         },
         { new: true }
       );
+      res.status(201).send("new follower ok");
     }
   } catch (e) {
     next(e);
