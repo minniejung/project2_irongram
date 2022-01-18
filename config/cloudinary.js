@@ -6,7 +6,7 @@ cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET,
-  upload_preset:"irongram"
+  upload_preset: "irongram",
 });
 
 const storage = new CloudinaryStorage({

@@ -1,7 +1,4 @@
 <nav>
-  <a href="/posts">Posts</a>
-  <a href="/events">Events</a>
-
   {{#unless isLoggedIn}}
     <a href="/auth/signup">Sign Up</a>
     <a href="/auth/signin">Sign In</a>
@@ -12,6 +9,7 @@
     <a href="/">Home</a>
     <a href="/events">Events</a>
     <a href="/posts">Posts</a>
+    <a href="/profile/{{currentUser._id}}">Profile</a>
     {{!-- <a href="/settings/{{currentUser._id}}">Settings</a> --}}
   {{/if}}
 
