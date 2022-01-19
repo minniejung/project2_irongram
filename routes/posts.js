@@ -3,16 +3,15 @@ const PostModel = require("../models/post");
 const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
+const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
 
 router.get("/posts", async (req, res) => {
   try {
     // const test = await PostModel.find().sort({ created_at: "descending" });
-    const user = await UserModel.findById(req.session.currentUser)
-      .populate("posts")
-      .sort({ created_at: "descending" });
-    console.log(user);
+    const posts = await PostModel.find();
+    console.log(req.session.currentUser);
     res.render("post/posts", {
-      posts: user.posts,
+      posts,
       css: ["images.css"],
     });
   } catch (err) {
@@ -27,6 +26,7 @@ router.post("/posts/upload", uploader.single("image"), async (req, res) => {
         urlMedia: req.file.path,
         filename: req.file.filename,
         user_id: req.session.currentUser._id,
+        user_name: req.session.currentUser.name,
       });
       await UserModel.findByIdAndUpdate(
         req.session.currentUser._id,
@@ -107,7 +107,7 @@ router.get("/posts/:id", async (req, res) => {
     console.error(err);
   }
 });
-router.get("/posts/update/:id", async (req, res, next) => {
+router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
   try {
     res.render("post/post-update", {
       post: await PostModel.findById(req.params.id),

@@ -5,6 +5,9 @@
 </form>
 <div class="container-images">
   {{#each posts}}
+    <a href="/profile/{{this.user_id}}">
+      {{this.user_name}}
+    </a>
     <a href="/posts/{{this._id}}">
       <img src="{{this.urlMedia}}" class="images-profiles" />
     </a>

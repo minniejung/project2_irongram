@@ -1,10 +1,12 @@
 <h1>SINGLE</h1>
 <img src="{{post.urlMedia}}" class="image-single" alt="post" />
 
-<a href="/posts/update/{{post._id}}">EDIT TODO</a>
-<button
-  id="btn-delete-image"
-  data-id="{{post._id}}"
-  data-filename="{{post.filename}}"
->Delete</button>
+{{#compare post.user_id currentUser._id operator="=="}}
+  <a href="/posts/update/{{post._id}}">EDIT TODO</a>
+  <button
+    id="btn-delete-image"
+    data-id="{{post._id}}"
+    data-filename="{{post.filename}}"
+  >Delete</button>
+{{/compare}}
 {{! TODO SHOW  DESCRIPTION/ TAGS/ COMMENTS/ NAME USER/LIKES}}

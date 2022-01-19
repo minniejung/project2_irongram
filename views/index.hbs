@@ -6,7 +6,8 @@
     <p>Sorry, no users yet !</p>
   {{/unless}}
   {{#each sortedPosts}}
-    <div>
+    <div width="500px">
+      <a href="/profile/{{this.user_id}}">{{this.user_name}}</a>
       <img src="{{this.urlMedia}}" />
     </div>
   {{/each}}
