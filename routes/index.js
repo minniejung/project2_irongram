@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const userModel = require("../models/user");
 const PostModel = require("../models/post");
+
+
 /* GET home page. */
 const sortedElementsByDateDesc = (items) =>
   Object.assign([], items).sort((a, b) => {
@@ -11,7 +13,6 @@ const sortedElementsByDateDesc = (items) =>
   });
 getImagesFromSuscribed = (images, users) => {
   const imagesFromSuscribed = [];
-
   for (var i = 0; i < images.length; i++) {
     for (var j = 0; j < users.length; j++) {
       if (images[i].user_id.toString() === users[j].toString()) {
@@ -29,7 +30,7 @@ router.get("/", async (req, res, next) => {
     user.following.push(user._id);
     const postsFollowings = getImagesFromSuscribed(allPosts, user.following);
     const sortedPosts = sortedElementsByDateDesc(postsFollowings);
-    console.log(sortedPosts);
+
     res.render("index", {
       users: await userModel.find(),
       sortedPosts,
