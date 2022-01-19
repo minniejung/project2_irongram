@@ -3,7 +3,6 @@ const router = express.Router();
 const userModel = require("../models/user");
 const PostModel = require("../models/post");
 
-
 /* GET home page. */
 const sortedElementsByDateDesc = (items) =>
   Object.assign([], items).sort((a, b) => {

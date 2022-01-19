@@ -4,6 +4,8 @@
     <p>Sorry, no users yet !</p>
   {{/unless}}
   {{#each sortedPosts}}
+  {{!-- {{likedPost}} --}}
+
   <div>
 
     <div width="500px">
@@ -12,7 +14,9 @@
     </div>
     <span class="likes-count">{{this.likes.length}}</span>
     <i
-      class="btn-like far fa-heart"
+      {{#isLiked currentUser._id this.likes}}
+
+{{/isLiked}}
       data-id="{{this.user_id}}"
       data-postid="{{this._id}}"
       data-currentuser="{{../currentUser._id}}"
