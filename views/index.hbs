@@ -11,12 +11,12 @@
       <img src="{{this.urlMedia}}" />
     </div>
     <span class="likes-count">{{this.likes.length}}</span>
-    <button
-      class="btn-like"
+    <i
+      class="btn-like far fa-heart"
       data-id="{{this.user_id}}"
       data-postid="{{this._id}}"
       data-currentuser="{{../currentUser._id}}"
-    >Like</button>
+    ></i>
   </div>
   {{/each}}
 </section>
