@@ -8,7 +8,6 @@ const postModel = require("../models/post");
 router.get("/settings/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id);
-    // console.log(user);
     res.render("user/user-edit", { user });
   } catch (e) {
     next(e);
@@ -71,11 +70,11 @@ router.get("/settings/delete/:id", async (req, res, next) => {
 router.get("/profile/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id).populate("posts");
-    res.render("user/profile", {
-      user,
-      js: ["profile.js"],
-      css: ["profile.css"],
+    const followedUser = await userModel.findOne({
+      _id: req.params.id,
+      followers: { $in: req.body.currentUserId },
     });
+    res.render("user/profile", { user, js: ["profile.js"] });
   } catch (e) {
     next(e);
   }
@@ -85,7 +84,6 @@ router.get("/profile/:id", async (req, res, next) => {
 router.get("/follower/:id", async (req, res, next) => {
   try {
     const userId = await userModel.findById(req.params.id);
-    console.log(userId.followers);
     res.status(200).json(userId.followers.length);
   } catch (e) {
     next(e);
@@ -95,39 +93,38 @@ router.get("/follower/:id", async (req, res, next) => {
 router.post("/profile/add/:id", async (req, res, next) => {
   try {
     const foundedFollower = await userModel.findOne({
-      id: req.body.followerId,
+      _id: req.body.followedId,
       followers: { $in: req.body.currentUserId },
     });
-    console.log(foundedFollower, "test");
-    // if (!foundedFollower.followers) {
-    //   foundedFollower.followers = [];
-    // }
     if (foundedFollower) {
+      //UNFOLLOW
       await userModel.findByIdAndUpdate(
         req.body.currentUserId,
         {
-          $pull: { following: req.body.followerId },
+          $pull: { following: req.body.followedId },
         },
         { new: true }
       );
+
       await userModel.findByIdAndUpdate(
-        req.body.followerId,
+        req.body.followedId,
         {
           $pull: { followers: req.body.currentUserId },
         },
         { new: true }
       );
-      // console.log(deleteOneFollower);
+      res.status(201).send(" unfollower ok");
     } else {
+      //FOLLOW
       await userModel.findByIdAndUpdate(
         req.body.currentUserId,
         {
-          $push: { following: req.body.followerId },
+          $push: { following: req.body.followedId },
         },
         { new: true }
       );
       await userModel.findByIdAndUpdate(
-        req.body.followerId,
+        req.body.followedId,
         {
           $push: { followers: req.body.currentUserId },
         },
@@ -136,6 +133,7 @@ router.post("/profile/add/:id", async (req, res, next) => {
       res.status(201).send("new follower ok");
     }
   } catch (e) {
+    console.log(e);
     next(e);
   }
 });

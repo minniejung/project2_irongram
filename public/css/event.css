@@ -39,11 +39,12 @@ input {
   flex-direction: row;
 }
 
-.googleMap img {
+/* .googleMap img {
   width: 600px;
   margin: 25px;
-}
-
+} */
+#map{ height: 500px;
+  width: 100%;}
 #confirmForDelete {
   border: 1px solid grey;
   position: absolute;
