@@ -1,27 +1,34 @@
-body {
-  padding: 0 200px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #fafafa;
-}
-
 /* Minyoung edited : Starts from here */
 
 a {
   text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 header {
+  position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  width: 100vw;
   height: 50px;
-  padding: 20px;
+  padding: 20px 0;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+
+body {
+  background-color: #fafafa;
+  padding: 0 200px;
 }
 
 #irongramLogo {
   width: 150px;
+  padding-left: 200px;
 }
 
 .eventPreview {
+  margin-top: 100px;
   background-color: white;
   border: 2px solid lightgray;
   padding: 15px;
