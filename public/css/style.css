@@ -5,7 +5,7 @@ a {
   margin: 0;
   padding: 0;
 }
- 
+
 header {
   position: fixed;
   top: 0;
@@ -26,9 +26,6 @@ body {
   width: 150px;
   padding-left: 200px;
 }
-<<<<<<< HEAD
- 
-=======
 
 .eventPreview {
   margin-top: 100px;
@@ -59,4 +56,3 @@ body {
 }
 
 /* Minyoung edited : Ends here */
->>>>>>> event

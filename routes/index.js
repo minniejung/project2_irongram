@@ -21,7 +21,7 @@ getImagesFromSuscribed = (images, users) => {
   }
 
   return imagesFromSuscribed;
-}
+};
 router.get("/", async (req, res, next) => {
   try {
     const allPosts = await PostModel.find();
@@ -34,10 +34,11 @@ router.get("/", async (req, res, next) => {
       users: await userModel.find(),
       sortedPosts,
       title: "IronGram",
+      js: ["likes.js"],
     });
   } catch (e) {
     next(e);
   }
-})
+});
 
 module.exports = router;
