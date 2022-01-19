@@ -2,12 +2,12 @@
 <img src="{{post.urlMedia}}" class="image-single" alt="post" />
 
 <span class="likes-count">{{post.likes.length}}</span>
-<button
-  class="btn-like"
+<i
+  class="btn-like far fa-heart"
   data-id="{{post.user_id}}"
   data-postid="{{post._id}}"
   data-currentuser="{{currentUser._id}}"
->Like</button>
+></i>
 
 {{#compare post.user_id currentUser._id operator="=="}}
   <a href="/posts/update/{{post._id}}">EDIT TODO</a>

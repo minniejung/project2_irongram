@@ -141,7 +141,7 @@ router.get("/like/:id", async (req, res, next) => {
 
 router.post("/addlike/:id", async (req, res, next) => {
   try {
-    console.log("I am adding like !");
+    console.log("I am adding likes");
     const foundLike = await PostModel.findOne({
       _id: req.body.postId,
       likes: { $in: req.body.currentUserId },
