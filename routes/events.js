@@ -2,14 +2,17 @@ const router = require("express").Router();
 const Event = require("../models/Event");
 // const userModel = require("../models/user");
 const uploader = require("./../config/cloudinary");
+const moment = require("moment");
 
 // GET Event List
 router.get("/events", async (req, res) => {
   try {
+    const events = await Event.find().populate("host_id");
+    req.session.events = events;
+    console.log(req.session.event);
     res.render("event/events", {
-      events: await Event.find().populate("host_id"),
       css: ["event.css"],
-      js: ["event.js"],
+      js: ["event.js", "event-moment.js"],
     });
   } catch (e) {
     console.error(e);
@@ -20,12 +23,16 @@ router.get("/events", async (req, res) => {
 
 router.get("/events/create", async (req, res) => {
   try {
-    console.log("currentuser >>> ", res.locals.currentUser);
+    console.log(
+      "** CONSOLE Current user name >>> ",
+      res.locals.currentUser.name
+    );
+    // console.log(req.body.date);
     res.render("event/event-create", {
       events: await Event.find(),
       user_id: res.locals.currentUser._id,
       css: ["event.css"],
-      js: ["event.js"],
+      js: ["event.js", "event-moment.js"],
     });
   } catch (e) {
     console.error(e);
@@ -40,9 +47,8 @@ router.post(
     try {
       const { title, host_id, date, time, address, description, price } =
         req.body;
-      console.log("** CONSOLE req.body >>>", req.body);
+      console.log("** CONSOLE req.body.date >>>", req.body.date);
       let image;
-
       const createdEvent = await Event.create({
         title,
         host_id,
@@ -64,12 +70,14 @@ router.post(
 // GET Event detail
 router.get("/events/:id", async (req, res) => {
   try {
-    console.log("** CONSOLE req.params.id >>>", req.params.id);
+    // console.log("** CONSOLE req.params.id >>>", req.params.id);
     const eventDetail = await Event.findById(req.params.id).populate("host_id");
+    const newDate = moment(eventDetail.date).format("YYYY-MM-DD");
     res.render("event/event-single", {
       eventDetail,
+      newDate,
       css: ["event.css"],
-      js: ["event.js"],
+      js: ["event.js", "event-moment.js"],
     });
   } catch (e) {
     console.error(e);
@@ -80,13 +88,19 @@ router.get("/events/:id", async (req, res) => {
 router.get("/events/update/:id", async (req, res) => {
   try {
     console.log("** CONSOLE req.params.id >>>", req.params.id);
-    const eventToUptate = await Event.findById(req.params.id).populate(
+    const eventToUpdate = await Event.findById(req.params.id).populate(
       "host_id"
     );
+
+    console.log("** CONSOLE date to update >>>", eventToUpdate.date);
+    eventToUpdate.date = moment(eventToUpdate.date).format("YYYY-MM-DD");
+    eventToUpdate.date = JSON.stringify(eventToUpdate.date).slice(1, 11);
+    const newDate = JSON.stringify(eventToUpdate.date).slice(1, 11);
+    console.log(newDate);
     res.render("event/event-update", {
-      eventToUptate,
+      eventToUpdate,
+      newDate,
       css: ["event.css"],
-      js: ["event.js"],
     });
   } catch (e) {
     console.error(e);
@@ -114,6 +128,7 @@ router.post(
       let newImage;
       if (req.file) newImage = req.file.path;
       else newImage = existingImage;
+
       const updatedEvent = await Event.findByIdAndUpdate(
         id,
         {
