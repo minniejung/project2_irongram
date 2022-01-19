@@ -1,14 +1,22 @@
-
 {{! Afficher tous les users => liens obj }}
 <section>
   {{#unless users}}
     <p>Sorry, no users yet !</p>
   {{/unless}}
   {{#each sortedPosts}}
+  <div>
+
     <div width="500px">
       <a href="/profile/{{this.user_id}}">{{this.user_name}}</a>
       <img src="{{this.urlMedia}}" />
     </div>
+    <span class="likes-count">{{this.likes.length}}</span>
+    <button
+      class="btn-like"
+      data-id="{{this.user_id}}"
+      data-postid="{{this._id}}"
+      data-currentuser="{{../currentUser._id}}"
+    >Like</button>
+  </div>
   {{/each}}
 </section>
-
