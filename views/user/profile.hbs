@@ -10,7 +10,11 @@
     data-id="{{user._id}}"
     data-currentuser="{{currentUser._id}}"
   >
-    Follow
+ {{#if followedUser}}
+    Unfollow
+  {{else}}
+   Follow
+  {{/if}}
   </button>
 {{/compare}}
 
@@ -21,7 +25,11 @@
 
 {{#if user.posts}}
   {{#each user.posts}}
-    <img src="{{this.urlMedia}}" alt="{{this.name}}media" />
+    <img
+      class="user-picture"
+      src="{{this.urlMedia}}"
+      alt="{{this.name}}media"
+    />
   {{/each}}
 {{/if}}
 

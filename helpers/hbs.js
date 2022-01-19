@@ -16,6 +16,9 @@ hbs.registerHelper("isSelected", function (needle, haystack) {
     ? "selected"
     : "";
 });
+hbs.registerHelper("isLiked", function (id, array) {
+  return  array.includes(id) ?  `class="btn-like fas fa-heart"` :  `class="btn-like far fa-heart`
+});
 
 // add comparison operator feature to hbs templates
 /* 

@@ -2,7 +2,7 @@ const { model, Schema } = require("mongoose");
 
 const postModel = new Schema({
   urlMedia: { type: String, required: true },
-  likes: [{ type: Schema.Types.ObjectId, ref: "like" }],
+  likes: [{ type: Schema.Types.ObjectId, ref: "user" }],
   filename: String,
   filters: {
     type: String,

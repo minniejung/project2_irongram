@@ -7,7 +7,6 @@ const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
 
 router.get("/posts", async (req, res) => {
   try {
-    // const test = await PostModel.find().sort({ created_at: "descending" });
     const posts = await PostModel.find();
     console.log(req.session.currentUser);
     res.render("post/posts", {
@@ -98,10 +97,15 @@ router.put("/posts/update/:id", async (req, res) => {
 });
 router.get("/posts/:id", async (req, res) => {
   try {
+    const likedPost = await PostModel.findOne({
+      _id: req.params.id,
+      likes: { $in: req.session.currentUser._id },
+    });
     res.render("post/single", {
       post: await PostModel.findById(req.params.id),
+      likedPost: likedPost ? true : false,
       css: ["images.css"],
-      js: ["edit-image.js"],
+      js: ["edit-image.js", "likes.js"],
     });
   } catch (err) {
     console.error(err);
@@ -129,4 +133,56 @@ router.post("/posts/delete/:id", async (req, res) => {
     console.error(err);
   }
 });
+
+// Likes router
+router.get("/like/:id", async (req, res, next) => {
+  try {
+    const postUserId = await PostModel.findById(req.params.id);
+    // console.log(postUserId, "tt");
+    res.status(200).json(postUserId.likes.length);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post("/addlike/:id", async (req, res, next) => {
+  try {
+    console.log("I am adding likes");
+    const foundLike = await PostModel.findOne({
+      _id: req.body.postId,
+      likes: { $in: req.body.currentUserId },
+    });
+    console.log(foundLike, "like");
+    // console.log(req.body.postId);
+    if (foundLike) {
+      //unlike
+      await PostModel.findByIdAndUpdate(
+        req.body.postId,
+        {
+          $pull: { likes: req.body.currentUserId },
+        },
+        {
+          new: true,
+        }
+      );
+      res.status(201).json({ likedPost: false });
+    } else {
+      // like
+      await PostModel.findByIdAndUpdate(
+        req.body.postId,
+        {
+          $push: { likes: req.body.currentUserId },
+        },
+        {
+          new: true,
+        }
+      );
+      res.status(201).json({ likedPost: true });
+    }
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
 module.exports = router;

@@ -4,12 +4,18 @@ const Event = require("../models/Event");
 const uploader = require("./../config/cloudinary");
 const moment = require("moment");
 
+const sortedElementsByDateDesc = (items) =>
+  Object.assign([], items).sort((a, b) => {
+    let datea = new Date(a.date);
+    let dateb = new Date(b.date);
+    return dateb - datea;
+  });
 // GET Event List
 router.get("/events", async (req, res) => {
   try {
-    const events = await Event.find().populate("host_id");
+    const events = await Event.find().sort({date: "descending"}).populate("host_id");
+    
     req.session.events = events;
-    console.log(req.session.event);
     res.render("event/events", {
       css: ["event.css"],
       js: ["event.js", "event-moment.js"],
@@ -17,17 +23,12 @@ router.get("/events", async (req, res) => {
   } catch (e) {
     console.error(e);
   }
-});
+})
 
 // GET Event create
 
 router.get("/events/create", async (req, res) => {
   try {
-    console.log(
-      "** CONSOLE Current user name >>> ",
-      res.locals.currentUser.name
-    );
-    // console.log(req.body.date);
     res.render("event/event-create", {
       events: await Event.find(),
       user_id: res.locals.currentUser._id,
@@ -59,7 +60,6 @@ router.post(
         price,
         image,
       });
-      console.log("** CONSOLE createdEvent >>>", createdEvent);
       res.redirect("/events");
     } catch (e) {
       next(e);
@@ -86,12 +86,9 @@ router.get("/events/:id", async (req, res) => {
 // GET Event update
 router.get("/events/update/:id", async (req, res) => {
   try {
-    console.log("** CONSOLE req.params.id >>>", req.params.id);
     const eventToUpdate = await Event.findById(req.params.id).populate(
       "host_id"
     );
-
-    console.log("** CONSOLE date to update >>>", eventToUpdate.date);
     eventToUpdate.date = moment(eventToUpdate.date).format("YYYY-MM-DD");
     const newDate = JSON.stringify(eventToUpdate.date).slice(1, 11);
     res.render("event/event-update", {

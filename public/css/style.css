@@ -13,8 +13,6 @@ a {
   text-decoration: none;
 }
 
-/* Header starts */
-
 header {
   position: fixed;
   top: 0;
@@ -111,6 +109,7 @@ header {
   border: 3px solid white;
 }
 
+<<<<<<< HEAD
 /* body */
 
 body {
@@ -118,4 +117,13 @@ body {
   padding: 0 200px;
 }
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 /* Minyoung edited : Ends here */
+=======
+>>>>>>> master
+/* Minyoung edited : Ends here */
+>>>>>>> origin/master
+>>>>>>> origin/user
