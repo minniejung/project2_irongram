@@ -26,7 +26,7 @@ const userSchema = new Schema({
   bio: String,
   role: {
     type: String,
-    enum: ["unser", "admin"],
+    enum: ["user", "admin"],
   },
   posts: [
     {

@@ -5,9 +5,10 @@
   {{#unless users}}
     <p>Sorry, no users yet !</p>
   {{/unless}}
-  {{#each users}}
-    <div>
-      <a href="/profile/{{this._id}}">{{this.name}}</a>
+  {{#each sortedPosts}}
+    <div width="500px">
+      <a href="/profile/{{this.user_id}}">{{this.user_name}}</a>
+      <img src="{{this.urlMedia}}" />
     </div>
   {{/each}}
 </section>

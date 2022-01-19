@@ -31,6 +31,7 @@ const postModel = new Schema({
     ],
   },
   user_id: { type: Schema.Types.ObjectId, ref: "user" },
+  user_name: String,
   tags: { type: Schema.Types.ObjectId, ref: "tags" },
   created_at: { type: Date, default: Date.now() },
 });
