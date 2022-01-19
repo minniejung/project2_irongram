@@ -43,9 +43,10 @@ function listenOnUpdateContrast() {
   contrast.oninput = handleContrast;
 }
 //AJAX
-const updateImage = (id) => axios.put(`/posts/create/${id}`, payload);
+const updateImage = (id) => axios.put(`/posts/update/${id}`, payload);
 
 function handleFilter(e) {
+
   (payload.filter = e.target.dataset.filter),
     (payload.imageUrl = image.src),
     (payload.fileName = image.dataset.fileName),

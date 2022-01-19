@@ -3,15 +3,15 @@ const PostModel = require("../models/post");
 const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
+const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
+
 router.get("/posts", async (req, res) => {
   try {
     // const test = await PostModel.find().sort({ created_at: "descending" });
-    const user = await UserModel.findById(req.session.currentUser)
-      .populate("posts")
-      .sort({ created_at: "descending" });
-    console.log(user);
+    const posts = await PostModel.find();
+    console.log(req.session.currentUser);
     res.render("post/posts", {
-      posts: user.posts,
+      posts,
       css: ["images.css"],
     });
   } catch (err) {
@@ -25,11 +25,13 @@ router.post("/posts/upload", uploader.single("image"), async (req, res) => {
       const post = await PostModel.create({
         urlMedia: req.file.path,
         filename: req.file.filename,
+        user_id: req.session.currentUser._id,
+        user_name: req.session.currentUser.name,
       });
-      const user = await UserModel.findByIdAndUpdate(
+      await UserModel.findByIdAndUpdate(
         req.session.currentUser._id,
         {
-          $push: { posts: post._id },
+          $push: { posts: { $each: [post._id], $position: 0 } },
         },
         { new: true }
       );
@@ -52,14 +54,14 @@ router.get("/posts/create/:id", async (req, res) => {
   }
 });
 
-router.put("/posts/create/:id", async (req, res) => {
+//UPDATE IMAGE ON CREATE AND UPDATE PAGE
+router.put("/posts/update/:id", async (req, res) => {
   try {
     const { brigthness, contrast, saturation, vignette, filter } = req.body;
     let post = await PostModel.findById(req.params.id);
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
-        filter ? 
-        { effect: `art:${filter}` } : "",
+        filter ? { effect: `art:${filter}` } : "",
         { quality: "auto" },
         vignette
           ? {
@@ -81,10 +83,9 @@ router.put("/posts/create/:id", async (req, res) => {
               effect: `contrast:${contrast}`,
             }
           : "",
-          
       ],
     });
-  
+
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
       { urlMedia: newUrl },
@@ -104,6 +105,15 @@ router.get("/posts/:id", async (req, res) => {
     });
   } catch (err) {
     console.error(err);
+  }
+});
+router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
+  try {
+    res.render("post/post-update", {
+      post: await PostModel.findById(req.params.id),
+    });
+  } catch (err) {
+    next(err);
   }
 });
 /* TODO
