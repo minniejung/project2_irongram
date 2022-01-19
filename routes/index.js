@@ -30,7 +30,6 @@ router.get("/", async (req, res, next) => {
     user.following.push(user._id);
     const postsFollowings = getImagesFromSuscribed(allPosts, user.following);
     const sortedPosts = sortedElementsByDateDesc(postsFollowings);
-
     res.render("index", {
       users: await userModel.find(),
       sortedPosts,

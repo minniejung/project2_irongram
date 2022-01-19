@@ -7,7 +7,6 @@ const protectPrivateRoute = require("../middlewares/protectPrivateRoute");
 
 router.get("/posts", async (req, res) => {
   try {
-    // const test = await PostModel.find().sort({ created_at: "descending" });
     const posts = await PostModel.find();
     console.log(req.session.currentUser);
     res.render("post/posts", {
