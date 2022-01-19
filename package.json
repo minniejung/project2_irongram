@@ -7,10 +7,12 @@
     "dev": "nodemon ./bin/www -e .js,.hbs",
     "seed:user": "node ./bin/seeds/user.js",
     "seed:post": "node ./bin/seeds/post.js",
-    "seed:all": "npm run seed:user && npm run seed:post"
+    "seed:event": "node ./bin/seeds/event.js",
+    "seed:all": "npm run seed:user && npm run seed:post && npm run seed:event"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.4.2",
+    "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.28.1",
     "connect-flash": "^0.1.1",

@@ -46,6 +46,7 @@ input {
 #map{ height: 500px;
   width: 100%;}
 #confirmForDelete {
+  display: none;
   border: 1px solid grey;
   position: absolute;
   top: 50%;
@@ -53,10 +54,22 @@ input {
   width: 200px;
   padding: 20px;
   text-align: center;
-  display: none;
 }
 
 button {
   height: 25px;
 }
+
+#joinList,
+#maybeList {
+  display: none;
+  border: 1px solid grey;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+}
+
 /* Event CSS : Finishs here (Minyoung edited) */

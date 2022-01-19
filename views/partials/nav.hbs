@@ -1,16 +1,15 @@
 <nav>
+  {{#if isLoggedIn}}
+    <a href="/">Home</a>
+    <a href="/events">Events</a>
+    <a href="/posts">Posts</a>
+    <a href="/settings/{{currentUser._id}}">Settings</a>
+    <a href="/auth/logout">Log Out</a>
+  {{/if}}
+
   {{#unless isLoggedIn}}
     <a href="/auth/signup">Sign Up</a>
     <a href="/auth/signin">Sign In</a>
 
   {{/unless}}
-  {{#if isLoggedIn}}
-     <a href="/auth/logout">Log Out</a>
-    <a href="/">Home</a>
-    <a href="/events">Events</a>
-    <a href="/posts">Posts</a>
-    <a href="/profile/{{currentUser._id}}">Profile</a>
-    {{!-- <a href="/settings/{{currentUser._id}}">Settings</a> --}}
-  {{/if}}
-
 </nav>
