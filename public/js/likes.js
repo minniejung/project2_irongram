@@ -13,8 +13,9 @@ const listenOnLikeBtn = (e) => {
     postId: e.target.dataset.postid,
   };
   const likesCountHTML = e.target.parentElement.querySelector(".likes-count");
-  addLike(e.target.dataset.id, payloadUsers).then(() => {
-    console.log(payloadUsers);
+  addLike(e.target.dataset.id, payloadUsers).then((dbRes) => {
+    console.log(dbRes.data);
+    togglingLikeBtn(dbRes.data.likedPost, e.target);
     getLike(payloadUsers.postId)
       .then((likesCount) =>
         displayLikesNumbers(likesCount.data, likesCountHTML)
@@ -34,3 +35,8 @@ console.log(likeBtns);
 likeBtns.forEach((likeBtn) => {
   likeBtn.addEventListener("click", listenOnLikeBtn);
 });
+
+const togglingLikeBtn = (status, button) => {
+  const css = status ? "fas fa-heart" : "far fa-heart";
+  button.className = css;
+};

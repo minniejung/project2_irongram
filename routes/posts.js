@@ -3,7 +3,7 @@ const PostModel = require("../models/post");
 const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
-const protectPrivateRoute = require("../middlewares/protectPrivateRoute");
+const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
 
 router.get("/posts", async (req, res) => {
   try {
@@ -97,8 +97,13 @@ router.put("/posts/update/:id", async (req, res) => {
 });
 router.get("/posts/:id", async (req, res) => {
   try {
+    const likedPost = await PostModel.findOne({
+      _id: req.params.id,
+      likes: { $in: req.session.currentUser._id },
+    });
     res.render("post/single", {
       post: await PostModel.findById(req.params.id),
+      likedPost: likedPost ? true : false,
       css: ["images.css"],
       js: ["edit-image.js", "likes.js"],
     });
@@ -106,7 +111,7 @@ router.get("/posts/:id", async (req, res) => {
     console.error(err);
   }
 });
-router.get("/posts/update/:id", async (req, res, next) => {
+router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
   try {
     res.render("post/post-update", {
       post: await PostModel.findById(req.params.id),
@@ -121,6 +126,7 @@ delete image from the cloudinary
 */
 router.post("/posts/delete/:id", async (req, res) => {
   try {
+    console.log(req.body);
     await PostModel.findByIdAndDelete(req.params.id);
     res.redirect("/posts");
   } catch (err) {
@@ -159,7 +165,7 @@ router.post("/addlike/:id", async (req, res, next) => {
           new: true,
         }
       );
-      res.status(201).send(" Disliked ");
+      res.status(201).json({ likedPost: false });
     } else {
       // like
       await PostModel.findByIdAndUpdate(
@@ -171,7 +177,7 @@ router.post("/addlike/:id", async (req, res, next) => {
           new: true,
         }
       );
-      res.status(201).send("Liked");
+      res.status(201).json({ likedPost: true });
     }
   } catch (e) {
     console.log(e);

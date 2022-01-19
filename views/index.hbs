@@ -4,6 +4,8 @@
     <p>Sorry, no users yet !</p>
   {{/unless}}
   {{#each sortedPosts}}
+  {{!-- {{likedPost}} --}}
+
   <div>
  
     <div width="500px">
@@ -11,10 +13,17 @@
       <img src="{{this.urlMedia}}" />
     </div>
     <span class="likes-count">{{this.likes.length}}</span>
+<<<<<<< HEAD
     <button
        {{#isLiked currentUser._id this.likes  }} 
     {{/isLiked}}
      
+=======
+    <i
+      {{#isLiked currentUser._id this.likes}}
+
+{{/isLiked}}
+>>>>>>> origin/user
       data-id="{{this.user_id}}"
       data-postid="{{this._id}}"
       data-currentuser="{{../currentUser._id}}"
