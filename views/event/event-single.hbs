@@ -1,49 +1,52 @@
-<h1>Event single</h1>
 
-  <img src="{{eventDetail.image}}" class="eventImg">
-  <div class="eventDetail">
-    <h2>{{eventDetail.title}}</h2>
-    <h3>Host : {{eventDetail.host_id.name}}</h3>
-    <div>Date: {{eventDetail.date}}</div>
-    <div>Time: {{eventDetail.time}}</div>
-    <div>Address: {{eventDetail.address}}</div>
-    <div>Price: {{eventDetail.price}}</div>
-    <div>Detail: {{eventDetail.description}}</div>
-  </div>
+  <h1>Event single</h1>
 
-  <hr>
-  <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
-  <hr>
-  <button id ="deleteEvent">Delete this event</button>
-  <hr>
-  <button id="joinBtn">JOIN!</button>
-  <button id="maybeBtn">MAYBE</button>
+    <img src="{{eventDetail.image}}" class="eventImg">
+    <div class="eventDetail">
+      <h2>{{eventDetail.title}}</h2>
+      <h3>Host : {{eventDetail.host_id.name}}</h3>
+      <div>Date: {{eventDetail.date}}</div>
+      <div>Time: {{eventDetail.time}}</div>
+      <div>Address: {{eventDetail.address}}</div>
+      <div>Price: {{eventDetail.price}}</div>
+      <div>Detail: {{eventDetail.description}}</div>
+    </div>
 
-{{!-- POPUP : Confim msg before delete an event --}}
-  <div id="confirmForDelete">
-    <p>Are you sure you want to delete?</p>
-    <a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes delete</a>
-    <button id="deleteNo">No keep it</button>
-  </div>
+    <hr>
+    <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
+    <hr>
+    <button id ="deleteEvent">Delete this event</button>
+    <hr>
+    <button id="joinBtn" data-id="{{eventDetail._id}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
+    <button id="maybeBtn">MAYBE</button>
 
-{{!-- POPUP : Member list who join or maybe going --}}
-  <div id="joinList">
-    <p>People who's coming!</p>
-    <ul>
-      <li>{{eventDetail.host_id.name}}</li>
-      <li>Melmelmelmelmelodie</li>
+  {{!-- POPUP : Confirm msg before delete an event --}}
 
-    </ul>
-  </div>
-
-  <div id="maybeList">
-    <p>People who's MAYBE coming!</p>
-    <ul>
-      <li>Scoby</li>
-    </ul>
-  </div>
+    <div id="confirmForDelete">
+      <table>
+        <tr><td class ="tdUnderline">Are you sure you want to delete?</td></tr>
+        <tr>
+          <td class ="tdUnderline"><a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes delete</a></td></tr>
+        <tr><td><button id="deleteNo">No keep it</button></td>
+        </tr>
+      </table>
+    </div>
 
 
+  {{!-- POPUP : Member list who join or maybe going --}}
+    <div id="joinList">
+      <p>People who's coming!</p>
+        HOST: {{eventDetail.host_id.name}}
+        <ul id='list-members'>
+          {{#each eventDetail.join}}
+            <li>{{this.name}}</li>
+          {{/each}}
+        </ul>
+    </div>
 
-
-
+    <div id="maybeList">
+      <p>People who's MAYBE coming!</p>
+      <ul>
+        <li>Scoby</li>
+      </ul>
+    </div>

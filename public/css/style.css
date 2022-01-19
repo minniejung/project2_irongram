@@ -1,31 +1,87 @@
 /* Minyoung edited : Starts from here */
 
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", sans-serif;
+}
+
+* {
+  font-family: "Inter";
+}
+
 a {
   text-decoration: none;
-  margin: 0;
-  padding: 0;
 }
- 
+
+/* Header starts */
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 50px;
-  padding: 20px 0;
   background-color: white;
   border-bottom: 1px solid lightgray;
 }
 
-body {
-  background-color: #fafafa;
-  padding: 0 200px;
+.headerDivs {
+  padding: 20px 220px 10px 220px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #irongramLogo {
-  width: 150px;
-  padding-left: 200px;
+  width: 120px;
 }
+
+.search-form {
+  width: 300px;
+  height: 40px;
+  background-color: rgba(232, 217, 217, 0.3);
+  display: flex;
+  position: relative;
+  margin-left: 50px;
+  border-radius: 15px;
+}
+
+.magnifying {
+  position: absolute;
+  height: 20px;
+  margin-left: 15px;
+  margin-top: 9px;
+  z-index: 1;
+}
+
+.search-input {
+  background: transparent;
+  border: 0px;
+  width: 100%;
+  padding: 10px;
+  margin-left: 35px;
+}
+
+.headerIcons {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25px;
+}
+
+.headerIcons a {
+  color: black;
+}
+
+.headerIcons a:hover {
+  color: #2bc5fa;
+}
+
+.headerIcons a:active {
+  color: #2bc5fa;
+}
+
+/* Event preview nav */
 
 .eventPreview {
   margin-top: 100px;
@@ -53,6 +109,13 @@ body {
   border-radius: 50%;
   text-align: center;
   border: 3px solid white;
+}
+
+/* body */
+
+body {
+  background-color: #fafafa;
+  padding: 0 200px;
 }
 
 /* Minyoung edited : Ends here */
