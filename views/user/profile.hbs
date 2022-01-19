@@ -21,7 +21,11 @@
 
 {{#if user.posts}}
   {{#each user.posts}}
-    <img src="{{this.urlMedia}}" alt="{{this.name}}media" />
+    <img
+      class="user-picture"
+      src="{{this.urlMedia}}"
+      alt="{{this.name}}media"
+    />
   {{/each}}
 {{/if}}
 
