@@ -10,7 +10,12 @@
     data-id="{{user._id}}"
     data-currentuser="{{currentUser._id}}"
   >
-    Follow
+ {{#if followedUser}}
+
+    Unfollow
+  {{else}}
+   Follow
+  {{/if}}
   </button>
 {{/compare}}
 

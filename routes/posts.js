@@ -3,7 +3,7 @@ const PostModel = require("../models/post");
 const UserModel = require("../models/user");
 const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
-const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
+const protectPrivateRoute = require("../middlewares/protectPrivateRoute");
 
 router.get("/posts", async (req, res) => {
   try {
@@ -107,7 +107,7 @@ router.get("/posts/:id", async (req, res) => {
     console.error(err);
   }
 });
-router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
+router.get("/posts/update/:id", async (req, res, next) => {
   try {
     res.render("post/post-update", {
       post: await PostModel.findById(req.params.id),
@@ -122,7 +122,6 @@ delete image from the cloudinary
 */
 router.post("/posts/delete/:id", async (req, res) => {
   try {
-    console.log(req.body);
     await PostModel.findByIdAndDelete(req.params.id);
     res.redirect("/posts");
   } catch (err) {
