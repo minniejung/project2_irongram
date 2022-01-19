@@ -70,6 +70,10 @@ router.get("/settings/delete/:id", async (req, res, next) => {
 router.get("/profile/:id", async (req, res, next) => {
   try {
     const user = await userModel.findById(req.params.id).populate("posts");
+    const followedUser = await userModel.findOne({
+      _id: req.params.id,
+      followers: { $in: req.body.currentUserId },
+    });
     res.render("user/profile", { user, js: ["profile.js"] });
   } catch (e) {
     next(e);
