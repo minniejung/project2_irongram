@@ -23,7 +23,7 @@ router.get("/events", async (req, res) => {
   } catch (e) {
     console.error(e);
   }
-});
+})
 
 // GET Event create
 
