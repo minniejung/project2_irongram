@@ -11,7 +11,7 @@ function modalOff(item) {
   const popup = item.parentElement.parentElement.parentElement;
   // console.log(popup);
   popup.style.display = "none";
-}
+} 
 
 btnModal.forEach((el) => {
   el.addEventListener("click", (e) => {
