@@ -1,5 +1,4 @@
-
-  <h1>Event single</h1>
+<h1>Event single</h1>
 
     <img src="{{eventDetail.image}}" class="eventImg">
     <div class="eventDetail">
@@ -32,8 +31,7 @@
       </table>
     </div>
 
-
-  {{!-- POPUP : Member list who join or maybe going --}}
+  {{!-- POPUP : Member list who is joining--}}
     <div id="joinList">
       <p>People who's coming!</p>
         HOST: {{eventDetail.host_id.name}}
@@ -42,11 +40,4 @@
             <li>{{this.name}}</li>
           {{/each}}
         </ul>
-    </div>
-
-    <div id="maybeList">
-      <p>People who's MAYBE coming!</p>
-      <ul>
-        <li>Scoby</li>
-      </ul>
     </div>

@@ -18,16 +18,6 @@ router.get("/settings/:id", async (req, res, next) => {
   }
 });
 
-// GET Profile Edit
-// router.get("/settings/edit/:id", async (req, res, next) => {
-//   try {
-//     const profileEdit = await userModel.findById(req.params.id);
-//     res.render("user/user-edit", { user: profileEdit });
-//   } catch (e) {
-//     next(e);
-//   }
-// });
-
 // POST Profile Edit
 router.post(
   "/settings/edit/:id",

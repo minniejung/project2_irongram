@@ -28,6 +28,13 @@
     <div data-filter="ukulele" class="filter">ukulele</div>
     <div data-filter="zorro" class="filter">zorro</div>
   </div>
+  <label for="description">description</label>
+  <input
+    id="description"
+    name="description"
+    type="textarea"
+    value="{{post.description}}"
+  />
   <label for="vignette">vignette</label>
   <button id="btn-vignette-reset">Réinitialiser</button>
   <input
@@ -37,8 +44,8 @@
     max="100"
     step="1"
     id="vignette"
-  />  
-   <label for="brightness">Brightness</label>
+  />
+  <label for="brightness">Brightness</label>
   <button id="btn-brigthness-reset">Réinitialiser</button>
   <input
     type="range"
@@ -48,7 +55,7 @@
     step="1"
     id="brigthness"
   />
-   <label for="contrast">Contrast</label>
+  <label for="contrast">Contrast</label>
   <button id="btn-contrast-reset">Réinitialiser</button>
   <input
     type="range"
@@ -57,7 +64,7 @@
     max="100"
     step="1"
     id="contrast"
-  />   
+  />
   <label for="saturation">Saturation</label>
   <button id="btn-staturation-reset">Réinitialiser</button>
   <input

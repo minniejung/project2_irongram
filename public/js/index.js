@@ -10,7 +10,9 @@ const btnBrightness = document.getElementById("btn-brigthness-reset");
 const btnSaturation = document.getElementById("btn-brigthness-reset");
 const btnContrast = document.getElementById("btn-brigthness-reset");
 const inputUpload = document.getElementById("upload-btn");
-
+const descriptionInput = document.getElementById("description");
+const uploadBtn = document.getElementById("upload-btn");
+const addBtn = document.getElementById("btn-add-image");
 let payload = {
   vignette: 0,
   filter: "",
@@ -18,6 +20,7 @@ let payload = {
   brigthness: 0,
   contrast: 0,
   saturation: 0,
+  description: "",
 };
 
 //DOM MANIPULATION
@@ -46,7 +49,7 @@ function listenOnUpdateContrast() {
 const updateImage = (id) => axios.put(`/posts/update/${id}`, payload);
 
 function handleFilter(e) {
-
+  console.log(payload);
   (payload.filter = e.target.dataset.filter),
     (payload.imageUrl = image.src),
     (payload.fileName = image.dataset.fileName),
@@ -80,8 +83,12 @@ function handleSaturation() {
 }
 
 //EVENTS LISTENERS
+uploadBtn.addEventListener("change", ()=>{
+  addBtn.click()
+})
 btnVignette.addEventListener("click", () => {
   payload.vignette = null;
+
   updateImage(image.dataset.id, payload)
     .then((success) => updateImageUrl(success.data))
     .catch((err) => console.error(err));
@@ -103,6 +110,9 @@ btnContrast.addEventListener("click", () => {
   updateImage(image.dataset.id, payload)
     .then((success) => updateImageUrl(success.data))
     .catch((err) => console.error(err));
+});
+descriptionInput.addEventListener("input", () => {
+  payload.description = descriptionInput.value;
 });
 
 listenOnUpdateFilters();
