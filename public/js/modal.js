@@ -28,7 +28,7 @@ btnModal.forEach((el) => {
     modalOn(el);
   });
 });
-
+ 
 closeBtn.forEach((el) => {
   el.addEventListener("click", (e) => {
     modalOff(el);
