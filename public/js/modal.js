@@ -1,9 +1,10 @@
-const modal = document.querySelectorAll(".modal");
+const modal = document.querySelector("#modal");
 const btnModal = document.querySelectorAll(".btn-modal");
 const closeBtn = document.querySelectorAll(".close");
 
-const joinList = document.querySelectorAll(".joinList");
+const modalJoin = document.querySelector(".modalJoin");
 const joinBtn = document.querySelectorAll(".joinBtn");
+const modalWindow = document.querySelector(".modal-window");
 
 // Event modal
 
@@ -12,8 +13,13 @@ function modalOn(item) {
   popup.style.display = "flex";
 }
 
+// function modalOff() {
+//   modal.style.display = "none";
+// }
+
 function modalOff(item) {
   const popup = item.parentElement.parentElement.parentElement;
+  // console.log("popup :>> ", popup);
   popup.style.display = "none";
 }
 
@@ -29,25 +35,23 @@ closeBtn.forEach((el) => {
   });
 });
 
-// modal.forEach((el) => {
-//   el.addEventListener("click", (e) => {
-//     const evTarget = e.target;
-//     console.log(evTarget);
-//     if (evTarget.classList.contains("modal-overlay")) {
-//       modalOff(el);
-//     }
-//   });
-// });
+modal.onclick = (e) => {
+  const evTarget = e.target;
+  console.log("hi");
+  if (evTarget.classList.contains("modal-overlay")) {
+    modalOff();
+  }
+};
 
-//
+// modal for join list
 
-log(joinList);
+console.log(modalJoin);
 function modalInModalOn() {
-  joinList.style.display = "flex";
+  modalJoin.style.display = "flex";
 }
 
 joinBtn.forEach((el) => {
   el.addEventListener("click", (e) => {
-    modalInModalOn(el);
+    modalInModalOn();
   });
 });

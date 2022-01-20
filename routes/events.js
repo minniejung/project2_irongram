@@ -196,7 +196,7 @@ router.post("/events/join/:id", async (req, res, next) => {
         },
         { new: true }
       );
-      res.status(201).send(" not join ok");
+      res.status(201).send("not join ok");
     }
   } catch (e) {
     console.log(e);
