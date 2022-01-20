@@ -6,6 +6,10 @@
     border-radius: 10px;
 }
 
+.info-header {
+    margin-bottom: 20px;
+}
+
 .profile-header {
     display: flex;
     align-items: center;
