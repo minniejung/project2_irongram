@@ -1,4 +1,12 @@
 {{! Afficher tous les users => liens obj }}
+<div class="eventPreview">
+  {{#each events}}
+    <div class="oneEventPreview"><a href="/events/{{_id}}"><img
+          src="{{this.image}}"
+        /></a></div>
+  {{/each}}
+</div>
+
 <section>
   {{#unless users}}
     <p>Sorry, no users yet !</p>

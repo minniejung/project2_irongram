@@ -1,6 +1,7 @@
 /* Minyoung edited : Starts from here */
 
 @import url("https://rsms.me/inter/inter.css");
+
 html {
   font-family: "Inter", sans-serif;
 }
@@ -22,11 +23,19 @@ header {
   border-bottom: 1px solid lightgray;
 }
 
+.main-container {
+  margin: 0 auto;
+  width: 960px;
+}
+
 .headerDivs {
-  padding: 20px 220px 10px 220px;
+  padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   justify-content: space-between;
+  width: 960px;
+  margin: 0 auto;
 }
 
 #irongramLogo {
