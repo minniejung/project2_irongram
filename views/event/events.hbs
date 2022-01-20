@@ -1,24 +1,21 @@
-<h1>Event List</h1>
+<div class="allEventsHeader">
+  <h1>All coming events!</h1>
+  <a id="createEventBtn" href="/events/create">Create a NEW event!</a>
+</div>
 
-<div>
-  <a href="/events/create">Create a NEW event!</a>
-</div> 
-
-<div class="allEvent">
-  {{#each events}}
+{{#each events}}
   <a href="/events/{{_id}}">
-  <div class="eventDiv">
+    <div class="eventDiv">
       <img src="{{this.image}}" class="eventImg">
       <div class="eventDetail">
-        <h2>{{this.title}}</h2>
-        <h3>Host : {{this.host_id.name}}</h3>
-        <p>Date: {{this.date}}</p>
-        <p>Time: {{this.time}}</p>
-        <p>Address: {{this.address}}</p>
-        <p>Price: {{this.price}}</p>
-        <p class="descriptionView">{{this.description}}</p>
+        <h2>{{this.title}}</h2><br>
+        <p><b>Host : </b>{{this.host_id.name}}</p>
+        <p><b>Date : </b>{{this.date}}</p>
+        <p><b>Time : </b>{{this.time}}</p>
+        <p><b>Address : </b>{{this.address}}</p>
+        <p><b>Price : </b>{{this.price}}</p>
+        <p class="descriptionView"><b>Detail : </b>{{this.description}}</p>
       </div>
     </div>
-    </a>
-  {{/each}}
-</div>
+  </a>
+{{/each}}

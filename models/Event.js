@@ -26,6 +26,18 @@ const eventSchema = new Schema({
     default:
       "https://res.cloudinary.com/minniejung/image/upload/v1642248054/irongram/events_medium_vijplm.jpg",
   },
+  join: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
+  maybe: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
 });
 
 const Event = model("event", eventSchema);

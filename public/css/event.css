@@ -2,24 +2,79 @@
 
 * {
   text-decoration: none;
+  list-style-type: none;
   /* border: 1px solid grey; */
 }
+
+a {
+  color: black;
+}
+
+/* All events page */
+
+.allEventsHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 50px;
+}
+
+#createEventBtn {
+  /* border: 1px solid lightgray; */
+  box-shadow: 5px 5px 5px lightgray;
+  border-radius: 15px;
+  background-color: #2bc5fa;
+  color: white;
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Each event div */
 
 .eventDiv {
   display: flex;
   flex-direction: row;
-  margin: 20px;
-  gap: 15px;
-  height: 300px;
+  margin: 50px 0;
+  gap: 30px;
+  height: 400px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px lightgray;
+  padding-right: 20px;
 }
 
 .eventImg {
-  width: 300px;
+  width: 350px;
+  padding: 20px;
   object-fit: cover;
 }
 
-input {
-  padding: 10px;
+/* Event create / update form */
+
+.inputForm label {
+  font-weight: bold;
+}
+
+.inputForm input {
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 5px 5px 5px lightgray;
+  margin: 10px 0 20px 0;
+}
+
+.inputForm button {
+  background-color: #2bc5fa;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 5px 5px 5px lightgray;
+  color: white;
+  margin: 10px 0 50px 120px;
 }
 
 .event-create,
@@ -39,37 +94,29 @@ input {
   flex-direction: row;
 }
 
-/* .googleMap img {
-  width: 600px;
-  margin: 25px;
-} */
-#map{ height: 500px;
-  width: 100%;}
-#confirmForDelete {
-  display: none;
-  border: 1px solid grey;
-  position: absolute;
-  top: 50%;
-  left: 40%;
-  width: 200px;
-  padding: 20px;
-  text-align: center;
-}
-
-button {
-  height: 25px;
-}
-
+#confirmForDelete,
 #joinList,
 #maybeList {
+  background-color: white;
   display: none;
-  border: 1px solid grey;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  width: 300px;
   position: absolute;
   top: 50%;
   left: 40%;
-  width: 200px;
-  padding: 20px;
+  padding: 10px 0;
   text-align: center;
 }
 
-/* Event CSS : Finishs here (Minyoung edited) */
+table {
+  width: 100%;
+}
+
+td {
+  padding: 20px;
+}
+
+.tdUnderline {
+  border-bottom: 1px solid lightgray;
+}

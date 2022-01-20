@@ -1,8 +1,33 @@
 <header>
-  <a href="/"><img src="/img/logo.jpg" alt="logo" id="irongramLogo"></a>
+  <div class="headerDivs">
+    <a href="/"><img src="/img/logo.jpg" alt="logo" id="irongramLogo"></a>
+    <form action="search.php" method="post" class="search-form">
+      <img src="/img/magnifying-glass.jpg" class="magnifying">
+        <div class="searcharea">
+          <input type="text" placeholder="Search" class="search-input">
+        </div>
+    </form>
+    <div class="headerIcons">
+      {{#if isLoggedIn}}
+      <a href="/"><i class="fas fa-home"></i></a> 
+      <a href="/"><i class="far fa-plus-square"></i></a> 
+      <a href="/posts"><i class="far fa-compass"></i></a> 
+      <a href="/events"><i class="far fa-calendar-alt"></i></a> 
+      <a href="/games"><i class="fas fa-gamepad"></i></a> 
+      <a href="/settings/{{currentUser._id}}"><i class="far fa-user-circle"></i></a> 
+      <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i></a> 
+      {{/if}}
+      
+        {{#unless isLoggedIn}}
+        <a href="/auth/signup"> <i class="fas fa-user-secret"></i> Sign Up</a>
+        <a href="/auth/signin"> <i class="fas fa-user-check"></i> Sign In</a>
+        {{/unless}}   
+
+    </div>
+  </div>
 </header>
 
-  {{!-- Events --}}
+{{!-- Events --}}
 
 <div class="eventPreview">
   {{> search}}

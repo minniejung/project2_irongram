@@ -23,7 +23,7 @@ router.get("/events", async (req, res) => {
   } catch (e) {
     console.error(e);
   }
-});
+})
 
 // GET Event create
 
@@ -70,11 +70,11 @@ router.post(
 // GET Event detail
 router.get("/events/:id", async (req, res) => {
   try {
-    const eventDetail = await Event.findById(req.params.id).populate("host_id");
-    const newDate = moment(eventDetail.date).format("YYYY-MM-DD");
+    const eventDetail = await Event.findById(req.params.id).populate(
+      "host_id join"
+    );
     res.render("event/event-single", {
       eventDetail,
-      newDate,
       css: ["event.css"],
       js: ["event.js", "event-moment.js"],
     });
@@ -90,9 +90,7 @@ router.get("/events/update/:id", async (req, res) => {
       "host_id"
     );
     eventToUpdate.date = moment(eventToUpdate.date).format("YYYY-MM-DD");
-    eventToUpdate.date = JSON.stringify(eventToUpdate.date).slice(1, 11);
     const newDate = JSON.stringify(eventToUpdate.date).slice(1, 11);
-    console.log(newDate);
     res.render("event/event-update", {
       eventToUpdate,
       newDate,
@@ -150,10 +148,55 @@ router.post(
 // POST Event delete
 router.get("/events/delete/:id", async (req, res) => {
   try {
+    console.log(req.params.id);
     await Event.findByIdAndDelete(req.params.id);
     res.redirect("/events");
   } catch (e) {
     console.error(e);
+  }
+});
+
+// Join member
+router.get("/events/list/:id", async (req, res, next) => {
+  try {
+    console.log(req.params.id);
+    const event = await Event.findById(req.params.id).populate("join");
+
+    res.status(200).json(event);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post("/events/join/:id", async (req, res, next) => {
+  try {
+    const foundEvent = await Event.findOne({
+      _id: req.params.id,
+      join: { $in: req.body.currentUserId },
+    });
+    // console.log(foundEvent);
+    if (!foundEvent) {
+      await Event.findByIdAndUpdate(
+        req.params.id,
+        {
+          $push: { join: req.body.currentUserId },
+        },
+        { new: true }
+      );
+      res.status(201).send(" join ok");
+    } else {
+      await Event.findByIdAndUpdate(
+        req.params.id,
+        {
+          $pull: { join: req.body.currentUserId },
+        },
+        { new: true }
+      );
+      res.status(201).send(" not join ok");
+    }
+  } catch (e) {
+    console.log(e);
+    next(e);
   }
 });
 
