@@ -83,3 +83,28 @@
 .image-single {
   width: 500px;
 }
+
+#buttons-post-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+#buttons-post-page .btn{
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+#buttons-post-page .btn-validate{
+  background: #00C2FF;
+padding: 10px 80px;
+color: white;
+}
+#buttons-post-page .btn-delete{
+  color: #C30000;
+  background-color: white;
+  padding: 10px 40px;
+}

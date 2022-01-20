@@ -71,7 +71,7 @@
         <button id="btn-contrast-reset">Réinitialiser</button>
       </div>
       <label for="saturation">Saturation</label>
-      <div style="display:flex; flex-direction : row;">
+      <div style="display:flex; flex-direction : row; margin-top:10px">
         <div class="inner-range">
           <input
             class="range-input"
@@ -85,9 +85,9 @@
         </div>
         <button id="btn-saturation-reset">Réinitialiser</button>
       </div>
-      <div>
-        <a href="/">Valider</a>
-        <a href="/posts/delete/{{post._id}}">Annuler</a>
+      <div id="buttons-post-page">
+        <a class="btn btn-validate" href="/posts">Save</a>
+        <a class="btn btn-delete" href="/posts/delete/{{post._id}}">Delete</a>
       </div>
     </div>
 
