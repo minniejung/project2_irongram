@@ -205,11 +205,11 @@ label[for="upload-btn"] {
 #buttons-post-page .btn {
   border-radius: 6px;
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 #buttons-post-page .btn-validate {
   background: #00c2ff;
-  padding: 10px 80px;
+  padding: 10px 60px;
   color: white;
 }
 #buttons-post-page .btn-delete {

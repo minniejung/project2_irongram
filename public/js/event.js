@@ -17,7 +17,6 @@ function limitTextStr(string, length) {
 }
 
 description.forEach((el) => {
-  // console.log(el.innerHTML);
   el.innerHTML = limitTextStr(el.innerHTML, 200);
 });
 

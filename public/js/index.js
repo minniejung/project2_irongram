@@ -50,7 +50,6 @@ function listenOnUpdateContrast() {
 const updateImage = (id) => axios.put(`/posts/update/${id}`, payload);
 
 function handleFilter(e) {
-  console.log(payload);
   (payload.filter = e.target.dataset.filter),
     (payload.imageUrl = image.src),
     (payload.fileName = image.dataset.fileName),

@@ -19,9 +19,11 @@
       data-currentuser="{{../currentUser._id}}"
     ></i>
       <span class="likes-count">{{post.likes.length}} <span style="font-weight: 700; margin-bottom:30px">Likes</span> </span>
-
+      {{#if post.description}}
+    <p><span style="font-weight: 700;">{{post.user_name}} :</span>{{post.description}}</p>
+      {{/if}}
     </div>
-  {{post.description}}
+  
   </div>
   {{#compare post.user_id._id currentUser._id operator="=="}}
   <div id="buttons-post-page">

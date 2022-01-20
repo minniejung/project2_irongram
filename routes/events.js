@@ -8,15 +8,14 @@ const sortedElementsByDateDesc = (items) =>
   Object.assign([], items).sort((a, b) => {
     let datea = new Date(a.date);
     let dateb = new Date(b.date);
-    return   datea - dateb;
+    return datea - dateb;
   });
 
 // GET Event List
 router.get("/events", async (req, res) => {
   try {
     const events = await Event.find().populate("host_id");
- const sortedEvent =   sortedElementsByDateDesc(events)
- console.log(sortedEvent)
+    const sortedEvent = sortedElementsByDateDesc(events);
     req.session.events = sortedEvent;
     res.render("event/events", {
       css: ["event.css"],
@@ -50,7 +49,6 @@ router.post(
     try {
       const { title, host_id, date, time, address, description, price } =
         req.body;
-      console.log("** CONSOLE req.body.date >>>", req.body.date);
       let image;
       const createdEvent = await Event.create({
         title,
@@ -109,7 +107,6 @@ router.post(
   uploader.single("image"),
   async (req, res, next) => {
     try {
-      console.log("** CONSOLE req.params.id >>>", req.params.id);
       const { id } = req.params;
       const {
         title,
@@ -139,7 +136,6 @@ router.post(
         },
         { new: true }
       );
-      console.log("** CONSOLE updatedEvent >>>", updatedEvent);
       res.redirect("/events");
     } catch (e) {
       next(e);
@@ -150,7 +146,6 @@ router.post(
 // POST Event delete
 router.get("/events/delete/:id", async (req, res) => {
   try {
-    console.log(req.params.id);
     await Event.findByIdAndDelete(req.params.id);
     res.redirect("/events");
   } catch (e) {
@@ -161,7 +156,6 @@ router.get("/events/delete/:id", async (req, res) => {
 // Join member
 router.get("/events/list/:id", async (req, res, next) => {
   try {
-    console.log(req.params.id);
     const event = await Event.findById(req.params.id).populate("join");
 
     res.status(200).json(event);
@@ -176,7 +170,6 @@ router.post("/events/join/:id", async (req, res, next) => {
       _id: req.params.id,
       join: { $in: req.body.currentUserId },
     });
-    // console.log(foundEvent);
     if (!foundEvent) {
       await Event.findByIdAndUpdate(
         req.params.id,
@@ -197,7 +190,6 @@ router.post("/events/join/:id", async (req, res, next) => {
       res.status(201).send(" not join ok");
     }
   } catch (e) {
-    console.log(e);
     next(e);
   }
 });

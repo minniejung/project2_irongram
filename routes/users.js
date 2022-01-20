@@ -133,7 +133,6 @@ router.post("/profile/add/:id", async (req, res, next) => {
       res.status(201).json({ followedUser: true });
     }
   } catch (e) {
-    console.log(e);
     next(e);
   }
 });
