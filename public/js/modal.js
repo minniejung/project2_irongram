@@ -42,7 +42,6 @@ closeBtn.forEach((el) => {
 
 //
 
-log(joinList);
 function modalInModalOn() {
   joinList.style.display = "flex";
 }

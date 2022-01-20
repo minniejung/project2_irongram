@@ -1,66 +1,75 @@
 .post {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 25px 50px 25px 25px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 50px 25px 25px;
 
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(100px);
-    border-radius: 32px;
-    margin: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(100px);
+  border-radius: 32px;
+  margin: 25px;
 }
 
-
 .media {
-    align-content: center;
-
+  align-content: center;
 }
 
 .user-name-post a {
-    color: black;
-    padding: 5px 30px 5px 30px;
+  color: black;
+  padding: 5px 30px 5px 30px;
 
-    border-radius: 4px;
-    background: #FFFFFF;
-    border: 1px solid #E0E6EF;
-    box-sizing: border-box;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #e0e6ef;
+  box-sizing: border-box;
 
-    color: black;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.9em;
-    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.05));
+  color: black;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9em;
+  filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.05));
 }
 
 .img-block img {
-    width: 770px;
-    height: 600px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 770px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .user-name-post {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 10px 100px 22px 63px
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 100px 22px 63px;
+  align-items: center;
 }
 
-
 .like-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
-    gap: 10px;
-    width: 100%;
-    padding: 21px 100px 22px 63px;
+  gap: 10px;
+  width: 100%;
+  padding: 21px 100px 22px 63px;
 }
 
 .likes-count {
-    padding-left: 7px;
-    font-weight: 600;
+  padding-left: 7px;
+  font-weight: 600;
+}
+
+.profile-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+.username-header-post {
+  padding: 20px;
+  margin-left: 20px;
 }
