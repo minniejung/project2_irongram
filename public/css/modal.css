@@ -1,5 +1,5 @@
 .modal {
-  display: flex;
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
@@ -12,7 +12,6 @@
 
 .modal-overlay {
   background: rgba(44, 42, 42, 0.664);
-  box-shadow: 5px 5px 5px lightgray;
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
 }
