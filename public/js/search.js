@@ -1,19 +1,29 @@
 const searchBar = document.getElementById("search");
 const listResult = document.getElementById("list-result-search");
+const resultSearch = document.getElementById("result-search-bar");
 //DOM
-
 const displayResult = (users) => {
   listResult.innerHTML = "";
-  users.forEach((el) => {
-    listResult.appendChild(generateListUser(el));
-  });
+  if (!users || !search.value) {
+    resultSearch.style.display = "none";
+  } else {
+    resultSearch.style.display = "block";
+    users.forEach((el) => {
+      listResult.appendChild(generateListUser(el));
+    });
+  }
 };
 
 const generateListUser = (user) => {
-  const li = document.createElement("li");
-  li.className = "user-result";
-  li.innerHTML = user.name;
-  return li;
+  const div = document.createElement("div");
+  div.className = "users-result";
+  div.innerHTML = `
+  <a href="/profile/${user._id}" class="link-result">
+  <img  class="img-search-result" src=${user.image} />
+  <div class="user-result">
+    ${user.name}
+  </div></a>`;
+  return div;
 };
 //HANDLE
 const handleInoput = (e) => {

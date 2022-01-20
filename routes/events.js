@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Event = require("../models/Event");
-// const userModel = require("../models/user");
 const uploader = require("./../config/cloudinary");
 const moment = require("moment");
 
@@ -8,14 +7,15 @@ const sortedElementsByDateDesc = (items) =>
   Object.assign([], items).sort((a, b) => {
     let datea = new Date(a.date);
     let dateb = new Date(b.date);
-    return dateb - datea;
+    return   datea - dateb;
   });
 // GET Event List
 router.get("/events", async (req, res) => {
   try {
-    const events = await Event.find().sort({date: "descending"}).populate("host_id");
-    
-    req.session.events = events;
+    const events = await Event.find().populate("host_id");
+ const sortedEvent =   sortedElementsByDateDesc(events)
+ console.log(sortedEvent)
+    req.session.events = sortedEvent;
     res.render("event/events", {
       css: ["event.css"],
       js: ["event.js", "event-moment.js"],

@@ -126,7 +126,6 @@ router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
 
 router.post("/posts/delete/:id", async (req, res) => {
   try {
-    console.log(req.body);
     await PostModel.findByIdAndDelete(req.params.id);
     res.redirect("/posts");
   } catch (err) {

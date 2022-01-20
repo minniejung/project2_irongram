@@ -1,11 +1,7 @@
 <header>
   <div class="headerDivs">
     <a href="/"><img src="/img/logo.jpg" alt="logo" id="irongramLogo"></a>
-    <form action="search.php" method="post" class="search-form">
-      <img src="/img/magnifying-glass.jpg" class="magnifying">
-        <div class="searcharea">
-          <input type="text" placeholder="Search" class="search-input">
-        </div>
+        {{> search}}
     </form>
     <div class="headerIcons">
       {{#if isLoggedIn}}
@@ -30,7 +26,6 @@
 {{!-- Events --}}
 
 <div class="eventPreview">
-  {{> search}}
   {{#each events}}
     <div class="oneEventPreview"><a href="/events/{{_id}}"><img src="{{this.image}}"></a></div>
   {{/each}}
