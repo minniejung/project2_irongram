@@ -26,6 +26,7 @@ router.post("/posts/upload", uploader.single("image"), async (req, res) => {
         filename: req.file.filename,
         user_id: req.session.currentUser._id,
         user_name: req.session.currentUser.name,
+        description: "",
       });
       await UserModel.findByIdAndUpdate(
         req.session.currentUser._id,
@@ -56,7 +57,9 @@ router.get("/posts/create/:id", async (req, res) => {
 //UPDATE IMAGE ON CREATE AND UPDATE PAGE
 router.put("/posts/update/:id", async (req, res) => {
   try {
-    const { brigthness, contrast, saturation, vignette, filter } = req.body;
+    const { brigthness, contrast, saturation, vignette, filter, description } =
+      req.body;
+    console.log(req.body.description);
     let post = await PostModel.findById(req.params.id);
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
@@ -87,7 +90,7 @@ router.put("/posts/update/:id", async (req, res) => {
 
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
-      { urlMedia: newUrl },
+      { urlMedia: newUrl, description: description },
       { new: true }
     );
     res.status(201).json(post);
@@ -120,10 +123,7 @@ router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
     next(err);
   }
 });
-/* TODO
-uploader.destroy("image"), 
-delete image from the cloudinary
-*/
+
 router.post("/posts/delete/:id", async (req, res) => {
   try {
     console.log(req.body);

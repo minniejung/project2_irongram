@@ -5,6 +5,7 @@
   {{!-- Events --}}
 
 <div class="eventPreview">
+  {{> search}}
   {{#each events}}
     <div class="oneEventPreview"><a href="/events/{{_id}}"><img src="{{this.image}}"></a></div>
   {{/each}}

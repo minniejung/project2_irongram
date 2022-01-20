@@ -7,6 +7,7 @@ const postModel = new Schema({
   filters: {
     type: String,
     enum: [
+      "original",
       "al_dente",
       "athena",
       "audrey",
@@ -30,6 +31,7 @@ const postModel = new Schema({
       "zorro",
     ],
   },
+  description: String,
   user_id: { type: Schema.Types.ObjectId, ref: "user" },
   user_name: String,
   tags: { type: Schema.Types.ObjectId, ref: "tags" },

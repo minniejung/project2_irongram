@@ -7,27 +7,16 @@ const postModel = require("../models/post");
 /* GET users listing. */
 router.get("/settings/:id", async (req, res, next) => {
   try {
-    if(req.session.currentUser._id === req.params.id){
+    if (req.session.currentUser._id === req.params.id) {
       const user = await userModel.findById(req.params.id);
       res.render("user/user-edit", { user });
-    }
-    else{
+    } else {
       res.redirect(`/profile/${req.params.id}`);
-     }
+    }
   } catch (e) {
     next(e);
   }
 });
-
-// GET Profile Edit
-// router.get("/settings/edit/:id", async (req, res, next) => {
-//   try {
-//     const profileEdit = await userModel.findById(req.params.id);
-//     res.render("user/user-edit", { user: profileEdit });
-//   } catch (e) {
-//     next(e);
-//   }
-// });
 
 // POST Profile Edit
 router.post(
@@ -74,14 +63,16 @@ router.get("/settings/delete/:id", async (req, res, next) => {
 
 router.get("/profile/:id", async (req, res, next) => {
   try {
-   
-      const user = await userModel.findById(req.params.id).populate("posts");
-      const followedUser = await userModel.findOne({
-        _id: req.params.id,
-        followers: { $in: req.session.currentUser._id },
-      });
-      res.render("user/profile", { user, followedUser : followedUser?  true : false, js: ["profile.js"] });
-
+    const user = await userModel.findById(req.params.id).populate("posts");
+    const followedUser = await userModel.findOne({
+      _id: req.params.id,
+      followers: { $in: req.session.currentUser._id },
+    });
+    res.render("user/profile", {
+      user,
+      followedUser: followedUser ? true : false,
+      js: ["profile.js"],
+    });
   } catch (e) {
     next(e);
   }
@@ -120,7 +111,7 @@ router.post("/profile/add/:id", async (req, res, next) => {
         },
         { new: true }
       );
-      res.status(201).json({followedUser : false});
+      res.status(201).json({ followedUser: false });
     } else {
       //FOLLOW
       await userModel.findByIdAndUpdate(
@@ -137,7 +128,7 @@ router.post("/profile/add/:id", async (req, res, next) => {
         },
         { new: true }
       );
-      res.status(201).json({followedUser : true});
+      res.status(201).json({ followedUser: true });
     }
   } catch (e) {
     console.log(e);
