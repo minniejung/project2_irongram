@@ -12,6 +12,11 @@ h1 {
   margin-bottom: 30px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 /* Header */
 
 header {
@@ -25,7 +30,7 @@ header {
 }
 
 .headerDivs {
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -159,6 +164,9 @@ label[for="upload-btn"] {
   font-size: 0.8em;
   font-weight: 500;
 }
+.user-result {
+  font-weight: 700;
+}
 .link-result {
   display: flex;
   flex-direction: row;
@@ -190,4 +198,21 @@ label[for="upload-btn"] {
     rgba(51, 0, 255, 0.28) 100%
   );
   filter: blur(200px);
+}
+
+/*BUTTON*/
+#buttons-post-page .btn {
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+#buttons-post-page .btn-validate {
+  background: #00c2ff;
+  padding: 10px 80px;
+  color: white;
+}
+#buttons-post-page .btn-delete {
+  color: #c30000;
+  background-color: white;
+  padding: 10px 40px;
 }

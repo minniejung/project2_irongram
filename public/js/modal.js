@@ -45,7 +45,6 @@ modal.onclick = (e) => {
 
 // modal for join list
 
-console.log(modalJoin);
 function modalInModalOn() {
   modalJoin.style.display = "flex";
 }
