@@ -72,6 +72,7 @@ router.get("/profile/:id", async (req, res, next) => {
       user,
       followedUser: followedUser ? true : false,
       js: ["profile.js"],
+      css: ["profile.css"],
     });
   } catch (e) {
     next(e);

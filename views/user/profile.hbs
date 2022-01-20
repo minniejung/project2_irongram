@@ -1,37 +1,46 @@
-{{#compare currentUser._id user._id operator="=="}}
-  <a href="/settings/{{user._id}}">Settings</a>
-{{/compare}}
+<div class="header-profile">
+  {{! <div class="inside-header-profile"> }}
 
-<span id="followers-count">{{user.followers.length}}</span>
-<span id="following-count">{{user.following.length}}</span>
-{{#compare currentUser._id user._id operator="!="}}
-  <button
-    id="follow"
-    data-id="{{user._id}}"
-    data-currentuser="{{currentUser._id}}"
-  >
- {{#if followedUser}}
-    Unfollow
-  {{else}}
-   Follow
+  <img class="profile-image" src="{{user.image}}" alt="" />
+
+  <div>
+    <div>
+      <h1>{{user.name}}</h1>
+      {{#compare currentUser._id user._id operator="=="}}
+        <a href="/settings/{{user._id}}">Edit Profile</a>
+      {{/compare}}
+    </div>
+    <span id="followers-count">{{user.followers.length}}</span>
+    <span id="following-count">{{user.following.length}}</span>
+    {{#compare currentUser._id user._id operator="!="}}
+      <button
+        id="follow"
+        data-id="{{user._id}}"
+        data-currentuser="{{currentUser._id}}"
+      >
+        {{#if followedUser}}
+          Unfollow
+        {{else}}
+          Follow
+        {{/if}}
+      </button>
+    {{/compare}}
+    {{! </div> }}
+  </div>
+
+</div>
+
+<div class="user-pictures">
+  {{#if user.posts}}
+    {{#each user.posts}}
+      <img
+        class="user-picture"
+        src="{{this.urlMedia}}"
+        alt="{{this.name}}media"
+      />
+    {{/each}}
   {{/if}}
-  </button>
-{{/compare}}
-
-{{#each user}}
-  <img src="{{this.image}}" alt="" />
-  <h1>{{this.name}}</h1>
-{{/each}}
-
-{{#if user.posts}}
-  {{#each user.posts}}
-    <img
-      class="user-picture"
-      src="{{this.urlMedia}}"
-      alt="{{this.name}}media"
-    />
-  {{/each}}
-{{/if}}
+</div>
 
 {{#unless user.posts}}
   <h2>No pictures yet !</h2>
