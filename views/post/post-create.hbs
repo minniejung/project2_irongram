@@ -1,4 +1,3 @@
-
 <div id="container-image">
   <div class="content-image">
     <img
@@ -9,7 +8,7 @@
       data-fileName="{{post.fileName}}"
       alt="image-create"
     />
-  <input id="description" name="description" type="textarea" />
+    <input id="description" name="description" type="textarea" />
   </div>
   <div class="controls-filters">
     <div id="filters">
@@ -24,75 +23,74 @@
       <div data-filter="zorro" class="filter">zorro</div>
     </div>
 
-   <div>
-    <label for="vignette">Vignette</label>
+    <div>
+      <label for="vignette">Vignette</label>
       <div style="display:flex; flex-direction : row;">
-      <div class="inner-range">
-      <input
-        class="range-input"
-        type="range"
-        name="vignette"
-        min="0"
-        max="100"
-        step="1"
-        id="vignette"
-      />
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="vignette"
+            min="0"
+            max="100"
+            step="1"
+            id="vignette"
+          />
+        </div>
+        <button id="btn-vignette-reset">Réinitialiser</button>
       </div>
-     <button id="btn-vignette-reset">Réinitialiser</button>
-    </div>
-    <label for="brightness">Brightness</label>
-    <div style="display:flex; flex-direction : row;">
-      <div class="inner-range">
-      <input
-        class="range-input"
-        type="range"
-        name="brigthness"
-        min="-100"
-        max="100"
-        step="1"
-        id="brigthness"
-      />
+      <label for="brightness">Brightness</label>
+      <div style="display:flex; flex-direction : row;">
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="brigthness"
+            min="-100"
+            max="100"
+            step="1"
+            id="brigthness"
+          />
+        </div>
+        <button id="btn-brigthness-reset">Réinitialiser</button>
       </div>
-     <button id="btn-brigthness-reset">Réinitialiser</button>
-    </div>
 
-    <label for="contrast">Contrast</label>
-    <div style="display:flex; flex-direction : row;">
-      <div class="inner-range">
-      <input
-        class="range-input"
-        type="range"
-        name="contrast"
-        min="-100"
-        max="100"
-        step="1"
-        id="contrast"
-      />
-      </div>
-     <button id="btn-contrast-reset">Réinitialiser</button>
-    </div>
-    <label for="saturation">Saturation</label>
+      <label for="contrast">Contrast</label>
       <div style="display:flex; flex-direction : row;">
-      <div class="inner-range">
-      <input
-        class="range-input"
-        type="range"
-        name="saturation"
-        min="-100"
-        max="100"
-        step="1"
-        id="saturation"
-      />
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="contrast"
+            min="-100"
+            max="100"
+            step="1"
+            id="contrast"
+          />
+        </div>
+        <button id="btn-contrast-reset">Réinitialiser</button>
       </div>
-     <button id="btn-saturation-reset">Réinitialiser</button>
+      <label for="saturation">Saturation</label>
+      <div style="display:flex; flex-direction : row; margin-top:10px">
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="saturation"
+            min="-100"
+            max="100"
+            step="1"
+            id="saturation"
+          />
+        </div>
+        <button id="btn-saturation-reset">Réinitialiser</button>
+      </div>
+      <div id="buttons-post-page">
+        <a class="btn btn-validate" href="/posts">Save</a>
+        <a class="btn btn-delete" href="/posts/delete/{{post._id}}">Delete</a>
+      </div>
     </div>
-      <div>
-           <a href="/posts">Valider</a>
-     <a href="/posts/delete/{{post._id}}">Annuler</a>
-    </div>
-    </div>
-  
 
   </div>
- 
+
 </div>
