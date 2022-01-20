@@ -1,0 +1,35 @@
+<div class="modal modal-overlay">
+  <div class="modal-window">
+    <div class="title">
+      <h2>{{this.title}}</h2>
+      <div class="close"><i class="far fa-times-circle"></i></div>
+    </div>
+    <div class="content">
+      <img src="{{this.image}}">
+      <div class="modalDetail">
+        <h3>Host : {{this.host_id.name}}</h3>
+        <p><b>Date: </b>{{this.date}}</p>
+        <p><b>Time: </b>{{this.time}}</p>
+        <p><b>Address: </b>{{this.address}}</p>
+        <p><b>Price: </b>{{this.price}}</p>
+        <p><b>Detail: </b>{{this.description}}</p>
+      </div>
+    </div>
+    
+    <div class="joinBtn">
+      <button id="joinBtn" data-id="{{eventDetail._id}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
+    </div>
+
+    <div class="joinList">
+      <p>People who's coming!</p>
+        HOST: {{this.host_id.name}}
+        <ul id='list-members'>
+          {{#each this.join}}
+            <li>{{this.name}}</li>
+          {{/each}}
+        </ul>
+    </div>
+
+  </div>
+</div>
+

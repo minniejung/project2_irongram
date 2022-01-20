@@ -19,8 +19,8 @@ router.get("/events", async (req, res) => {
  console.log(sortedEvent)
     req.session.events = sortedEvent;
     res.render("event/events", {
-      css: ["event.css", "modal.css"],
-      js: ["event.js", "event-moment.js", "modal.js"],
+      css: ["event.css"],
+      js: ["event.js", "event-moment.js"],
     });
   } catch (e) {
     console.error(e);

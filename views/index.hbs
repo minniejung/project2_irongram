@@ -1,10 +1,13 @@
+{{! ⬇︎⬇︎⬇︎⬇︎⬇︎ Event preview (Minyoung) ⬇︎⬇︎⬇︎⬇︎⬇︎ }}
 <div class="eventPreview">
   {{#each events}}
-    <div class="oneEventPreview"><a href="/events/{{_id}}"><img
-          src="{{this.image}}"
-        /></a></div>
+    <div class="oneEventPreview">
+      {{> modal this}}
+      <a class="btn-modal"><img src="{{this.image}}"/></a>
+    </div>
   {{/each}}
 </div>
+{{! ⬆︎⬆︎⬆︎⬆︎⬆︎ Event preview (Minyoung) ⬆︎⬆︎⬆︎⬆︎⬆︎ }}
 
 <section class="section-timeline-post">
   {{#unless users}}

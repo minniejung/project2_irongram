@@ -1,6 +1,6 @@
 /* Minyoung edited : Starts from here */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 
 body {
   font-family: "Inter", sans-serif;
@@ -93,6 +93,7 @@ body {
   gap: 10px;
   width: 100%;
   margin-bottom: 30px;
+  overflow-x: scroll;
 }
 
 .oneEventPreview {
@@ -110,6 +111,7 @@ body {
   text-align: center;
   border: 3px solid white;
 }
+<<<<<<< HEAD
 
 body {
   background-color: #fafafa;
@@ -192,3 +194,5 @@ border-radius: 6px;
   background: linear-gradient(180deg, rgba(0, 194, 255, 0.46) 0%, rgba(51, 0, 255, 0.28) 100%);
   filter: blur(200px);
   }
+=======
+>>>>>>> a23cc1ceea727648357c1cbae95172f946211ae3
