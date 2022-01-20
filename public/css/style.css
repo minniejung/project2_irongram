@@ -1,6 +1,6 @@
 /* Minyoung edited : Starts from here */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 
 body {
   font-family: "Inter", sans-serif;
@@ -110,6 +110,7 @@ body {
   gap: 10px;
   width: 100%;
   margin-bottom: 30px;
+  overflow-x: scroll;
 }
 
 .oneEventPreview {

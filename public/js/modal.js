@@ -1,36 +1,36 @@
-const modal = document.getElementById("modal");
-const btnModal = document.getElementById("btn-modal");
-const closeBtn = modal.querySelector(".close");
+const modal = document.querySelectorAll(".modal");
+const btnModal = document.querySelectorAll(".btn-modal");
+const closeBtn = document.querySelectorAll(".close");
 
-function modalOn() {
-  modal.style.display = "flex";
+function modalOn(item) {
+  const popup = item.parentElement.childNodes[1];
+  popup.style.display = "flex";
 }
 
-function modalOff() {
-  modal.style.display = "none";
-}
+function modalOff(item) {
+  const popup = item.parentElement.parentElement.parentElement;
+  // console.log(popup);
+  popup.style.display = "none";
+} 
 
-btnModal.addEventListener("click", (e) => {
-  modalOn();
+btnModal.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    modalOn(el);
+  });
 });
 
-closeBtn.addEventListener("click", (e) => {
-  modalOff();
+closeBtn.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    modalOff(el);
+  });
 });
 
-function isModalOn() {
-  return modal.style.display === "flex";
-}
-
-modal.addEventListener("click", (e) => {
-  const evTarget = e.target;
-  if (evTarget.classList.contains("modal-overlay")) {
-    modalOff();
-  }
-});
-
-window.addEventListener("keyup", (e) => {
-  if (isModalOn() && e.key === "Escape") {
-    modalOff();
-  }
-});
+// modal.forEach((el) => {
+//   el.addEventListener("click", (e) => {
+//     const evTarget = e.target;
+//     console.log(evTarget);
+//     if (evTarget.classList.contains("modal-overlay")) {
+//       modalOff(el);
+//     }
+//   });
+// });
