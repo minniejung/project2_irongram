@@ -1,5 +1,5 @@
 #modal.modal-overlay {
-  display: flex;
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
