@@ -5,7 +5,7 @@ const uploader = require("../config/cloudinary");
 const cloudinary = require("cloudinary");
 const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
 
-router.get("/posts", async (req, res) => {
+router.get("/explorer", async (req, res) => {
   try {
     const posts = await PostModel.find();
     console.log(req.session.currentUser);

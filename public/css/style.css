@@ -6,8 +6,11 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   margin: 0;
+  
 }
-
+textarea{
+  border:none
+}
 * {
   font-family: "Inter";
   margin: 0;
@@ -18,11 +21,10 @@ body {
 a {
   text-decoration: none;
 }
-input[type="search"]{
-  font-family: FontAwesome;
-}
+
 header {
   position: fixed;
+  z-index: 99;
   top: 0;
   left: 0;
   width: 100vw;
@@ -107,7 +109,6 @@ body {
   border-radius: 50%;
   text-align: center;
   border: 3px solid white;
-<<<<<<< HEAD
 }
 
 body {
@@ -115,6 +116,11 @@ body {
   padding: 0 200px;
 }
 
+/*UPLOAD*/
+label[for="upload-btn"] {
+  cursor: pointer;
+  margin-top: 1rem;
+}
 
 /*SEARCH BAR*/
 .searcharea{
@@ -141,7 +147,8 @@ border-radius: 6px;
   padding: 0;
   position: relative;
 }
-#result-searsch-bar{
+#result-search-bar{
+  margin-top: 3px;
   position: absolute;
   width: 100%;
   display: none;
@@ -169,6 +176,19 @@ border-radius: 6px;
   object-fit: cover;
   width: 56px;
   height: 56px;
-=======
->>>>>>> origin/user
 }
+
+/**/
+.section-timeline-post{
+  position: relative;
+}
+.blur-body{
+  position: absolute;
+  z-index: -1;
+  left: 29.21%;
+  right: 27.99%;
+  top: 49.17%;
+  bottom: -5.7%;
+  background: linear-gradient(180deg, rgba(0, 194, 255, 0.46) 0%, rgba(51, 0, 255, 0.28) 100%);
+  filter: blur(200px);
+  }

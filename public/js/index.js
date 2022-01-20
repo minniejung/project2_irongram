@@ -11,7 +11,8 @@ const btnSaturation = document.getElementById("btn-brigthness-reset");
 const btnContrast = document.getElementById("btn-brigthness-reset");
 const inputUpload = document.getElementById("upload-btn");
 const descriptionInput = document.getElementById("description");
-
+const uploadBtn = document.getElementById("upload-btn");
+const addBtn = document.getElementById("btn-add-image");
 let payload = {
   vignette: 0,
   filter: "",
@@ -82,6 +83,9 @@ function handleSaturation() {
 }
 
 //EVENTS LISTENERS
+uploadBtn.addEventListener("change", ()=>{
+  addBtn.click()
+})
 btnVignette.addEventListener("click", () => {
   payload.vignette = null;
 
