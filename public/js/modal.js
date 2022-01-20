@@ -9,7 +9,6 @@ function modalOn(item) {
 
 function modalOff(item) {
   const popup = item.parentElement.parentElement.parentElement;
-  // console.log(popup);
   popup.style.display = "none";
 }
 
