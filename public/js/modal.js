@@ -2,6 +2,11 @@ const modal = document.querySelectorAll(".modal");
 const btnModal = document.querySelectorAll(".btn-modal");
 const closeBtn = document.querySelectorAll(".close");
 
+const joinList = document.querySelectorAll(".joinList");
+const joinBtn = document.querySelectorAll(".joinBtn");
+
+// Event modal
+
 function modalOn(item) {
   const popup = item.parentElement.childNodes[1];
   popup.style.display = "flex";
@@ -33,3 +38,16 @@ closeBtn.forEach((el) => {
 //     }
 //   });
 // });
+
+//
+
+log(joinList);
+function modalInModalOn() {
+  joinList.style.display = "flex";
+}
+
+joinBtn.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    modalInModalOn(el);
+  });
+});

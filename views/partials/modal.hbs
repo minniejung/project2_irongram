@@ -20,21 +20,14 @@
       <button id="joinBtn" data-id="{{eventDetail._id}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
     </div>
 
-        <div id="joinList">
+    <div class="joinList">
       <p>People who's coming!</p>
-        HOST: {{eventDetail.host_id.name}}
+        HOST: {{this.host_id.name}}
         <ul id='list-members'>
-          {{#each eventDetail.join}}
+          {{#each this.join}}
             <li>{{this.name}}</li>
           {{/each}}
         </ul>
-    </div>
-
-    <div id="maybeList">
-      <p>People who's MAYBE coming!</p>
-      <ul>
-        <li>Scoby</li>
-      </ul>
     </div>
 
   </div>
