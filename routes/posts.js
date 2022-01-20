@@ -11,7 +11,7 @@ router.get("/explorer", async (req, res) => {
     console.log(req.session.currentUser);
     res.render("post/posts", {
       posts,
-      css: ["images.css"],
+      css: ["explorer.css"],
     });
   } catch (err) {
     console.error(err);

@@ -1,0 +1,13 @@
+.container-images{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.container-images .images-profiles{
+    border-radius: 10px;
+    width: 175px;
+    height: 175px;
+    object-fit: cover;
+}

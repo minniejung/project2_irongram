@@ -1,80 +1,96 @@
-<h1>UPDATE</h1>
 <div id="container-image">
-
-  <img
-    src="{{post.urlMedia}}"
-    id="image-uploaded"
-    name="image"
-    data-id="{{post._id}}"
-    data-fileName="{{post.fileName}}"
-    alt="image-create"
-  />
-  <div id="filters">
-    <div data-filter="al_dente" class="filter">al_dente</div>
-    <div data-filter="athena" class="filter">athena</div>
-    <div data-filter="audrey" class="filter">audrey</div>
-    <div data-filter="aurora" class="filter">aurora</div>
-    <div data-filter="daguerre" class="filter">daguerre</div>
-    <div data-filter="eucalyptus" class="filter">eucalyptus</div>
-    <div data-filter="fes" class="filter">fes</div>
-    <div data-filter="hairspray" class="filter">hairspray</div>
-    <div data-filter="hokusai" class="filter">hokusai</div>
-    <div data-filter="incognito" class="filter">incognito</div>
-    <div data-filter="primavera" class="filter">primavera</div>
-    <div data-filter="red_rock" class="filter">red_rock</div>
-    <div data-filter="refresh" class="filter">refresh</div>
-    <div data-filter="sizzle" class="filter">sizzle</div>
-    <div data-filter="sonnet" class="filter">sonnet</div>
-    <div data-filter="ukulele" class="filter">ukulele</div>
-    <div data-filter="zorro" class="filter">zorro</div>
+  <div class="content-image">
+    <img
+      src="{{post.urlMedia}}"
+      id="image-uploaded"
+      name="image"
+      data-id="{{post._id}}"
+      data-fileName="{{post.fileName}}"
+      alt="image-create"
+    />
+    <input id="description" name="description" type="textarea" />
   </div>
-  <label for="description">description</label>
-  <input
-    id="description"
-    name="description"
-    type="textarea"
-    value="{{post.description}}"
-  />
-  <label for="vignette">vignette</label>
-  <button id="btn-vignette-reset">Réinitialiser</button>
-  <input
-    type="range"
-    name="vignette"
-    min="0"
-    max="100"
-    step="1"
-    id="vignette"
-  />
-  <label for="brightness">Brightness</label>
-  <button id="btn-brigthness-reset">Réinitialiser</button>
-  <input
-    type="range"
-    name="brigthness"
-    min="-100"
-    max="100"
-    step="1"
-    id="brigthness"
-  />
-  <label for="contrast">Contrast</label>
-  <button id="btn-contrast-reset">Réinitialiser</button>
-  <input
-    type="range"
-    name="contrast"
-    min="-100"
-    max="100"
-    step="1"
-    id="contrast"
-  />
-  <label for="saturation">Saturation</label>
-  <button id="btn-staturation-reset">Réinitialiser</button>
-  <input
-    type="range"
-    name="saturation"
-    min="-100"
-    max="100"
-    step="1"
-    id="saturation"
-  />
-  <a href="/posts">Valider</a>
-  <a href="/posts/delete/{{post._id}}">DELTE</a>
+  <div class="controls-filters">
+    <div id="filters">
+      <div data-filter="audrey" class="filter">audrey</div>
+      <div data-filter="aurora" class="filter">aurora</div>
+      <div data-filter="eucalyptus" class="filter">eucalyptus</div>
+      <div data-filter="hairspray" class="filter">hairspray</div>
+      <div data-filter="primavera" class="filter">primavera</div>
+      <div data-filter="red_rock" class="filter">red_rock</div>
+      <div data-filter="sizzle" class="filter">sizzle</div>
+      <div data-filter="ukulele" class="filter">ukulele</div>
+      <div data-filter="zorro" class="filter">zorro</div>
+    </div>
+
+    <div>
+      <label for="vignette">Vignette</label>
+      <div style="display:flex; flex-direction : row;">
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="vignette"
+            min="0"
+            max="100"
+            step="1"
+            id="vignette"
+          />
+        </div>
+        <button id="btn-vignette-reset">Réinitialiser</button>
+      </div>
+      <label for="brightness">Brightness</label>
+      <div style="display:flex; flex-direction : row;">
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="brigthness"
+            min="-100"
+            max="100"
+            step="1"
+            id="brigthness"
+          />
+        </div>
+        <button id="btn-brigthness-reset">Réinitialiser</button>
+      </div>
+
+      <label for="contrast">Contrast</label>
+      <div style="display:flex; flex-direction : row;">
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="contrast"
+            min="-100"
+            max="100"
+            step="1"
+            id="contrast"
+          />
+        </div>
+        <button id="btn-contrast-reset">Réinitialiser</button>
+      </div>
+      <label for="saturation">Saturation</label>
+      <div style="display:flex; flex-direction : row; margin-top:10px">
+        <div class="inner-range">
+          <input
+            class="range-input"
+            type="range"
+            name="saturation"
+            min="-100"
+            max="100"
+            step="1"
+            id="saturation"
+          />
+        </div>
+        <button id="btn-saturation-reset">Réinitialiser</button>
+      </div>
+      <div id="buttons-post-page">
+        <a class="btn btn-validate" href="/posts">Save</a>
+        <a class="btn btn-delete" href="/posts/delete/{{post._id}}">Delete</a>
+      </div>
+    </div>
+
+  </div>
+
 </div>
