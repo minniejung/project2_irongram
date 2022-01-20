@@ -8,10 +8,9 @@ const exposeLoginStatus = require("../middlewares/exposeLoginStatus");
 router.get("/explorer", async (req, res) => {
   try {
     const posts = await PostModel.find();
-    console.log(req.session.currentUser);
     res.render("post/posts", {
       posts,
-      css: ["images.css"],
+      css: ["explorer.css"],
     });
   } catch (err) {
     console.error(err);
@@ -60,7 +59,6 @@ router.put("/posts/update/:id", async (req, res) => {
   try {
     const { brigthness, contrast, saturation, vignette, filter, description } =
       req.body;
-    console.log(req.body.description);
     let post = await PostModel.findById(req.params.id);
     const newUrl = cloudinary.url(`${post.filename}.jpg`, {
       transformation: [
@@ -91,7 +89,7 @@ router.put("/posts/update/:id", async (req, res) => {
 
     post = await PostModel.findByIdAndUpdate(
       req.params.id,
-      { urlMedia: newUrl, description: description },
+      { urlMedia: newUrl, description },
       { new: true }
     );
     res.status(201).json(post);
@@ -105,10 +103,11 @@ router.get("/posts/:id", async (req, res) => {
       _id: req.params.id,
       likes: { $in: req.session.currentUser._id },
     });
+    const post = await PostModel.findById(req.params.id).populate("user_id");
     res.render("post/single", {
-      post: await PostModel.findById(req.params.id),
+      post,
       likedPost: likedPost ? true : false,
-      css: ["images.css"],
+      css: ["index.css", "single-post.css"],
       js: ["edit-image.js", "likes.js"],
     });
   } catch (err) {
@@ -119,16 +118,18 @@ router.get("/posts/update/:id", exposeLoginStatus, async (req, res, next) => {
   try {
     res.render("post/post-update", {
       post: await PostModel.findById(req.params.id),
+      js: ["edit-image.js", "likes.js"],
+      css: ["images.css"],
     });
   } catch (err) {
     next(err);
   }
 });
 
-router.post("/posts/delete/:id", async (req, res) => {
+router.get("/posts/delete/:id", async (req, res) => {
   try {
-    await PostModel.findByIdAndDelete(req.params.id);
-    res.redirect("/posts");
+    const post = await PostModel.findByIdAndDelete(req.params.id);
+    res.redirect(`/profile/${post.user_id}`);
   } catch (err) {
     console.error(err);
   }
@@ -138,7 +139,6 @@ router.post("/posts/delete/:id", async (req, res) => {
 router.get("/like/:id", async (req, res, next) => {
   try {
     const postUserId = await PostModel.findById(req.params.id);
-    // console.log(postUserId, "tt");
     res.status(200).json(postUserId.likes.length);
   } catch (e) {
     next(e);
@@ -147,13 +147,10 @@ router.get("/like/:id", async (req, res, next) => {
 
 router.post("/addlike/:id", async (req, res, next) => {
   try {
-    console.log("I am adding likes");
     const foundLike = await PostModel.findOne({
       _id: req.body.postId,
       likes: { $in: req.body.currentUserId },
     });
-    console.log(foundLike, "like");
-    // console.log(req.body.postId);
     if (foundLike) {
       //unlike
       await PostModel.findByIdAndUpdate(
@@ -180,7 +177,6 @@ router.post("/addlike/:id", async (req, res, next) => {
       res.status(201).json({ likedPost: true });
     }
   } catch (e) {
-    console.log(e);
     next(e);
   }
 });

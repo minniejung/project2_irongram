@@ -51,11 +51,13 @@
 <div class="user-pictures">
   {{#if user.posts}}
     {{#each user.posts}}
+    <a class="link-picture-profile" href="/posts/{{this._id}}">
       <img 
         class="user-picture"
         src="{{this.urlMedia}}"
         alt="{{this.name}}media"
       />
+      </a>
     {{/each}}
   {{/if}}
 </div>
