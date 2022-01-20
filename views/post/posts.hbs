@@ -1,8 +1,4 @@
-<form action="/posts/upload" method="post" enctype="multipart/form-data">
-  <label for="upload-btn">Choose File</label>
-  <input type="file" name="image" id="upload-btn" />
-  <button id="btn-add-image">Add</button>
-</form>
+
 <div class="container-images">
   {{#each posts}}
     <a href="/profile/{{this.user_id}}">

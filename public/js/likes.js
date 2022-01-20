@@ -6,7 +6,6 @@ const displayLikesNumbers = (likes, likesCount) => {
 
 // Like
 const listenOnLikeBtn = (e) => {
-  console.log("I am listening on like button");
   const payloadUsers = {
     currentUserId: e.target.dataset.currentuser,
     likesId: e.target.dataset.id,
@@ -14,7 +13,6 @@ const listenOnLikeBtn = (e) => {
   };
   const likesCountHTML = e.target.parentElement.querySelector(".likes-count");
   addLike(e.target.dataset.id, payloadUsers).then((dbRes) => {
-    console.log(dbRes.data);
     togglingLikeBtn(dbRes.data.likedPost, e.target);
     getLike(payloadUsers.postId)
       .then((likesCount) =>
@@ -23,14 +21,9 @@ const listenOnLikeBtn = (e) => {
       .catch((e) => console.error(e));
   });
 };
-
-// listenOnLikeBtn();
-
 const showEvent = (e) => console.log(e);
 const getLike = (id) => axios.get(`/like/${id}`);
-
 const addLike = (id, payload) => axios.post(`/addlike/${id}`, payload);
-console.log(likeBtns);
 
 likeBtns.forEach((likeBtn) => {
   likeBtn.addEventListener("click", listenOnLikeBtn);

@@ -1,15 +1,59 @@
-.container-images {
+#container-image {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+ gap: 50px;
   justify-content: flex-start;
-  gap: 20px;
   width: 960px;
   margin: 0 auto;
   margin-top: 200px
 }
+#container-image #image-uploaded{
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.controls-filters{
+  display: flex;
+  width: 253px;
+  flex-direction: column;
+  width: 50%;
+  padding: 15px;
+  background: rgba(245, 245, 245, 0.6);
+  border-radius: 25px;
+  backdrop-filter: blur(150px);
+  border-radius: 32px;
+}
+.content-image{
+  display: flex;
+  flex-direction: column;
+}
+.content-image #description{
+  margin-top: 10px;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 10px;
+   border:none;
+   box-shadow: inset -3px -3px 7px #FFFFFF, inset 3px 3px 7px rgba(156, 156, 156, 0.48);
+}
+.input-range-image{
+  width: 100%;
+  border-radius: 25px;
+  
+}
+.range-input{
+  width: 100%;
+}
 
+.inner-range{
+  width: 331px;
+  padding: 4px 14px;
+  background: #FFFFFF;
+  box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 7px rgb(156 156 156 / 48%);
+  border-radius: 100px;
+  margin: 0 auto;   
+}
 .images-profiles {
   width: 275px;
   object-fit: cover;
@@ -17,16 +61,19 @@
 }
 
 #filters {
-  width: 500px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
 }
 
 .filter {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: #37383D;
 }
 
 .filter:hover {
