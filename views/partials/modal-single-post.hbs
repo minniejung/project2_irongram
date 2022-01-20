@@ -1,0 +1,29 @@
+<div class="modal modal-overlay">
+  <div class="modal-window">
+    <div class="title">
+      <h2>{{this.title}}</h2>
+      <div class="close"><i class="far fa-times-circle"></i></div>
+    </div>
+    <div class="content">
+      <img src="{{post.urlMedia}}" class="image-single" alt="post" />
+
+      <span class="likes-count">{{post.likes.length}}</span>
+      <i
+        {{! class="btn-like far fa-heart" }}
+        data-id="{{post.user_id}}"
+        data-postid="{{post._id}}"
+        data-currentuser="{{currentUser._id}}"
+      ></i>
+    </div>
+
+    {{#compare post.user_id currentUser._id operator="=="}}
+      <a href="/posts/update/{{post._id}}">EDIT TODO</a>
+      <button
+        id="btn-delete-image"
+        data-id="{{post._id}}"
+        data-filename="{{post.filename}}"
+      >Delete</button>
+    {{/compare}}
+
+  </div>
+</div>
