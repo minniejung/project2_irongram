@@ -1,10 +1,13 @@
+{{! ⬇︎⬇︎⬇︎⬇︎⬇︎ Event preview (Minyoung) ⬇︎⬇︎⬇︎⬇︎⬇︎ }}
 <div class="eventPreview">
   {{#each events}}
-    <div class="oneEventPreview"><a href="/events/{{_id}}"><img
-          src="{{this.image}}"
-        /></a></div>
+    <div class="oneEventPreview">
+      {{> modal this}}
+      <a class="btn-modal"><img src="{{this.image}}"/></a>
+    </div>
   {{/each}}
 </div>
+{{! ⬆︎⬆︎⬆︎⬆︎⬆︎ Event preview (Minyoung) ⬆︎⬆︎⬆︎⬆︎⬆︎ }}
 
 <section class="section-timeline-post">
   {{#unless users}}
@@ -13,21 +16,30 @@
   {{#each sortedPosts}}
   {{!-- {{likedPost}} --}}
 
-  <div>
- 
-    <div width="500px">
+  <div class="post">
+    <div class="user-name-post">
+      <img class="profile-image" src="{{user.image}}" alt="" />
       <a href="/profile/{{this.user_id}}">{{this.user_name}}</a>
+    </div>
+
+    <div class="img-block">
       <img src="{{this.urlMedia}}" />
     </div>
-    <span class="likes-count">{{this.likes.length}}</span>
-    <i
+
+    <div class="like-section">
+
+      <i style="color: Tomato ; font-size: 25px ; cursor:pointer"
       {{#isLiked ../currentUser._id this.likes}}
 
-{{/isLiked}}
+      {{/isLiked}}
       data-id="{{this.user_id}}"
       data-postid="{{this._id}}"
       data-currentuser="{{../currentUser._id}}"
     ></i>
+      <span class="likes-count">{{this.likes.length}}</span>
+
+    </div>
+
   </div>
    <div class="blur-body"></div>
   {{/each}}
