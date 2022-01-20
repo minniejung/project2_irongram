@@ -1,5 +1,5 @@
 const btnDeleteImage = document.getElementById("btn-delete-image");
-
+console.log(btnDeleteImage);
 const deleteImage = (id, payload) => axios.post(`/posts/delete/${id}`, payload);
 //Handlers
 function handleDeleteImage(e) {

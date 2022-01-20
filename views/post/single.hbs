@@ -1,20 +1,40 @@
-<h1>SINGLE</h1>
-<img src="{{post.urlMedia}}" class="image-single" alt="post" />
+<div class="post">
+  <div class="user-name-post">
+    <img class="profile-image" src="{{post.user_id.image}}" alt="user-image" />
+    <a class="username-header-post" href="/profile/{{post.user_id._id}}">{{post.user_name}}</a>
+  </div>
+  <div class="img-block">
+    <img src="{{post.urlMedia}}" />
+  </div>
 
-<span class="likes-count">{{post.likes.length}}</span>
-<i
-  data-id="{{post.user_id}}"
-  data-postid="{{post._id}}"
-  data-currentuser="{{currentUser._id}}"
-></i>
-<p>desc</p>
-{{post.description}}
-{{#compare post.user_id currentUser._id operator="=="}}
-  <a href="/posts/update/{{post._id}}">EDIT TODO</a>
-  <button
-    id="btn-delete-image"
-    data-id="{{post._id}}"
-    data-filename="{{post.filename}}"
-  >Delete</button>
-{{/compare}}
-{{! TODO SHOW  DESCRIPTION/ TAGS/ COMMENTS/ NAME USER/LIKES}}
+  <div class="desc-post">
+  <div class="like-section">
+ 
+      <i style="color: Tomato ; font-size: 25px ; cursor:pointer"
+      {{#isLiked ../currentUser._id post.likes}}
+
+      {{/isLiked}}
+      data-id="{{post.user_id._id}}"
+      data-postid="{{post._id}}"
+      data-currentuser="{{../currentUser._id}}"
+    ></i>
+      <span class="likes-count">{{post.likes.length}} <span style="font-weight: 700; margin-bottom:30px">Likes</span> </span>
+
+    </div>
+  {{post.description}}
+  </div>
+  {{#compare post.user_id._id currentUser._id operator="=="}}
+  <div id="buttons-post-page">
+    <a class="btn btn-validate" href="/posts/update/{{post._id}}">EDIT</a>
+    <a
+      id="btn-delete-image"
+      href="/posts/delete/{{post._id}}"
+      class="btn btn-delete"
+      data-id="{{post._id}}"
+      data-filename="{{post.filename}}"
+    >Delete</a>
+    </div>
+  {{/compare}}
+</div>
+<div class="blur-body"></div>
+
