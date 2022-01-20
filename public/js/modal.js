@@ -3,8 +3,7 @@ const btnModal = document.querySelectorAll(".btn-modal");
 const closeBtn = document.querySelectorAll(".close");
 
 const modalJoin = document.querySelector(".modalJoin");
-const joinBtn = document.querySelectorAll(".joinBtn");
-const modalWindow = document.querySelector(".modal-window");
+const joinBtn = document.querySelector("#joinBtn");
 
 // Event modal
 

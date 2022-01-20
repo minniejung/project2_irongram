@@ -1,9 +1,4 @@
-h2,
-p {
-  margin: 15px 0;
-}
-
-#modal {
+.modal {
   display: none;
   top: 0;
   left: 0;
@@ -13,11 +8,9 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 90;
 }
 
 .modal-overlay {
-  display: none;
   background: rgba(44, 42, 42, 0.664);
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
@@ -58,8 +51,7 @@ p {
   display: flex;
   flex-direction: row;
   padding: 0 20px;
-  gap: 30px;
-  margin-top: 50px;
+  gap: 50px;
 }
 
 .content img {
@@ -77,17 +69,7 @@ p {
   margin: 20px 0;
 }
 
-#joinBtn {
-  padding: 5px 30px 5px 30px;
-  border-radius: 4px;
-  background: #ffffff;
-  border: 1px solid #e0e6ef;
-  box-sizing: border-box;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.modalJoin {
+.joinList {
   display: none;
   top: 0;
   left: 0;
@@ -97,5 +79,5 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 3;
 }
