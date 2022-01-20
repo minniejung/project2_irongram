@@ -164,12 +164,9 @@ label[for="upload-btn"] {
   padding: 10px;
   font-size: 0.8em;
   font-weight: 500;
-<<<<<<< HEAD
-=======
 }
 .user-result {
   font-weight: 700;
->>>>>>> posts
 }
 .link-result {
   display: flex;
@@ -203,8 +200,6 @@ label[for="upload-btn"] {
   );
   filter: blur(200px);
 }
-<<<<<<< HEAD
-=======
 
 /*BUTTON*/
 #buttons-post-page .btn {
@@ -222,4 +217,3 @@ label[for="upload-btn"] {
   background-color: white;
   padding: 10px 40px;
 }
->>>>>>> posts
