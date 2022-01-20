@@ -25,7 +25,7 @@ router.post(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { name, email, password, bio, existingImage } = req.body;
+      const { name, lastname, email, password, bio, existingImage } = req.body;
       let newImage;
       if (req.file) {
         newImage = req.file.path;
@@ -36,6 +36,7 @@ router.post(
         id,
         {
           name,
+          lastname,
           email,
           password,
           bio,
@@ -43,7 +44,7 @@ router.post(
         },
         { new: true }
       );
-      res.redirect(`/posts`);
+      res.redirect(`/profile/${id}`);
     } catch (e) {
       next(e);
     }

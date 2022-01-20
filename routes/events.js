@@ -3,12 +3,14 @@ const Event = require("../models/Event");
 const uploader = require("./../config/cloudinary");
 const moment = require("moment");
 
+// Sort events by date (HP)
 const sortedElementsByDateDesc = (items) =>
   Object.assign([], items).sort((a, b) => {
     let datea = new Date(a.date);
     let dateb = new Date(b.date);
     return   datea - dateb;
   });
+
 // GET Event List
 router.get("/events", async (req, res) => {
   try {
@@ -17,13 +19,13 @@ router.get("/events", async (req, res) => {
  console.log(sortedEvent)
     req.session.events = sortedEvent;
     res.render("event/events", {
-      css: ["event.css"],
-      js: ["event.js", "event-moment.js"],
+      css: ["event.css", "modal.css"],
+      js: ["event.js", "event-moment.js", "modal.js"],
     });
   } catch (e) {
     console.error(e);
   }
-})
+});
 
 // GET Event create
 

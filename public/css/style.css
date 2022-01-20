@@ -1,13 +1,18 @@
 /* Minyoung edited : Starts from here */
 
-@import url("https://rsms.me/inter/inter.css");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
 
-html {
+body {
   font-family: "Inter", sans-serif;
+  font-size: 16px;
+  margin: 0;
 }
 
 * {
   font-family: "Inter";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
@@ -69,10 +74,15 @@ textarea:focus, input:focus{
   color: #2bc5fa;
 }
 
+body {
+  background-color: #fafafa;
+  padding: 0 200px;
+  margin-top: 100px;
+}
+
 /* Event preview nav */
 
 .eventPreview {
-  margin-top: 100px;
   background-color: white;
   border: 2px solid lightgray;
   padding: 15px;
@@ -97,6 +107,7 @@ textarea:focus, input:focus{
   border-radius: 50%;
   text-align: center;
   border: 3px solid white;
+<<<<<<< HEAD
 }
 
 body {
@@ -158,4 +169,6 @@ border-radius: 6px;
   object-fit: cover;
   width: 56px;
   height: 56px;
+=======
+>>>>>>> origin/user
 }
