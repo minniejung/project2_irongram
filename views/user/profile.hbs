@@ -3,28 +3,46 @@
 
   <img class="profile-image" src="{{user.image}}" alt="" />
 
-  <div>
-    <div>
-      <h1>{{user.name}}</h1>
-      {{#compare currentUser._id user._id operator="=="}}
-        <a href="/settings/{{user._id}}">Edit Profile</a>
-      {{/compare}}
+  <div class="info-header">
+    <div class="profile-header">
+      <h2>{{user.name}}</h2>
+      <div>
+        {{#compare currentUser._id user._id operator="=="}}
+          <a class="edit-profile" href="/settings/{{user._id}}">Edit Profile</a>
+
+        {{/compare}}
+
+        {{#compare currentUser._id user._id operator="!="}}
+          <button
+            {{#if followedUser}}
+              class="unfollow"
+              {{else}}
+                class="follow"
+            {{/if}}
+            {{! class="follow" }}
+            id="follow"
+            data-id="{{user._id}}"
+            data-currentuser="{{currentUser._id}}"
+          >
+            {{#if followedUser}}
+              Unfollow
+            {{else}}
+              Follow
+            {{/if}}
+          </button>
+        {{/compare}}
+      </div>
     </div>
-    <span id="followers-count">{{user.followers.length}}</span>
-    <span id="following-count">{{user.following.length}}</span>
-    {{#compare currentUser._id user._id operator="!="}}
-      <button
-        id="follow"
-        data-id="{{user._id}}"
-        data-currentuser="{{currentUser._id}}"
-      >
-        {{#if followedUser}}
-          Unfollow
-        {{else}}
-          Follow
-        {{/if}}
-      </button>
-    {{/compare}}
+    <div class="infos">
+      <span><strong>{{user.posts.length}}</strong> posts</span>
+      <span id="followers-count"><strong>{{user.followers.length}}</strong>
+        followers</span>
+      <span id="following-count"><strong>{{user.following.length}}</strong>
+        following
+      </span>
+    </div>
+    <p><strong class="strong">{{user.name}} {{user.lastname}}</strong><br
+      />{{user.bio}}</p>
     {{! </div> }}
   </div>
 
@@ -33,7 +51,7 @@
 <div class="user-pictures">
   {{#if user.posts}}
     {{#each user.posts}}
-      <img
+      <img 
         class="user-picture"
         src="{{this.urlMedia}}"
         alt="{{this.name}}media"

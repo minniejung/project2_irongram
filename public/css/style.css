@@ -1,13 +1,18 @@
 /* Minyoung edited : Starts from here */
 
-@import url("https://rsms.me/inter/inter.css");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
 
-html {
+body {
   font-family: "Inter", sans-serif;
+  font-size: 16px;
+  margin: 0;
 }
 
 * {
   font-family: "Inter";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
