@@ -106,28 +106,22 @@ body {
 .main-container {
   margin: 0 auto;
   width: 960px;
-  position: relative;
 }
 
 /* Event preview nav */
+
 .eventPreview {
+  background-color: white;
+  border: 2px solid lightgray;
   padding: 15px;
   display: inline-flex;
   flex-direction: row;
   gap: 10px;
-  overflow-y: hidden;
-  width: 775px;
-  margin: 0 100px 30px 100px;
+  width: 100%;
+  margin-bottom: 30px;
   overflow-x: scroll;
 }
-::-webkit-scrollbar {
-  width: 5px;    
-  height: 7px;           /* width of the entire scrollbar */
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;       /* roundness of the scroll thumb */
-  background-color: rgba(158, 158, 160, 0.5);  /* creates padding around scroll thumb */
-}
+
 .oneEventPreview {
   width: 86px;
   height: 86px;
@@ -249,11 +243,11 @@ label[for="upload-btn"] {
 }
  .btn-validate {
   background: #00c2ff;
-  padding: 5px 30px;
+  padding: 10px 60px;
   color: white;
 }
  .btn-delete {
   color: #c30000;
   background-color: white;
-  padding: 5px 30px;
+  padding: 10px 40px;
 }
