@@ -3,7 +3,7 @@
   <div id="profile-update">
     <div style="display: flex; align-items: center; gap:20px">
       <img src="{{user.image}}" />
-      <p>{{user.name}}</p>
+      <p  style="font-weight: 600;">{{user.name}}</p>
     </div>
     <p>Chose your best hacker name !</p>
   </div>
@@ -59,7 +59,7 @@
 
     <div class="content-input">
       <label for="image">Image</label>
-      <input type="file" id="image" name="image" />
+      <input type="file" id="image" name="image" value="Upload Image" />
       <input
         type="file"
         id="image"
@@ -69,10 +69,10 @@
       />
     </div>
     <div class="btn-edit">
-      <a class="btn btn-validate">Update</a>
+      <input type="submit" class="btn btn-validate" value="Save">
       <a class="btn btn-delete" href="/auth/logout">Log Out</a>
       <a
-        class="btn btn-delete"
+        style='font-weight:600; color: red'
         href="/settings/delete/{{user._id}}"
       >Delete Profile</a>
     </div>
