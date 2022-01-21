@@ -1,9 +1,10 @@
-<div class="modal modal-overlay">
+{{!-- <div id="modal" class="modal-overlay">
   <div class="modal-window">
     <div class="title">
       <h2>{{this.title}}</h2>
       <div class="close"><i class="far fa-times-circle"></i></div>
     </div>
+
     <div class="content">
       <img src="{{this.image}}">
       <div class="modalDetail">
@@ -17,19 +18,26 @@
     </div>
     
     <div class="joinBtn">
-      <button id="joinBtn" data-id="{{eventDetail._id}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
+      <button id="joinBtn" data-id="{{this.host_id.name}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
     </div>
+  </div>
+</div>
 
-    <div class="joinList">
-      <p>People who's coming!</p>
-        HOST: {{this.host_id.name}}
-        <ul id='list-members'>
+{{!-- join modal --}}
+
+<div id="modalJoin" class="modal-overlay">
+  <div class="modal-window">
+    <div class="title">
+      <h2>People who's coming!</h2>
+      <div class="close"><i class="far fa-times-circle"></i></div>
+    </div>
+      <div class="content">
+        <p>HOST: {{this.host_id.name}}</p>
+        <ul id="list-members">
           {{#each this.join}}
             <li>{{this.name}}</li>
           {{/each}}
         </ul>
+      </div>
     </div>
-
-  </div>
 </div>
-

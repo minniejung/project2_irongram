@@ -1,12 +1,61 @@
 {{! ⬇︎⬇︎⬇︎⬇︎⬇︎ Event preview (Minyoung) ⬇︎⬇︎⬇︎⬇︎⬇︎ }}
 <div class="eventPreview">
   {{#each events}}
+      {{this.name}}
     <div class="oneEventPreview">
       {{> modal this}}
-      <a class="btn-modal"><img src="{{this.image}}"/></a>
+      <div index="{{@key}}" class="btn-modal"><img src="{{this.image}}"/></div>
     </div>
   {{/each}}
 </div>
+
+{{#each events}}
+<div class="modals modal-overlay" index="{{@key}}">
+  <div class="modal-window">
+    <div class="modalTitle">
+      <h2>{{this.title}}</h2>
+      <div class="close"><i class="far fa-times-circle"></i></div>
+    </div>
+
+    <div class="content">
+      <img src="{{this.image}}">
+      <div class="modalDetail">
+        <h3>Host : {{this.host_id.name}}</h3>
+        <p><b>Date: </b>{{this.date}}</p>
+        <p><b>Time: </b>{{this.time}}</p>
+        <p><b>Address: </b>{{this.address}}</p>
+        <p><b>Price: </b>{{this.price}}</p>
+        <p><b>Detail: </b>{{this.description}}</p>
+        
+        <div class="modalJoinBtnDiv">
+          <button class="modalJoinBtn" data-id="{{this.host_id.name}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+{{!-- join modal --}}
+
+{{#each events}}
+<div class="modalJoin">
+  <div class="modal-window">
+    <div class="title">
+      <h2>People who's coming!</h2>
+      <div class="closeJoinModal"><i class="far fa-times-circle"></i></div>
+    </div>
+      <div class="content">
+        <p>HOST: {{this.host_id.name}}</p>
+        <ul id="list-members">
+          {{#each this.join}}
+            <li>{{this.name}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+</div>
+{{/each}}
+
 {{! ⬆︎⬆︎⬆︎⬆︎⬆︎ Event preview (Minyoung) ⬆︎⬆︎⬆︎⬆︎⬆︎ }}
 
 <section class="section-timeline-post">

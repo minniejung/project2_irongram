@@ -80,7 +80,7 @@ router.get("/events/:id", async (req, res) => {
     });
   } catch (e) {
     console.error(e);
-  }
+  } 
 });
 
 // GET Event update
@@ -187,7 +187,7 @@ router.post("/events/join/:id", async (req, res, next) => {
         },
         { new: true }
       );
-      res.status(201).send(" not join ok");
+      res.status(201).send("not join ok");
     }
   } catch (e) {
     next(e);

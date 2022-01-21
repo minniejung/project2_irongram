@@ -1,40 +1,41 @@
-<h1>Event single</h1>
+  <div class="edtiDiv">
+    <div class="editDeleteBtn"><a href="/events/update/{{eventDetail._id}}">MODIFY</a></div>
+    <div class="editDeleteBtn"><a id ="deleteEvent">DELETE</a></div>
+  </div>
 
+  <div class="evtDetailDiv">
     <img src="{{eventDetail.image}}" class="eventImg">
     <div class="eventDetail">
-      <h2>{{eventDetail.title}}</h2>
-      <h3>Host : {{eventDetail.host_id.name}}</h3>
-      <div>Date: {{eventDetail.date}}</div>
-      <div>Time: {{eventDetail.time}}</div>
-      <div>Address: {{eventDetail.address}}</div>
-      <div>Price: {{eventDetail.price}}</div>
-      <div>Detail: {{eventDetail.description}}</div>
+      <h2>{{eventDetail.title}}</h2><br>
+      <p><b>Host : </b>{{eventDetail.host_id.name}}</p>
+      <p><b>Date : </b>{{eventDetail.date}}</p>
+      <p><b>Time : </b>{{eventDetail.time}}</p>
+      <p><b>Address : </b>{{eventDetail.address}}</p>
+      <p><b>Price : </b>{{eventDetail.price}}</p>
+      <p><b>Detail : </b>{{eventDetail.description}}</p><br>
+      <button id="joinBtnInDetail" data-id="{{eventDetail._id}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
     </div>
-
-    <hr>
-    <a href="/events/update/{{eventDetail._id}}">Modify this event</a>
-    <hr>
-    <button id ="deleteEvent">Delete this event</button>
-    <hr>
-    <button id="joinBtn" data-id="{{eventDetail._id}}" data-currentuser="{{currentUser._id}}">JOIN!</button>
-    <button id="maybeBtn">MAYBE</button>
+  </div>
 
   {{!-- POPUP : Confirm msg before delete an event --}}
 
     <div id="confirmForDelete">
       <table>
-        <tr><td class ="tdUnderline">Are you sure you want to delete?</td></tr>
+        <th><tr class ="tdUnderline"><b>Are you sure you want to delete?</b></tr>
+        </th>
         <tr>
-          <td class ="tdUnderline"><a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes delete</a></td></tr>
-        <tr><td><button id="deleteNo">No keep it</button></td>
+          <td class ="tdUnderline"><a href="/events/delete/{{eventDetail._id}}" id="deleteYes">Yes, delete it</a></td>
+          <td><a id="deleteNo">No, keep it</a></td>
         </tr>
       </table>
     </div>
 
   {{!-- POPUP : Member list who is joining--}}
     <div id="joinList">
-      <p>People who's coming!</p>
-        HOST: {{eventDetail.host_id.name}}
+      <div id="closeJoinList"><i class="far fa-times-circle"></i></div>
+      <p><b>Who's coming?</b></p>
+      <p>This event's host is <b>"{{eventDetail.host_id.name}}"</b></p>
+      <hr>
         <ul id='list-members'>
           {{#each eventDetail.join}}
             <li>{{this.name}}</li>

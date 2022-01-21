@@ -1,26 +1,23 @@
-/* Minyoung edited : Starts from here */
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 
-body {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  margin: 0;
-}
-textarea {
-  border: none;
-}
 * {
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+}
+
+h1 {
+  margin-bottom: 30px;
 }
 
 a {
   text-decoration: none;
   color: black;
 }
+
+/* Header */
 
 header {
   position: fixed;
@@ -30,11 +27,6 @@ header {
   width: 100vw;
   background-color: white;
   border-bottom: 1px solid lightgray;
-}
-
-.main-container {
-  margin: 0 auto;
-  width: 960px;
 }
 
 .headerDivs {
@@ -49,6 +41,10 @@ header {
 
 #irongramLogo {
   width: 120px;
+}
+
+textarea {
+  border: none;
 }
 
 textarea:focus,
@@ -76,10 +72,18 @@ input:focus {
   color: #2bc5fa;
 }
 
+/* body */
+
 body {
+  font-size: 16px;
   background-color: #fafafa;
   padding: 0 200px;
   margin-top: 100px;
+}
+
+.main-container {
+  margin: 0 auto;
+  width: 960px;
 }
 
 /* Event preview nav */
@@ -102,6 +106,7 @@ body {
   border: 3px solid #c62d8f;
   border-radius: 50%;
   text-align: center;
+  position: relative;
 }
 
 .oneEventPreview img {
@@ -112,9 +117,10 @@ body {
   border: 3px solid white;
 }
 
-body {
-  background-color: #fafafa;
-  padding: 0 200px;
+.btn-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*UPLOAD*/

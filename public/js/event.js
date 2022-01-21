@@ -1,16 +1,13 @@
-const currentDate = document.querySelector("#date");
-const currentTime = document.querySelector("#time");
-
 const description = document.querySelectorAll(".descriptionView");
 
 const deleteEvent = document.querySelector("#deleteEvent");
 const deleteYes = document.querySelector("#deleteYes");
-const geocoder = new google.maps.Geocoder();
 
-const joinBtn = document.querySelector("#joinBtn");
-const maybeBtn = document.querySelector("#maybeBtn");
+const joinBtn = document.querySelector("#joinBtnInDetail");
 
-const listMembers = document.getElementById("list-members");
+const listMembers = document.querySelector("#list-members");
+const closeJoinList = document.querySelector("#closeJoinList");
+
 // Limit the description text length
 function limitTextStr(string, length) {
   return string.length > length ? string.substring(0, length) + "..." : string;
@@ -32,25 +29,23 @@ google.maps.event.addDomListener(window, "load", initialize);
 deleteEvent.addEventListener("click", () => {
   confirmForDelete.style.display = "block";
   joinList.style.display = "none";
-  maybeList.style.display = "none";
 });
 
 deleteNo.addEventListener("click", () => {
   confirmForDelete.style.display = "none";
 });
 
-// Button for JOIN or MAYBE
+// Button for JOIN
 joinBtn.addEventListener("click", () => {
+  console.log("Join btn is working");
   joinList.style.display = "block";
-  maybeList.style.display = "none";
   confirmForDelete.style.display = "none";
 });
 
-maybeBtn.addEventListener("click", () => {
-  maybeList.style.display = "block";
+closeJoinList.addEventListener("click", () => {
   joinList.style.display = "none";
-  confirmForDelete.style.display = "none";
 });
+
 function generateListItem(user) {
   const li = document.createElement("li");
   li.className = "user";
