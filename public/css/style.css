@@ -247,27 +247,13 @@ label[for="upload-btn"] {
   font-weight: 700;
   font-size: 1em;
 }
-<<<<<<< HEAD
  .btn-validate {
-=======
-
-#buttons-post-page .btn-validate {
->>>>>>> origin/user
   background: #00c2ff;
   padding: 5px 30px;
   color: white;
 }
-<<<<<<< HEAD
  .btn-delete {
   color: #c30000;
   background-color: white;
   padding: 5px 30px;
 }
-=======
-
-#buttons-post-page .btn-delete {
-  color: #c30000;
-  background-color: white;
-  padding: 10px 40px;
-}
->>>>>>> origin/user

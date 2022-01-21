@@ -16,10 +16,6 @@ router.get("/events", async (req, res) => {
   try {
     const events = await Event.find().populate("host_id");
     const sortedEvent = sortedElementsByDateDesc(events);
-<<<<<<< HEAD
-=======
-    console.log(sortedEvent);
->>>>>>> origin/user
     req.session.events = sortedEvent;
     res.render("event/events", {
       css: ["event.css"],
