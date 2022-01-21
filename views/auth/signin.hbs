@@ -1,11 +1,26 @@
 <form action="/auth/signin" method="post">
  {{> flash_message}}
+ <div class="sign-box">
 
-  <label for="email">Email</label>
-  <input type="text" name="email" value="melimelo@melo.com" />
+ <div class="sign-in">
+   <a href="/"><img src="/img/logo.jpg" alt="logo" id="irongramLogo"></a>
+  <label for="email"></label>
+  <input class="email" type="text" name="email" placeholder="E-mail" />
 
-  <label for="password">Password</label>
-  <input type="password" name="password" value="1234"/>
+  <label for="password"></label>
+  <input class="password" type="password" name="password" placeholder="Password"/>
 
   <button>Sign In</button>
+
+  <hr>
+
+  <div class="options">
+    <p>Not registered yet ?</p>
+
+    <a href="/auth/signup">Sign Up</a>
+  </div>
+ </div>
+ </div>
+
 </form>
+<div class="blur-body"></div>

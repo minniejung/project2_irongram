@@ -6,7 +6,7 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   margin: 0;
-  background: linear-gradient(180deg, rgba(0, 194, 255, 0.1) 0%, rgba(51, 0, 255, 0.1) 100%)
+  /* background: linear-gradient(180deg, rgba(0, 194, 255, 0.1) 0%, rgba(51, 0, 255, 0.1) 100%) */
 }
 
 textarea {
@@ -65,7 +65,8 @@ input:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 25px;
+  font-size: 20px;
+  align-items: center;
 }
 
 .headerIcons a {

@@ -8,15 +8,15 @@ const sortedElementsByDateDesc = (items) =>
   Object.assign([], items).sort((a, b) => {
     let datea = new Date(a.date);
     let dateb = new Date(b.date);
-    return   datea - dateb;
+    return datea - dateb;
   });
 
 // GET Event List
 router.get("/events", async (req, res) => {
   try {
     const events = await Event.find().populate("host_id");
- const sortedEvent =   sortedElementsByDateDesc(events)
- console.log(sortedEvent)
+    const sortedEvent = sortedElementsByDateDesc(events);
+    console.log(sortedEvent);
     req.session.events = sortedEvent;
     res.render("event/events", {
       css: ["event.css"],
@@ -34,7 +34,7 @@ router.get("/events/create", async (req, res) => {
     res.render("event/event-create", {
       events: await Event.find(),
       user_id: res.locals.currentUser._id,
-      css: ["event.css"],
+      css: ["event-form.css"],
       js: ["event.js", "event-moment.js"],
     });
   } catch (e) {
@@ -96,7 +96,7 @@ router.get("/events/update/:id", async (req, res) => {
     res.render("event/event-update", {
       eventToUpdate,
       newDate,
-      css: ["event.css"],
+      css: ["event-form.css"],
     });
   } catch (e) {
     console.error(e);
