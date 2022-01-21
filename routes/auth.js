@@ -3,11 +3,11 @@ const user = require("../models/user");
 const bcrypt = require("bcrypt");
 
 router.get("/auth/signup", (req, res) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { css: ["auth.css"] });
 });
 
 router.get("/auth/signin", (req, res) => {
-  res.render("auth/signin");
+  res.render("auth/signin", { css: ["auth.css"] });
 });
 
 router.post("/auth/signup", async (req, res, next) => {

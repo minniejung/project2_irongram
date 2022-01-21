@@ -24,7 +24,9 @@
 </head>
 
 <body>
-  {{> header}}
+  {{#if isLoggedIn}}
+    {{> header}}
+  {{/if}}
   <div class="main-container">
     {{{body}}}
   </div>
