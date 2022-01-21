@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
     padding: 60px 150px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #E0E6EF;
+    backdrop-filter: blur(100px);
+    border-radius: 21px;
 }
 #form-edit{
     margin-top: 20px;
@@ -58,8 +62,11 @@
     flex-direction: column;
 }
 .btn-edit .btn-validate{
-    margin-bottom: 120px;
+    margin-bottom: 80px;
+    border: none;
+    outline:none;
 }
 .btn-edit .btn-delete{
     margin-bottom: 20px;
 }
+

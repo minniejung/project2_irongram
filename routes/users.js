@@ -12,7 +12,6 @@ router.get("/settings/:id", async (req, res, next) => {
       res.render("user/user-edit", { 
         user,
         css: ["update.css"]
-
        });
     } else {
       res.redirect(`/profile/${req.params.id}`);
