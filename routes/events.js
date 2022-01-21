@@ -25,7 +25,7 @@ router.get("/events", async (req, res) => {
     console.error(e);
   }
 });
-
+ 
 // GET Event create
 
 router.get("/events/create", async (req, res) => {
