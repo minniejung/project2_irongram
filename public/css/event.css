@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /* Event CSS : Starts from here (Minyoung edited) */
 * {
   text-decoration: none;
@@ -7,7 +5,6 @@
   /* border: 1px solid grey; */
 }
 
->>>>>>> origin/user
 a {
   color: black;
 }
@@ -22,18 +19,6 @@ a {
 }
 
 #createEventBtn {
-<<<<<<< HEAD
-  padding: 5px 30px 5px 30px;
-  border-radius: 4px;
-  background: #ffffff;
-  border: 1px solid #e0e6ef;
-  box-sizing: border-box;
-  color: black;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.9em;
-=======
   background-color: #2bc5fa;
   color: white;
   width: 200px;
@@ -44,7 +29,6 @@ a {
   border-radius: 4px;
   font-weight: 600;
   font-size: 14px;
->>>>>>> origin/user
 }
 
 .eventListImg {
@@ -108,14 +92,8 @@ p {
 #joinBtnInDetail {
   padding: 20px 50px;
   border-radius: 4px;
-<<<<<<< HEAD
-  background: #2bc5fa;
-  color: white;
-  border: 0;
-=======
   background: #ffffff;
   border: 1px solid #e0e6ef;
->>>>>>> origin/user
   box-sizing: border-box;
   font-weight: 600;
   font-size: 14px;
@@ -130,11 +108,7 @@ p {
 }
 
 .editDeleteBtn {
-<<<<<<< HEAD
-  padding: 5px 30px;
-=======
   padding: 10px 30px;
->>>>>>> origin/user
   border-radius: 4px;
   background: #ffffff;
   border: 1px solid #e0e6ef;
@@ -172,37 +146,6 @@ p {
 }
 
 .inputForm input {
-<<<<<<< HEAD
-  padding: 5px 30px 5px 30px;
-  border-radius: 4px;
-  background: #ffffff;
-  border: 1px solid #e0e6ef;
-  box-sizing: border-box;
-  color: black;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.9em;
-  width: 500px;
-}
-
-.inputForm button {
-  padding: 5px 30px 5px 30px;
-  margin-top: 20px;
-  border-radius: 4px;
-  background: #00c2ff;
-  border: 1px solid #00c2ff;
-  box-sizing: border-box;
-  color: white;
-  width: 139px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.9em;
-  margin-bottom: 0px;
-  cursor: pointer;
-  align-self: center;
-=======
   width: 400px;
   padding: 20px;
   border-radius: 10px;
@@ -222,7 +165,6 @@ p {
   border-radius: 4px;
   font-weight: 600;
   font-size: 14px;
->>>>>>> origin/user
 }
 
 .event-create,
@@ -239,10 +181,6 @@ p {
 }
 
 /* buttons */
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/user
 #confirmForDelete,
 #joinList {
   background-color: white;
@@ -263,7 +201,6 @@ table {
   border-top: 1px solid lightgray;
   margin-top: 20px;
   font-weight: 600;
-<<<<<<< HEAD
 }
 
 table a {
@@ -314,10 +251,7 @@ input#image {
   background-color: transparent;
   border: 0;
   padding: 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 }
 
 table a {
@@ -335,12 +269,3 @@ table a {
   margin-right: 20px;
   margin-bottom: 20px;
 }
-=======
-}     
->>>>>>> origin/event
-=======
-}
->>>>>>> parent of 5f3fb2d (merged event & master)
-=======
-}
->>>>>>> parent of 5f3fb2d (merged event & master)
