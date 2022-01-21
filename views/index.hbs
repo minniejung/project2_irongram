@@ -86,7 +86,11 @@
       data-currentuser="{{../currentUser._id}}"
     ></i>
       <span class="likes-count">{{this.likes.length}} <span style="font-weight: 700; margin-bottom:30px">Likes</span> </span>
-    <p><span style="font-weight: 700;">{{this.user_name}} :</span>{{this.description}}</p>
+      
+      
+        {{#if this.description}}
+    <p><span style="font-weight: 700;">{{this.user_name}} </span>{{this.description}}</p>
+  {{/if}}
     </div>
   
   </div>
