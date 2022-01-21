@@ -2,8 +2,8 @@
 <div class="eventPreview">
   
   {{#each events}}
-    <div class="oneEventPreview">
       {{this.name}}
+    <div class="oneEventPreview">
       {{> modal this}}
       <a class="btn-modal"><img src="{{this.image}}"/></a>
     </div>

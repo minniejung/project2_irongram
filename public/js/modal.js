@@ -2,7 +2,7 @@ const modal = document.querySelector("#modal");
 const btnModal = document.querySelectorAll(".btn-modal");
 const closeBtn = document.querySelectorAll(".close");
 
-const modalJoin = document.querySelector(".modalJoin");
+const modalJoin = document.querySelector("#modalJoin");
 const joinBtn = document.querySelector("#joinBtn");
 
 // Event modal
@@ -27,7 +27,7 @@ btnModal.forEach((el) => {
     modalOn(el);
   });
 });
-
+ 
 closeBtn.forEach((el) => {
   el.addEventListener("click", (e) => {
     modalOff(el);

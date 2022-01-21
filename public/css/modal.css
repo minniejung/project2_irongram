@@ -1,4 +1,4 @@
-.modal {
+#modal {
   display: none;
   top: 0;
   left: 0;
@@ -69,7 +69,7 @@
   margin: 20px 0;
 }
 
-.joinList {
+.modalJoin {
   display: none;
   top: 0;
   left: 0;
