@@ -139,7 +139,7 @@ router.post(
         },
         { new: true }
       );
-      console.log("** CONSOLE updatedEvent >>>", updatedEvent);
+      // console.log("** CONSOLE updatedEvent >>>", updatedEvent);
       res.redirect("/events");
     } catch (e) {
       next(e);
