@@ -207,17 +207,17 @@ label[for="upload-btn"] {
 }
 
 /*BUTTON*/
-#buttons-post-page .btn {
+.btn {
   border-radius: 6px;
   font-weight: 700;
   font-size: 1.1em;
 }
-#buttons-post-page .btn-validate {
+.btn-validate {
   background: #00c2ff;
   padding: 10px 80px;
   color: white;
 }
-#buttons-post-page .btn-delete {
+.btn-delete {
   color: #c30000;
   background-color: white;
   padding: 10px 40px;
