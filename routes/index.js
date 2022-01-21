@@ -14,7 +14,7 @@ getImagesFromSuscribed = (images, users) => {
   const imagesFromSuscribed = [];
   for (var i = 0; i < images.length; i++) {
     for (var j = 0; j < users.length; j++) {
-      if (images[i].user_id.toString() === users[j].toString()) {
+      if (images[i].user_id._id.toString() === users[j].toString()) {
         imagesFromSuscribed.push(images[i]);
       }
     }
@@ -23,7 +23,7 @@ getImagesFromSuscribed = (images, users) => {
 };
 router.get("/", async (req, res, next) => {
   try {
-    const allPosts = await PostModel.find();
+    const allPosts = await PostModel.find().populate("user_id");
     const user = await userModel.findById(req.session.currentUser._id);
     user.following.push(user._id);
     const postsFollowings = getImagesFromSuscribed(allPosts, user.following);
