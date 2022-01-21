@@ -9,7 +9,11 @@ router.get("/settings/:id", async (req, res, next) => {
   try {
     if (req.session.currentUser._id === req.params.id) {
       const user = await userModel.findById(req.params.id);
-      res.render("user/user-edit", { user });
+      res.render("user/user-edit", { 
+        user,
+        css: ["update.css"]
+
+       });
     } else {
       res.redirect(`/profile/${req.params.id}`);
     }

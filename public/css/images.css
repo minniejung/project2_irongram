@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap");
 #container-image {
   display: flex;
   flex-direction: row;
@@ -78,9 +79,20 @@
   border-radius: 10px;
   margin-top: 10px;
   text-align: center;
-  vertical-align: auto;
-}
+  display: flex;
 
+}
+.filter .title-filter{
+  width: 100%;
+  align-self:   flex-end;
+  font-family: Inter;
+  font-weight: 400;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px);
+border-radius: 0 10px 0 10px 0;
+color: black;
+}
 .filter:hover {
   cursor: pointer;
 }
@@ -132,38 +144,48 @@
 .filter[data-filter="audrey"] {
   background: url("../img/thumbnails/audrey.png");
   background-size: cover;
+ 
 }
 .filter[data-filter="hairspray"] {
   background: url("../img/thumbnails/hairspray.png");
+  background-size: cover;
 }
 .filter[data-filter="aurora"] {
   background: url("../img/thumbnails/aurora.png");
+  background-size: cover;
 }
 
 .filter[data-filter="eucalyptus"] {
   background: url("../img/thumbnails/eucalyptus.png");
+  background-size: cover;
 }
 
 .filter[data-filter="primavera"] {
   background: url("../img/thumbnails/primavera.png");
+  background-size: cover;
 }
 
 .filter[data-filter="red_rock"] {
   background: url("../img/thumbnails/red_rock.png");
+  background-size: cover;
 }
 
 .filter[data-filter="sizzle"] {
   background: url("../img/thumbnails/sizzle.png");
+  background-size: cover;
 }
 
-.filter[data-filter="audrey"] {
-  background: url("../img/thumbnails/audrey.png");
-}
+
 
 .filter[data-filter="ukulele"] {
   background: url("../img/thumbnails/ukulele.png");
+  background-size: cover;
 }
 
 .filter[data-filter="zorro"] {
   background: url("../img/thumbnails/zorro.png");
+  background-size: cover;
+}
+.ranges div{
+ margin-top: 5px;
 }
