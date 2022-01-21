@@ -232,8 +232,8 @@ table a {
   font-weight: 600;
   width: 100px;
 }
-.content-input input[type="“text”"],
-input[type="“password”"] {
+.content-input input[type="text"],
+input[type="password"] {
   padding: 5px 30px 5px 30px;
   border-radius: 4px;
   background: #ffffff;
@@ -261,7 +261,7 @@ table a {
 /* join list */
 #list-members {
   margin-top: 20px;
->>>>>>> origin/user
+
 }
 
 #closeJoinList {
