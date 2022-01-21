@@ -82,7 +82,7 @@ router.get("/events/:id", async (req, res) => {
     });
   } catch (e) {
     console.error(e);
-  }
+  } 
 });
 
 // GET Event update

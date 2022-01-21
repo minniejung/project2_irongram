@@ -102,10 +102,11 @@ body {
 
 .oneEventPreview {
   width: 86px;
-  height: 86px; 
+  height: 86px;
   border: 3px solid #c62d8f;
   border-radius: 50%;
   text-align: center;
+  position: relative;
 }
 
 .oneEventPreview img {
@@ -114,6 +115,12 @@ body {
   border-radius: 50%;
   text-align: center;
   border: 3px solid white;
+}
+
+.btn-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*UPLOAD*/

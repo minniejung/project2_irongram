@@ -1,25 +1,30 @@
-const modal = document.querySelector("#modal");
+const modals = document.querySelectorAll(".modals");
 const btnModal = document.querySelectorAll(".btn-modal");
 const closeBtn = document.querySelectorAll(".close");
 
-const modalJoin = document.querySelector("#modalJoin");
-const joinBtn = document.querySelector("#joinBtn");
+const modalJoin = document.querySelector(".modalJoin");
+const joinBtn = document.querySelectorAll(".modalJoinBtn");
+const closeModalBtn = document.querySelectorAll(".closeJoinModal");
 
 // Event modal
 
-function modalOn(item) {
-  const popup = item.parentElement.childNodes[1];
-  popup.style.display = "flex";
+function modalOn(btn) {
+  modalOff();
+  const index = btn.getAttribute("index");
+  const modal = document.querySelector(`.modals[index="${index}"]`);
+  modal.style.display = "flex";
 }
 
 // function modalOff() {
 //   modal.style.display = "none";
 // }
 
-function modalOff(item) {
-  const popup = item.parentElement.parentElement.parentElement;
+function modalOff() {
+  // const popup = item.parentElement.parentElement.parentElement;
   // console.log("popup :>> ", popup);
-  popup.style.display = "none";
+  modals.forEach((modal) => {
+    modal.style.display = "none";
+  });
 }
 
 btnModal.forEach((el) => {
@@ -27,29 +32,38 @@ btnModal.forEach((el) => {
     modalOn(el);
   });
 });
- 
+
 closeBtn.forEach((el) => {
   el.addEventListener("click", (e) => {
     modalOff(el);
   });
 });
 
-modal.onclick = (e) => {
-  const evTarget = e.target;
-  console.log("hi");
-  if (evTarget.classList.contains("modal-overlay")) {
-    modalOff();
-  }
-};
+// modals.onclick = (e) => {
+//   const evTarget = e.target;
+//   if (evTarget.classList.contains("modal-overlay")) {
+//     modalOff();
+//   }
+// };
 
 // modal for join list
 
-function modalInModalOn() {
+function joinModalOn() {
   modalJoin.style.display = "flex";
+}
+
+function joinModalOff() {
+  modalJoin.style.display = "none";
 }
 
 joinBtn.forEach((el) => {
   el.addEventListener("click", (e) => {
-    modalInModalOn();
+    joinModalOn();
+  });
+});
+
+closeModalBtn.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    joinModalOff();
   });
 });
