@@ -5,6 +5,7 @@ const closeBtn = document.querySelectorAll(".close");
 const modalJoin = document.querySelector(".modalJoin");
 const joinBtn = document.querySelectorAll(".modalJoinBtn");
 const closeModalBtn = document.querySelectorAll(".closeJoinModal");
+const listMembers = document.querySelector("#list-members");
 
 // Event modal
 
@@ -67,3 +68,41 @@ closeModalBtn.forEach((el) => {
     joinModalOff();
   });
 });
+
+// new (editing)
+
+function generateListItem(user) {
+  const li = document.createElement("li");
+  li.className = "user";
+  li.innerHTML = `
+    <p>${user.name}</p>
+    `;
+  return li;
+}
+
+// Joining member list
+function displayUsers(users) {
+  listMembers.innerHTML = "";
+  users.join.forEach((user) => listMembers.appendChild(generateListItem(user)));
+}
+function appendUser(user) {
+  listMembers.appendChild(generateListItem(user));
+}
+const handleClick = (e) => {
+  const payloadUsers = {
+    eventId: e.target.dataset.id,
+    currentUserId: e.target.dataset.currentuser,
+  };
+  joinMember(e.target.dataset.id, payloadUsers).then(() => {
+    getMember(e.target.dataset.id)
+      .then((dbres) => displayUsers(dbres.data))
+      .catch((e) => console.error(e));
+  });
+};
+
+// AJAX
+const getMember = (id) => axios.get(`/events/list/${id}`);
+
+const joinMember = (id, payload) => axios.post(`/events/join/${id}`, payload);
+
+joinBtn.addEventListener("click", handleClick);

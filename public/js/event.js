@@ -1,6 +1,3 @@
-const currentDate = document.querySelector("#date");
-const currentTime = document.querySelector("#time");
-
 const description = document.querySelectorAll(".descriptionView");
 
 const deleteEvent = document.querySelector("#deleteEvent");
@@ -39,7 +36,7 @@ deleteNo.addEventListener("click", () => {
   confirmForDelete.style.display = "none";
 });
 
-// Button for JOIN or MAYBE
+// Button for JOIN
 joinBtn.addEventListener("click", () => {
   console.log("Join btn is working");
   joinList.style.display = "block";
