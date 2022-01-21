@@ -77,7 +77,8 @@
   height: 120px;
   border-radius: 10px;
   margin-top: 10px;
-  background-color: #37383d;
+  text-align: center;
+  vertical-align: auto;
 }
 
 .filter:hover {
@@ -112,4 +113,57 @@
     rgba(51, 0, 255, 0.28) 100%
   );
   filter: blur(200px);
+}
+/*BUTTON RESET*/
+.btn-reset {
+  padding: 5px 25px 5px 25px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #e0e6ef;
+  box-sizing: border-box;
+  color: black;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/*FILTERS*/
+.filter[data-filter="audrey"] {
+  background: url("../img/thumbnails/audrey.png");
+  background-size: cover;
+}
+.filter[data-filter="hairspray"] {
+  background: url("../img/thumbnails/hairspray.png");
+}
+.filter[data-filter="aurora"] {
+  background: url("../img/thumbnails/aurora.png");
+}
+
+.filter[data-filter="eucalyptus"] {
+  background: url("../img/thumbnails/eucalyptus.png");
+}
+
+.filter[data-filter="primavera"] {
+  background: url("../img/thumbnails/primavera.png");
+}
+
+.filter[data-filter="red_rock"] {
+  background: url("../img/thumbnails/red_rock.png");
+}
+
+.filter[data-filter="sizzle"] {
+  background: url("../img/thumbnails/sizzle.png");
+}
+
+.filter[data-filter="audrey"] {
+  background: url("../img/thumbnails/audrey.png");
+}
+
+.filter[data-filter="ukulele"] {
+  background: url("../img/thumbnails/ukulele.png");
+}
+
+.filter[data-filter="zorro"] {
+  background: url("../img/thumbnails/zorro.png");
 }
