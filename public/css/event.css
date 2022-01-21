@@ -1,4 +1,3 @@
-/* Event CSS : Starts from here (Minyoung edited) */
 a {
   color: black;
 }
@@ -14,16 +13,16 @@ a {
 }
 
 #createEventBtn {
-  background-color: #2bc5fa;
-  color: white;
-  width: 200px;
-  text-align: center;
-  padding: 15px 10px;
-  border: 0;
-  box-shadow: 2px 2px 2px lightgray;
+  padding: 5px 30px 5px 30px;
   border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #e0e6ef;
+  box-sizing: border-box;
+  color: black;
+  font-family: Inter;
+  font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 .eventListImg {
@@ -106,40 +105,67 @@ p {
 
 /* Event create / update form */
 
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #e0e6ef;
+  backdrop-filter: blur(100px);
+  border-radius: 21px;
+}
+
 .inputForm {
   margin-top: 50px;
 }
+
 .inputForm label {
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .inputForm input {
-  width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-  border: 0;
-  box-shadow: 2px 2px 2px lightgray;
-  margin: 10px 0 20px 0;
+  padding: 5px 30px 5px 30px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #e0e6ef;
+  box-sizing: border-box;
+  color: black;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9em;
+  width: 500px;
 }
 
 .inputForm button {
-  background-color: #2bc5fa;
-  width: 200px;
-  height: 50px;
-  border: 0;
-  box-shadow: 2px 2px 2px lightgray;
-  color: white;
-  margin: 10px 0 50px 120px;
+  padding: 5px 30px 5px 30px;
+  margin-top: 20px;
   border-radius: 4px;
+  background: #00c2ff;
+  border: 1px solid #00c2ff;
+  box-sizing: border-box;
+  color: white;
+  width: 139px;
+  font-family: Inter;
+  font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.9em;
+  margin-bottom: 0px;
+  cursor: pointer;
+  align-self: center;
 }
 
 .event-create,
 .event-update {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  justify-content: center;
+  width: 100%;
   gap: 10px;
 }
 
@@ -185,4 +211,32 @@ table a {
   float: right;
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+/* MEl */
+
+.content-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+}
+.content-input label {
+  font-weight: 600;
+  width: 100px;
+}
+.content-input input[type="“text”"],
+input[type="“password”"] {
+  padding: 5px 30px 5px 30px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #e0e6ef;
+  box-sizing: border-box;
+  color: black;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9em;
+  width: 250px;
 }
