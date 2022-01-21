@@ -62,6 +62,7 @@
   height: 350px;
   border-radius: 5px;
   margin: 20px 0;
+  object-fit: cover;
 }
 
 .content h3 {
