@@ -9,16 +9,22 @@
   justify-content: center;
   text-align: center;
   gap: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0;
 }
 
 .game {
   background-color: white;
-  border-radius: 15px;
-  box-shadow: 5px 5px 5px lightgray;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px lightgray;
   padding: 10px;
 }
 
 .game img {
   height: 500px;
+}
+
+.game p {
+  margin: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
