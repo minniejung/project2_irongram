@@ -1,3 +1,8 @@
+* {
+  text-decoration: none;
+  list-style-type: none;
+}
+
 .modals {
   display: none;
   top: 0;
