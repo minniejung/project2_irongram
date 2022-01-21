@@ -94,6 +94,7 @@ body {
   display: inline-flex;
   flex-direction: row;
   gap: 10px;
+  overflow-y: hidden;
   width: 775px;
   margin: 0 100px 30px 100px;
   overflow-x: scroll;
