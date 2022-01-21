@@ -1,16 +1,35 @@
 <form action="/auth/signup" method="post">
- {{> flash_message}}
-  <label for="name">Name</label>
-  <input type="text" name="name" />
+ <div class="sign-box">
+   <div class="sign-up">
+ 
+     <a href="/"><img src="/img/logo.jpg" alt="logo" id="irongramLogo"></a>
+  <label for="name"></label>
+  <input class="info" type="text" name="name" placeholder="Name"/>
 
-  <label for="lastname">Lastname</label>
-  <input type="text" name="lastname" />
+  <label for="lastname"></label>
+  <input class="info" type="text" name="lastname" placeholder="Lastname"/>
 
-  <label for="email">Email</label>
-  <input type="text" name="email" />
+  <label for="email"></label>
+  <input class="info" type="text" name="email" placeholder="Email"/>
 
-  <label for="password">Password</label>
-  <input type="password" name="password" />
+  <label for="password"></label>
+  <input class="info" type="password" name="password" placeholder="Password"/>
 
+ <div class="flash">
+   {{> flash_message}}
+ </div>
   <button>Sign Up</button>
+
+  <hr>
+
+  <div class="options">
+    <p>Already Registered ?</p>
+
+    <a href="/auth/signin">Sign In</a>
+  </div>
+   </div>
+ </div>
+
+
 </form>
+<div class="blur-body"></div>

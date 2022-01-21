@@ -1,9 +1,18 @@
+<<<<<<< HEAD
+=======
+/* Event CSS : Starts from here (Minyoung edited) */
+* {
+  text-decoration: none;
+  list-style-type: none;
+  /* border: 1px solid grey; */
+}
+
+>>>>>>> origin/user
 a {
   color: black;
 }
 
 /* All events page */
-
 .allEventsHeader {
   display: flex;
   flex-direction: row;
@@ -13,6 +22,7 @@ a {
 }
 
 #createEventBtn {
+<<<<<<< HEAD
   padding: 5px 30px 5px 30px;
   border-radius: 4px;
   background: #ffffff;
@@ -23,6 +33,18 @@ a {
   font-style: normal;
   font-weight: 600;
   font-size: 0.9em;
+=======
+  background-color: #2bc5fa;
+  color: white;
+  width: 200px;
+  text-align: center;
+  padding: 15px 10px;
+  border: 0;
+  box-shadow: 2px 2px 2px lightgray;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+>>>>>>> origin/user
 }
 
 .eventListImg {
@@ -34,6 +56,15 @@ a {
 }
 
 /* Each event div */
+h1,
+h2 {
+  margin: 15px 0;
+}
+
+p {
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
 
 h1,
 h2 {
@@ -77,9 +108,14 @@ p {
 #joinBtnInDetail {
   padding: 20px 50px;
   border-radius: 4px;
+<<<<<<< HEAD
   background: #2bc5fa;
   color: white;
   border: 0;
+=======
+  background: #ffffff;
+  border: 1px solid #e0e6ef;
+>>>>>>> origin/user
   box-sizing: border-box;
   font-weight: 600;
   font-size: 14px;
@@ -94,7 +130,11 @@ p {
 }
 
 .editDeleteBtn {
+<<<<<<< HEAD
   padding: 5px 30px;
+=======
+  padding: 10px 30px;
+>>>>>>> origin/user
   border-radius: 4px;
   background: #ffffff;
   border: 1px solid #e0e6ef;
@@ -104,6 +144,9 @@ p {
 }
 
 /* Event create / update form */
+.inputForm {
+  margin-top: 50px;
+}
 
 .box {
   display: flex;
@@ -129,6 +172,7 @@ p {
 }
 
 .inputForm input {
+<<<<<<< HEAD
   padding: 5px 30px 5px 30px;
   border-radius: 4px;
   background: #ffffff;
@@ -158,6 +202,27 @@ p {
   margin-bottom: 0px;
   cursor: pointer;
   align-self: center;
+=======
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 2px 2px 2px lightgray;
+  margin: 10px 0 20px 0;
+}
+
+.inputForm button {
+  background-color: #2bc5fa;
+  width: 200px;
+  height: 50px;
+  border: 0;
+  box-shadow: 2px 2px 2px lightgray;
+  color: white;
+  margin: 10px 0 50px 120px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+>>>>>>> origin/user
 }
 
 .event-create,
@@ -174,7 +239,10 @@ p {
 }
 
 /* buttons */
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/user
 #confirmForDelete,
 #joinList {
   background-color: white;
@@ -195,6 +263,7 @@ table {
   border-top: 1px solid lightgray;
   margin-top: 20px;
   font-weight: 600;
+<<<<<<< HEAD
 }
 
 table a {
@@ -245,4 +314,21 @@ input#image {
   background-color: transparent;
   border: 0;
   padding: 0;
+=======
+}
+
+table a {
+  color: #2bc5fa;
+}
+
+/* join list */
+#list-members {
+  margin-top: 20px;
+>>>>>>> origin/user
+}
+
+#closeJoinList {
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }

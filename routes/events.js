@@ -16,6 +16,10 @@ router.get("/events", async (req, res) => {
   try {
     const events = await Event.find().populate("host_id");
     const sortedEvent = sortedElementsByDateDesc(events);
+<<<<<<< HEAD
+=======
+    console.log(sortedEvent);
+>>>>>>> origin/user
     req.session.events = sortedEvent;
     res.render("event/events", {
       css: ["event.css"],
@@ -33,7 +37,7 @@ router.get("/events/create", async (req, res) => {
     res.render("event/event-create", {
       events: await Event.find(),
       user_id: res.locals.currentUser._id,
-      css: ["event.css"],
+      css: ["event-form.css"],
       js: ["event.js", "event-moment.js"],
     });
   } catch (e) {
@@ -94,7 +98,7 @@ router.get("/events/update/:id", async (req, res) => {
     res.render("event/event-update", {
       eventToUpdate,
       newDate,
-      css: ["event.css"],
+      css: ["event-form.css"],
     });
   } catch (e) {
     console.error(e);
