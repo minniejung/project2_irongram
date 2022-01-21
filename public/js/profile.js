@@ -1,5 +1,3 @@
-console.log("Hello Momo");
-
 const followBtn = document.getElementById("follow");
 const followingBtn = document.getElementById("following");
 const followingCount = document.getElementById("following-count");

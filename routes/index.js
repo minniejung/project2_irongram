@@ -19,7 +19,6 @@ getImagesFromSuscribed = (images, users) => {
       }
     }
   }
-
   return imagesFromSuscribed;
 };
 router.get("/", async (req, res, next) => {

@@ -1,0 +1,65 @@
+#page-edit{
+    display: flex;
+    flex-direction: column;
+    padding: 60px 150px;
+}
+#form-edit{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#profile-update{
+    display: flex;
+   margin-top: 50px;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#profile-update img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.content-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+}
+
+.content-input label{
+    font-weight: 600;
+    width: 100px;
+}
+.content-input input[type="text"],input[type="password"]{
+  padding: 5px 30px 5px 30px;
+  border-radius: 4px;
+  background: #FFFFFF;
+  border: 1px solid #E0E6EF;
+  box-sizing: border-box;
+  color: black;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.btn-edit{
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.btn-edit .btn-validate{
+    margin-bottom: 120px;
+}
+.btn-edit .btn-delete{
+    margin-bottom: 20px;
+}

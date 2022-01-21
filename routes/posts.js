@@ -23,9 +23,9 @@ router.post("/posts/upload", uploader.single("image"), async (req, res) => {
       const post = await PostModel.create({
         urlMedia: req.file.path,
         filename: req.file.filename,
-        user_img: req.session.currentUser.image,
         user_id: req.session.currentUser._id,
         user_name: req.session.currentUser.name,
+        user_image: req.session.currentUser.image,
         description: "",
       });
       await UserModel.findByIdAndUpdate(

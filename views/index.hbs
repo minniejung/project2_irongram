@@ -64,10 +64,9 @@
   {{/unless}}
   {{#each sortedPosts}}
   {{!-- {{likedPost}} --}}
-
   <div class="post">
     <div class="user-name-post">
-      <img class="profile-image" src="{{user.image}}" alt="" />
+      <img class="profile-image" src="{{this.user_image}}" alt="" />
       <a href="/profile/{{this.user_id}}">{{this.user_name}}</a>
     </div>
 
@@ -75,19 +74,22 @@
       <img src="{{this.urlMedia}}" />
     </div>
 
-    <div class="like-section">
-
+   <div class="desc-post">
+  <div class="like-section">
+ 
       <i style="color: Tomato ; font-size: 25px ; cursor:pointer"
       {{#isLiked ../currentUser._id this.likes}}
 
       {{/isLiked}}
-      data-id="{{this.user_id}}"
+      data-id="{{this.user_id._id}}"
       data-postid="{{this._id}}"
       data-currentuser="{{../currentUser._id}}"
     ></i>
-      <span class="likes-count">{{this.likes.length}}</span>
-
+      <span class="likes-count">{{this.likes.length}} <span style="font-weight: 700; margin-bottom:30px">Likes</span> </span>
+    <p><span style="font-weight: 700;">{{this.user_name}} :</span>{{this.description}}</p>
     </div>
+  
+  </div>
 
   </div>
    <div class="blur-body"></div>

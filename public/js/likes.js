@@ -1,7 +1,7 @@
 let likeBtns = document.querySelectorAll(".btn-like");
 
 const displayLikesNumbers = (likes, likesCount) => {
-  likesCount.innerHTML = likes;
+  likesCount.innerHTML = `${likes} Likes`;
 };
 
 // Like

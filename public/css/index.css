@@ -4,12 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px 50px 25px 25px;
-
+  padding: 25px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(100px);
   border-radius: 32px;
-  margin: 25px;
 }
 
 .media {
@@ -18,13 +16,9 @@
 
 .user-name-post a {
   color: black;
-  padding: 5px 30px 5px 30px;
-
+  padding: 5px 20px 5px 20px;
   border-radius: 4px;
   background: #ffffff;
-  border: 1px solid #e0e6ef;
-  box-sizing: border-box;
-
   color: black;
   font-family: Inter;
   font-style: normal;
@@ -46,6 +40,7 @@
   width: 100%;
   padding: 10px 100px 22px 63px;
   align-items: center;
+  gap: 10px;
 }
 
 .like-section {
@@ -64,12 +59,16 @@
 }
 
 .profile-image {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50px;
   object-fit: cover;
 }
-.username-header-post {
-  padding: 20px;
-  margin-left: 20px;
+
+.desc-post {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
 }
