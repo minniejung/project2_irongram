@@ -24,7 +24,7 @@ router.get("/events", async (req, res) => {
   } catch (e) {
     console.error(e);
   }
-})
+});
 
 // GET Event create
 
@@ -49,7 +49,8 @@ router.post(
     try {
       const { title, host_id, date, time, address, description, price } =
         req.body;
-      let image;
+      let image = req.file.path;
+      console.log(req.file);
       const createdEvent = await Event.create({
         title,
         host_id,
@@ -80,7 +81,7 @@ router.get("/events/:id", async (req, res) => {
     });
   } catch (e) {
     console.error(e);
-  } 
+  }
 });
 
 // GET Event update

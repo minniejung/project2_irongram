@@ -112,6 +112,7 @@ body {
 .oneEventPreview img {
   width: 80px;
   height: 80px;
+  object-fit: cover;
   border-radius: 50%;
   text-align: center;
   border: 3px solid white;
