@@ -1,11 +1,4 @@
 /* Event CSS : Starts from here (Minyoung edited) */
-
-* {
-  text-decoration: none;
-  list-style-type: none;
-  /* border: 1px solid grey; */
-}
-
 a {
   color: black;
 }
@@ -85,8 +78,9 @@ p {
 #joinBtnInDetail {
   padding: 20px 50px;
   border-radius: 4px;
-  background: #ffffff;
-  border: 1px solid #e0e6ef;
+  background: #2bc5fa;
+  color: white;
+  border: 0;
   box-sizing: border-box;
   font-weight: 600;
   font-size: 14px;
@@ -101,7 +95,7 @@ p {
 }
 
 .editDeleteBtn {
-  padding: 10px 30px;
+  padding: 5px 30px;
   border-radius: 4px;
   background: #ffffff;
   border: 1px solid #e0e6ef;

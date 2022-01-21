@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  list-style-type: none;
 }
 
 h1 {
@@ -93,7 +94,10 @@ body {
   display: inline-flex;
   flex-direction: row;
   gap: 10px;
+<<<<<<< HEAD
   overflow-y: hidden;
+=======
+>>>>>>> origin/event
   width: 775px;
   margin: 0 100px 30px 100px;
   overflow-x: scroll;
