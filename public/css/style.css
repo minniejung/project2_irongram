@@ -90,14 +90,12 @@ body {
 /* Event preview nav */
 
 .eventPreview {
-  background-color: white;
-  border: 2px solid lightgray;
   padding: 15px;
   display: inline-flex;
   flex-direction: row;
   gap: 10px;
-  width: 100%;
-  margin-bottom: 30px;
+  width: 775px;
+  margin: 0 100px 30px 100px;
   overflow-x: scroll;
 }
 
