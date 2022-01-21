@@ -239,10 +239,10 @@ input[type="“password”"] {
   font-weight: 600;
   font-size: 0.9em;
   width: 250px;
-};
+}
 
 input#image {
   background-color: transparent;
   border: 0;
   padding: 0;
-}     
+}
