@@ -30,7 +30,6 @@
 }
 
 .user-name-post a {
-<<<<<<< HEAD
   color: black;
   padding: 5px 20px 5px 20px;
   border-radius: 4px;
@@ -41,22 +40,6 @@
   font-weight: 600;
   font-size: 0.9em;
   filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.05));
-=======
-    color: black;
-    padding: 5px 30px 5px 30px;
-
-    border-radius: 4px;
-    background: #ffffff;
-    border: 1px solid #e0e6ef;
-    box-sizing: border-box;
-
-    color: black;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.9em;
-    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.05));
->>>>>>> origin/user
 }
 
 .img-block img {
@@ -67,20 +50,12 @@
 }
 
 .user-name-post {
-<<<<<<< HEAD
   display: flex;
   justify-content: flex-start;
   width: 100%;
   padding: 10px 100px 22px 63px;
   align-items: center;
   gap: 10px;
-=======
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 10px 100px 22px 63px;
-    align-items: center;
->>>>>>> origin/user
 }
 
 .like-section {
@@ -99,7 +74,6 @@
 }
 
 .profile-image {
-<<<<<<< HEAD
   width: 60px;
   height: 60px;
   border-radius: 50px;
@@ -113,15 +87,3 @@
   justify-content: flex-start;
   align-content: center;
 }
-=======
-    width: 70px;
-    height: 70px;
-    border-radius: 50px;
-    object-fit: cover;
-}
-
-.username-header-post {
-    padding: 20px;
-    margin-left: 20px;
-}
->>>>>>> origin/user
